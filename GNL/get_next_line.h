@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 16:09:10 by junhpark          #+#    #+#             */
-/*   Updated: 2020/05/27 16:53:28 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/05/27 16:57:04 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@
 int			get_next_line(int fd, char **line);
 int			inspect_input_validation(int fd, char **line, char **buf);
 int			set_memory_null(void *str, size_t size);
-int			copy_buf_to_back_up(char **back_up, char *buf, int read_byte);
+int			copy_buf_to_back_up(char **back_up, char *buf, int readbyte);
 size_t		get_length(char const *str);
 int			back_up_data(char **new, char **back_up, char *buf, int str_length);
 size_t		count_newline(char const *str);
 int			make_string_except_nl(char **line, char **back_up);
 char		*string_dup_until_nl(char *s, size_t size);
-int			return_value(int read_byte, char **line, char **back_up, char **buf);
+int			return_value(int readbyte, char **line, char **back_up, char **buf);
 
 #endif
