@@ -6,15 +6,15 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 16:43:00 by junhpark          #+#    #+#             */
-/*   Updated: 2020/05/27 16:32:42 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/05/27 16:53:58 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int			return_value(int read_byte, char **line, char **back_up, char **buf)
+int			return_value(int readbyte, char **line, char **back_up, char **buf)
 {
-	if (read_byte < 0)
+	if (readbyte < 0)
 	{
 		free(*buf);
 		return (ERROR);
@@ -49,12 +49,12 @@ int			make_string_except_nl(char **line, char **back_up)
 	return (LINE);
 }
 
-int			copy_buf_to_back_up(char **back_up, char *buf, int read_byte)
+int			copy_buf_to_back_up(char **back_up, char *buf, int readbyte)
 {
 	char			*new;
 	int				str_length;
 
-	str_length = get_length(*back_up) + read_byte;
+	str_length = get_length(*back_up) + readbyte;
 	if (!(new = malloc(sizeof(char) * (str_length + 1))))
 	{
 		free(buf);
@@ -78,13 +78,13 @@ int			get_next_line(int fd, char **line)
 {
 	static char		*back_up[OPEN_MAX] = { 0, };
 	char			*buf;
-	int				read_byte;
+	int				readbyte;
 
 	if (inspect_input_validation(fd, line, &buf) == ERROR)
 		return (ERROR);
-	while ((read_byte = read(fd, buf, BUFFER_SIZE)) > 0)
+	while ((readbyte = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
-		if (copy_buf_to_back_up(&(back_up[fd]), buf, read_byte) == ERROR)
+		if (copy_buf_to_back_up(&(back_up[fd]), buf, readbyte) == ERROR)
 			return (ERROR);
 		if (count_newline(back_up[fd]) != (size_t)ERROR)
 		{
@@ -92,5 +92,5 @@ int			get_next_line(int fd, char **line)
 			return (make_string_except_nl(line, &(back_up[fd])));
 		}
 	}
-	return (return_value(read_byte, line, &(back_up[fd]), &buf));
+	return (return_value(readbyte, line, &(back_up[fd]), &buf));
 }
