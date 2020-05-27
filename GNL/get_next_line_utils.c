@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 14:24:21 by junhpark          #+#    #+#             */
-/*   Updated: 2020/05/27 16:20:50 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/05/27 16:32:43 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,25 +45,25 @@ size_t		countNewline(char const *str)
 	return (ERROR);
 }
 
-int			back_up_data(char **new, char **backUp, char *buf, int strLength)
+int			back_up_data(char **new, char **back_up, char *buf, int str_length)
 {
-	int			backUpidx;
+	int			back_upidx;
 	int			bufidx;
 
-	backUpidx = 0;
-	while (*backUp && (*backUp)[backUpidx] && backUpidx < strLength)
+	back_upidx = 0;
+	while (*back_up && (*back_up)[back_upidx] && back_upidx < str_length)
 	{
-		(*new)[backUpidx] = (*backUp)[backUpidx];
-		backUpidx++;
+		(*new)[back_upidx] = (*back_up)[back_upidx];
+		back_upidx++;
 	}
 	bufidx = 0;
-	while (buf && buf[bufidx] && (backUpidx + bufidx) < strLength)
+	while (buf && buf[bufidx] && (back_upidx + bufidx) < str_length)
 	{
-		(*new)[backUpidx + bufidx] = buf[bufidx];
+		(*new)[back_upidx + bufidx] = buf[bufidx];
 		bufidx++;
 	}
-	(*new)[backUpidx + bufidx] = NU;
-	return (backUpidx + bufidx);
+	(*new)[back_upidx + bufidx] = NU;
+	return (back_upidx + bufidx);
 }
 
 size_t		get_length(char const *str)

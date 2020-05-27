@@ -6,64 +6,64 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 16:43:00 by junhpark          #+#    #+#             */
-/*   Updated: 2020/05/27 16:20:51 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/05/27 16:32:42 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int			return_value(int readByte, char **line, char **backUp, char **buf)
+int			return_value(int read_byte, char **line, char **back_up, char **buf)
 {
-	if (readByte < 0)
+	if (read_byte < 0)
 	{
 		free(*buf);
 		return (ERROR);
 	}
-	if (make_string_except_nl(line, &(*backUp)) == LINE)
+	if (make_string_except_nl(line, &(*back_up)) == LINE)
 	{
 		free(*buf);
 		return (LINE);
 	}
-	free(*backUp);
+	free(*back_up);
 	free(*buf);
-	*backUp = 0;
+	*back_up = 0;
 	return (ENDOFFILE);
 }
 
-int			make_string_except_nl(char **line, char **backUp)
+int			make_string_except_nl(char **line, char **back_up)
 {
 	char		*temp;
-	int			sizeBeforeNL;
-	int			backUp_size;
+	int			size_before_nl;
+	int			back_up_size;
 
-	if ((sizeBeforeNL = count_newline(*backUp)) == ERROR)
+	if ((size_before_nl = count_newline(*back_up)) == ERROR)
 	{
-		*line = string_dup_until_nl(*backUp, get_length(*backUp));
+		*line = string_dup_until_nl(*back_up, get_length(*back_up));
 		return (ENDOFFILE);
 	}
-	*line = string_dup_until_nl(*backUp, sizeBeforeNL);
-	backUp_size = get_length(&(*backUp)[sizeBeforeNL + 1]);
-	temp = string_dup_until_nl(&(*backUp)[sizeBeforeNL + 1], backUp_size);
-	free(*backUp);
-	*backUp = temp;
+	*line = string_dup_until_nl(*back_up, size_before_nl);
+	back_up_size = get_length(&(*back_up)[size_before_nl + 1]);
+	temp = string_dup_until_nl(&(*back_up)[size_before_nl + 1], back_up_size);
+	free(*back_up);
+	*back_up = temp;
 	return (LINE);
 }
 
-int			copy_buf_to_backup(char **backUp, char *buf, int readByte)
+int			copy_buf_to_back_up(char **back_up, char *buf, int read_byte)
 {
 	char			*new;
-	int				strLength;
+	int				str_length;
 
-	strLength = get_length(*backUp) + readByte;
-	if (!(new = malloc(sizeof(char) * (strLength + 1))))
+	str_length = get_length(*back_up) + read_byte;
+	if (!(new = malloc(sizeof(char) * (str_length + 1))))
 	{
 		free(buf);
 		return (ERROR);
 	}
-	back_up_data(&new, backUp, buf, strLength);
-	free(*backUp);
-	*backUp = new;
-	return (strLength);
+	back_up_data(&new, back_up, buf, str_length);
+	free(*back_up);
+	*back_up = new;
+	return (str_length);
 }
 
 int			inspect_input_validation(int fd, char **line, char **buf)
@@ -76,21 +76,21 @@ int			inspect_input_validation(int fd, char **line, char **buf)
 
 int			get_next_line(int fd, char **line)
 {
-	static char		*backUp[OPEN_MAX] = { 0, };
+	static char		*back_up[OPEN_MAX] = { 0, };
 	char			*buf;
-	int				readByte;
+	int				read_byte;
 
 	if (inspect_input_validation(fd, line, &buf) == ERROR)
 		return (ERROR);
-	while ((readByte = read(fd, buf, BUFFER_SIZE)) > 0)
+	while ((read_byte = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
-		if (copy_buf_to_backup(&(backUp[fd]), buf, readByte) == ERROR)
+		if (copy_buf_to_back_up(&(back_up[fd]), buf, read_byte) == ERROR)
 			return (ERROR);
-		if (count_newline(backUp[fd]) != (size_t)ERROR)
+		if (count_newline(back_up[fd]) != (size_t)ERROR)
 		{
 			free(buf);
-			return (make_string_except_nl(line, &(backUp[fd])));
+			return (make_string_except_nl(line, &(back_up[fd])));
 		}
 	}
-	return (return_value(readByte, line, &(backUp[fd]), &buf));
+	return (return_value(read_byte, line, &(back_up[fd]), &buf));
 }
