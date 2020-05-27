@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 14:24:21 by junhpark          #+#    #+#             */
-/*   Updated: 2020/05/27 16:32:43 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/05/27 16:42:11 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char		*string_dup_until_nl(char *s, size_t size)
 	return (str);
 }
 
-size_t		countNewline(char const *str)
+size_t		count_newline(char const *str)
 {
 	size_t			index;
 
