@@ -24,6 +24,6 @@ FROMM(ios) Gemeinsam entwickeln (04.2020 ~ ): <https://github.com/feldblume5263/
    
 | Projekt | Sprachen | Thema | Zeitraum | Komplett |
 | ---- | ---- | ---- | ---- | ---- |
-|: libft :|: C :| Makefile, memory allocation, linked list, library | 01.03.20 ~ 13.04.20 |: :red_circle: :|
-|: GNL :|: C :| static variable, file descriptor | 04.05.20 ~ 27.05.20 |: :red_circle: :|
-|: printf :|: C :| static arguments | 31.05.20 ~ |: :white_circle: :|
+| libft | C | Makefile, memory allocation, linked list, library | 01.03.20 ~ 13.04.20 | :red_circle: |
+| GNL | C | static variable, file descriptor | 04.05.20 ~ 27.05.20 | :red_circle: |
+| printf | C | static arguments | 31.05.20 ~ | :white_circle: |
