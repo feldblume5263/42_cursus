@@ -5,7 +5,7 @@
 ### **intra ID : Junhpark**   
 
 #### Bildung 
-42Seoul Bildung (03.2020 ~  ) : [aktuelles Repository](https://github.com/feldblume5263/42_cursus)   
+42_Kusrsus (03.2020 ~  ) : [aktuelles Repository](https://github.com/feldblume5263/42_cursus)   
    
 #### Werdegang
 FROMM(ios) Gemeinsam entwickeln (04.2020 ~ ): <https://github.com/feldblume5263/Program42>
