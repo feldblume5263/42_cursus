@@ -19,3 +19,11 @@ FROMM(ios) Gemeinsam entwickeln (04.2020 ~ ): <https://github.com/feldblume5263/
  :red_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle:   
     
 *********************
+   
+## 42_Kursus Gemeinsamer Lehrplan
+   
+Projekt | Sprachen | Thema | Zeitraum
+---- | ---- | ---- | ----
+libft | C | Makefile, malloc, linked list, library | 01.03.20 ~ 13.04.20
+GNL | C | static variable, file descriptor | 04.05.20 ~ 27.05.20
+printf | C | static arguments | 31.05.20 ~ |
