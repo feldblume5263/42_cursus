@@ -2,9 +2,9 @@
 ************   
 # :fire: Mandatory Part
    
-### cspdiuxX%
+### :bulb: cspdiuxX%
    
-#### :bulb: 서식문자
+#### 서식문자
 %c -> int값을 문자로 출력   
 %s -> 문자열 출력   
 %p -> 포인터값을 16진수로 출력   
