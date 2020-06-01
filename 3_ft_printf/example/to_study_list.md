@@ -1,5 +1,7 @@
-# ft\_printf To\_Study\_List
-   
+# ft\_printf
+************   
+#:fire: Mandatory Part
+************
 ### cspdiuxX%
    
 #### :bulb: 서식문자
