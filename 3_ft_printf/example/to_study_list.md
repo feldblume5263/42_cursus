@@ -1,7 +1,7 @@
 # ft\_printf
 ************   
-#:fire: Mandatory Part
-************
+# :fire: Mandatory Part
+   
 ### cspdiuxX%
    
 #### :bulb: 서식문자
