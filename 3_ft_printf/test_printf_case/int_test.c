@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   example_int.c                                      :+:      :+:    :+:   */
+/*   int_test.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/01 13:09:21 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/02 17:40:43 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/02 19:38:26 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		main(void)
 	printf("\t\treturn : %d\n", printf("\t\tresult : |%-7d|\n", 12345));
 
 	printf("\nprintf(\"%%-3d\", 12345)\n");
-	printf("\t\treturn : %d\n", printf("\t\tresult : |-3%d|\n", 12345));
+	printf("\t\treturn : %d\n", printf("\t\tresult : |%-3d|\n", 12345));
 
 	printf("\nprintf(\"%%-0d\", 12345)\n");
 	/*printf("\t\tresult : |%-0d|\n", 12345);*/ printf("warning\n");
@@ -99,7 +99,7 @@ int		main(void)
 	printf("\t\treturn : %d\n", printf("\t\tresult : |%7.3d|\n", 12345));
 
 	printf("\nprintf(\"%%3.7d\", 12345)\n");
-	printf("\t\treturn : %d\n", printf("\t\tresult : |%d3.7|\n", 12345));
+	printf("\t\treturn : %d\n", printf("\t\tresult : |%3.7d|\n", 12345));
 
 	printf("\n**printf(\"%%9.7d\", 12345)\n");
 	printf("\t\treturn : %d\n", printf("\t\tresult : |%9.7d|\n", 12345));
@@ -165,7 +165,7 @@ int		main(void)
 	printf("\t\treturn : %d\n", printf("\t\tresult : |%5.3d|\n", 12345));
 
 	printf("\nprintf(\"%%5.5d\", 12345)\n");
-	printf("\t\treturn : %d\n", printf("\t\tresult : |%d5.5|\n", 12345));
+	printf("\t\treturn : %d\n", printf("\t\tresult : |%5.5d|\n", 12345));
 
 	printf("\nprintf(\"%%5.7d\", 12345)\n");
 	printf("\t\treturn : %d\n", printf("\t\tresult : |%5.7d|\n", 12345));
