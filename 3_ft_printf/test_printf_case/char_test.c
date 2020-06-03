@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/02 17:52:07 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/03 13:55:43 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/03 15:49:52 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,14 @@ int		main(void)
 
 	printf("\nprintf(\"%%03c\", 'a')\n");
 	/*printf("\t\treturn : %d\n", printf("\t\tresult : |%03c|\n", 'a') - 14);*/ printf("warning\n");
+
+	printf("\nprintf(\"%%*c\", 3, 'a')\n");
+	printf("\t\treturn : %d\n", printf("\t\tresult : |%*c|\n", 3, 'a') - 14);
+
+	printf("\nprintf(\"%%*c\", 'a')\n");
+	printf("\t\treturn : %d\n", printf("\t\tresult : |%-*c|\n", 3, 'a') - 14);
+
+	printf("\nprintf(\"%%*c\", -3, 'a')\n");
+	printf("\t\treturn : %d\n", printf("\t\tresult : |%*c|\n", -3, 'a') - 14);
+
 }
