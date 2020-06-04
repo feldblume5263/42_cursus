@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/31 14:57:54 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/04 16:40:47 by junhpark         ###   ########.fr       */
+/*   Created: 2020/06/03 16:34:16 by junhpark          #+#    #+#             */
+/*   Updated: 2020/06/04 15:16:32 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-char		*ft_put_string(char **format)
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdarg.h>
+
+# define CONV "cspdiuxX%"
+# define FLAG "-0.*"
+
+# define TRUE 1
+# define FALSE 0
+# define ERROR -1
+
+# define NULL '\0'
+
+typedef struct	s_flag
 {
-	char			**str;
-	size_t			idx;
+	int		width;
+	int		str_len;
+	int		left_range;
+	int		zero_fill;
+	int		padding_left;
+	int		padding_right;
+}				t_flag;
 
-	idx = 0;
-	while (*format[idx])
-	{
-		if (*format[idx] == '%')
-		{
-			idx++;
-			convert_to_string();
-		}
-		idx++;
-	}
-}
-
-int			ft_printf(const char *format, ...)
-{
-	char			*res_string;
-	va_list			ap;
-
-	va_start(ap, format);
-	res_string = ft_put_string(&(*format));
-	va_end(ap);
-}
+# endif
