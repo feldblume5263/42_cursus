@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:34:16 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/05 21:18:56 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/07 22:51:43 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdarg.h>
 
 # define CONV "cspdiuxX%"
-# define FLAG "-0.*"
+# define FLAG ".-*0"
 
 # define TRUE 1
 # define FALSE 0
@@ -41,5 +41,6 @@ int			allocate_write_by_conv(char *format, va_list ap);
 int			inspect_chunk(char *chr, char *chunk);
 char		*prepare_data(char *format, int data_len);
 int			get_data_len(char *format);
+int			wrirte_data_from_ap(char *data, va_list ap, int data_len);
 
 # endif
