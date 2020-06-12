@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:34:16 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/07 22:51:43 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/12 16:24:18 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,22 @@
 typedef struct	s_flag
 {
 	int		width;
-	int		str_len;
+	int		precision;
 	int		left_range;
 	int		zero_fill;
-	int		padding_left;
-	int		padding_right;
 }				t_flag;
 
 int			ft_printf(const char *format, ...);
-int			allocate_write_by_conv(char *format, va_list ap);
+int			write_by_conv(char *format, va_list ap);
 int			inspect_chunk(char *chr, char *chunk);
 char		*prepare_data(char *format, int data_len);
 int			get_data_len(char *format);
 int			wrirte_data_from_ap(char *data, va_list ap, int data_len);
+int			get_width(char *data, int flag_width, char *input_string, int data_len);
+int			get_precision(char *data, char *input_string);
+int			find_zero(char *data);
+void		write_data_with_flag(char *input_string, t_flag *data_flag);
+int			ft_int(char *data, va_list ap, int data_len, t_flag *data_flag);
+
 
 # endif
