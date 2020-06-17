@@ -6,12 +6,12 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 16:09:32 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/12 18:03:39 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/17 15:45:02 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include "includes/ft_printf.h"
+#include "includes/libft.h"
 
 void		write_int_with_flag(char *input_string, t_flag *data_flag)
 {

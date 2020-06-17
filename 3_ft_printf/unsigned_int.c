@@ -6,12 +6,12 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 17:50:40 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/17 15:37:27 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/17 15:45:14 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include "includes/ft_printf.h"
+#include "includes/libft.h"
 
 
 
