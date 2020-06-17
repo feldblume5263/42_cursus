@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:34:16 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/12 16:24:18 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/17 15:37:55 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,10 @@ char		*prepare_data(char *format, int data_len);
 int			get_data_len(char *format);
 int			wrirte_data_from_ap(char *data, va_list ap, int data_len);
 int			get_width(char *data, int flag_width, char *input_string, int data_len);
+int			get_range(char *data, int flag_width);
 int			get_precision(char *data, char *input_string);
 int			find_zero(char *data);
-void		write_data_with_flag(char *input_string, t_flag *data_flag);
+void		write_int_with_flag(char *input_string, t_flag *data_flag);
 int			ft_int(char *data, va_list ap, int data_len, t_flag *data_flag);
 
 

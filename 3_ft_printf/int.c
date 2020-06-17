@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_int.c                                           :+:      :+:    :+:   */
+/*   int.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 16:09:32 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/12 16:15:27 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/12 18:03:39 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-void		write_data_with_flag(char *input_string, t_flag *data_flag)
+void		write_int_with_flag(char *input_string, t_flag *data_flag)
 {
 	int				padding;
 	int				write_idx;
