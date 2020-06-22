@@ -32,5 +32,5 @@
 '.' -> (정밀도 지정자) 형식 문자열에서 정밀도를 나타내지는 않지만 뒤에 인자로 정밀도 값을 준다. 이 때 인자는 형식 태그가 적용되는 데이터 앞에 있어야 한다.  
    
     
-실제 동작 결과
-<pagelink = https://github.com/feldblume5263/42_cursus/tree/master/3_ft_printf/tools/test_printf_case>
+### :bulb: 실제 동작 결과   
+<page link = "https://github.com/feldblume5263/42_cursus/tree/master/3_ft_printf/tools/test_printf_case">
