@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 16:09:32 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/17 15:45:02 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/17 15:50:41 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,6 @@ int			ft_int(char *data, va_list ap, int data_len, t_flag *data_flag)
 	data_flag->precision = get_precision(data, input_string);
 	data_flag->width = get_width(data, flag_width, input_string, data_len);
 	data_flag->zero_fill = find_zero(data);
-	write_data_with_flag(input_string, data_flag);
+	write_int_with_flag(input_string, data_flag);
 	return (data_flag->width);
 }

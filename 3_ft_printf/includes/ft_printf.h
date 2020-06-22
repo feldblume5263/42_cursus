@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:34:16 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/17 15:37:55 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/17 16:29:17 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,5 @@ int			get_precision(char *data, char *input_string);
 int			find_zero(char *data);
 void		write_int_with_flag(char *input_string, t_flag *data_flag);
 int			ft_int(char *data, va_list ap, int data_len, t_flag *data_flag);
-
 
 # endif

@@ -6,14 +6,12 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 17:50:40 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/17 15:45:14 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/17 16:23:58 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 #include "includes/libft.h"
-
-
 
 int			ft_unsigned_int(char *data, va_list ap, int data_len, t_flag *data_flag)
 {

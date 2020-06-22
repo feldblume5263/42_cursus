@@ -6,14 +6,12 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 14:57:54 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/17 15:44:42 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/17 16:31:53 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 #include "includes/libft.h"
-
-#include <stdio.h>
 
 int			wrirte_data_from_ap(char *data, va_list ap, int data_len)
 {
@@ -24,54 +22,6 @@ int			wrirte_data_from_ap(char *data, va_list ap, int data_len)
 	if (data[data_len - 1] == 'd')
 		print_len = ft_int(data, ap, data_len, data_flag);
 	return (print_len);
-}
-
-int			get_return_len(char *format)
-{
-	return (0);
-}
-
-int			inspect_chunk(char *chr, char *chunk)
-{
-	size_t			idx;
-
-	idx = 0;
-	while (chunk[idx])
-	{
-		if (chunk[idx] == *chr)
-			return (TRUE);
-		idx++;
-	}
-	return (FALSE);
-}
-
-int			get_data_len(char *format)
-{
-	int				data_len;
-
-	data_len = 0;
-	while ((inspect_chunk(&(format[data_len]), FLAG) == TRUE)
-		|| (format[data_len] >= '0' && format[data_len] <= '9'))
-		data_len++;
-	data_len++;
-	return (data_len);
-}
-
-char		*prepare_data(char *format, int data_len)
-{
-	char			*data;
-	int				idx;
-
-	if (!(data = (char *)malloc(sizeof(char) * (data_len + 1))))
-		return ((char *)NLL);
-	idx = 0;
-	while (idx < data_len)
-	{
-		data[idx] = format[idx];
-		idx++;
-	}
-	data[idx] = NLL;
-	return (data);
 }
 
 int			write_by_conv(char *format, va_list ap)
@@ -97,7 +47,7 @@ int			write_by_conv(char *format, va_list ap)
 			idx += data_len;
 		}
 	}
-	return (get_return_len(format));
+	return (/*get_return_len(format)*/0);
 }
 
 int			ft_printf(const char *format, ...)
@@ -112,9 +62,11 @@ int			ft_printf(const char *format, ...)
 	return (str_len);
 }
 
+#include <stdio.h>
+
 int			main(void)
 {
-	printf("\nShe's |%*d| my sunshine |%8d| in the |%-.5d| rain\n",7, 40, 42, 412);
-	ft_printf("\nShe's |%*d| my sunshine |%8d| in the |%-.5d| rain\n",7, 40, 42, 412);
+	printf("\nShe's |%*.5d| my sunshine |%8.5d| in the |%-9.5d| rain\n",7, -40, 42, -412);
+	ft_printf("\nShe's |%*.5d| my sunshine |%8.5d| in the |%-9.5d| rain\n",7, -40, 42, -412);
 	return (0);
 }
