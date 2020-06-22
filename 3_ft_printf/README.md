@@ -33,4 +33,4 @@
    
     
 ### :bulb: 기존 printf 함수 동작 결과 실험   
-[printf 동작결과로 바로가기][https://github.com/feldblume5263/42_cursus/tree/master/3_ft_printf/tools/test_printf_case"]
+[printf 동작결과로 바로가기](https://github.com/feldblume5263/42_cursus/tree/master/3_ft_printf/tools/test_printf_case)
