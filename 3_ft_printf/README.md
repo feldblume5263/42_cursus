@@ -4,16 +4,16 @@
    
 ### :bulb: cspdiuxX%
    
-#### 서식문자
-%c -> int값을 문자로 출력   
-%s -> 문자열 출력   
-%p -> 포인터값을 16진수로 출력   
-%d -> int값을 부호 있는 10진수로 출력   
-%i -> %d와 같음   
-%u -> int값을 부호 없는 10진수로 출력   
-%x -> int값을 부호없는 16진수로 출력  10\~15은  'a'\~'f'로 표시   
-%X -> int값을 부호없는 16진수로 출력  10\~15은  'A'\~'F'로 표시  
-%% -> % 다음에 %를 또 붙이면 stdout 에 % 를 출력한다.
+#### Conversions
+%c -> Print character value   
+%s -> Print string value   
+%p -> Print pointer address value in hexadecimal   
+%d -> Print integer value as a signed decimal number   
+%i -> Same as %d   
+%u -> Print integer value as a decimal number without sign 
+%x -> Print integer value in hexadecimal number without sign, 10\~15 is  'a'\~'f' /  
+%X -> Print integer value in hexadecimal number without sign, 10\~15 is  'A'\~'F'  
+%% -> % after % prints "%"
    
     
 ### :bulb: flag '- 0 . \*'
