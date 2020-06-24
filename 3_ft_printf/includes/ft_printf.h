@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:34:16 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/17 16:29:17 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/24 16:21:27 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,13 @@ int			get_data_len(char *format);
 int			wrirte_data_from_ap(char *data, va_list ap, int data_len);
 int			get_width(char *data, int flag_width, char *input_string, int data_len);
 int			get_range(char *data, int flag_width);
-int			get_precision(char *data, char *input_string);
+int			get_precision(char *data, char *input_string, t_flag *data_flag);
 int			find_zero(char *data);
-void		write_int_with_flag(char *input_string, t_flag *data_flag);
+void		write_int_with_flag(char *input_string, t_flag *data_flag, int minus);
 int			ft_int(char *data, va_list ap, int data_len, t_flag *data_flag);
+void		make_all_flag(t_flag *data_flag, char *data, int flag_width, char *input_string, int data_len);
+int			get_padding(t_flag *data_flag, int minus, int str_len);
+int			write_padding(int padding);
+int			write_zero(t_flag *data_flag, int str_len);
 
 # endif

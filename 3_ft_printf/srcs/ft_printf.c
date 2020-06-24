@@ -6,12 +6,12 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 14:57:54 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/17 16:31:53 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/24 16:57:37 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
-#include "includes/libft.h"
+#include "../includes/ft_printf.h"
+#include "../includes/libft.h"
 
 int			wrirte_data_from_ap(char *data, va_list ap, int data_len)
 {
@@ -66,7 +66,29 @@ int			ft_printf(const char *format, ...)
 
 int			main(void)
 {
-	printf("\nShe's |%*.5d| my sunshine |%8.5d| in the |%-9.5d| rain\n",7, -40, 42, -412);
-	ft_printf("\nShe's |%*.5d| my sunshine |%8.5d| in the |%-9.5d| rain\n",7, -40, 42, -412);
-	return (0);
+	int		result_f;
+	int		result_r;
+
+	result_f = ft_printf("f = [%d]\n", 123);
+	result_r =    printf("r = [%d]\n", 123);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%d]\n", 123);
+	result_r =    printf("r = [%d]\n", 123);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%10.5d]\n", 123);
+	result_r =    printf("r = [%10.5d]\n", 123);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%d]\n", -1);
+	result_r =    printf("r = [%d]\n", -1);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%10.5d]\n", -123);
+	result_r =    printf("r = [%10.5d]\n", -123);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%10.5d]\n", -123);
+	result_r =    printf("r = [%10.5d]\n", -123);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%d]\n", -1);
+	result_r =    printf("r = [%d]\n", -1);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+
 }
