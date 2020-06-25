@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 14:57:54 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/24 16:57:37 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/25 14:18:28 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ int			write_by_conv(char *format, va_list ap)
 	char			*data;
 	int				data_len;
 	int				idx;
+	int				return_byte;
 
 	idx = 0;
+	return_byte = 0;
 	while (format[idx])
 	{
 		data_len = 0;
@@ -38,16 +40,17 @@ int			write_by_conv(char *format, va_list ap)
 		{
 			write(1, &(format[idx]), 1);
 			idx++;
+			return_byte++;
 		}
 		if (format[idx] == '%')
 		{
 			idx++;
 			data_len = get_data_len(&(format[idx]));
-			wrirte_data_from_ap((prepare_data(&(format[idx]), data_len)), ap, data_len);
+			return_byte += wrirte_data_from_ap((prepare_data(&(format[idx]), data_len)), ap, data_len);
 			idx += data_len;
 		}
 	}
-	return (/*get_return_len(format)*/0);
+	return (return_byte);
 }
 
 int			ft_printf(const char *format, ...)
@@ -60,35 +63,4 @@ int			ft_printf(const char *format, ...)
 	str_len = write_by_conv((char *)format, ap);
 	va_end(ap);
 	return (str_len);
-}
-
-#include <stdio.h>
-
-int			main(void)
-{
-	int		result_f;
-	int		result_r;
-
-	result_f = ft_printf("f = [%d]\n", 123);
-	result_r =    printf("r = [%d]\n", 123);
-	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
-	result_f = ft_printf("f = [%d]\n", 123);
-	result_r =    printf("r = [%d]\n", 123);
-	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
-	result_f = ft_printf("f = [%10.5d]\n", 123);
-	result_r =    printf("r = [%10.5d]\n", 123);
-	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
-	result_f = ft_printf("f = [%d]\n", -1);
-	result_r =    printf("r = [%d]\n", -1);
-	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
-	result_f = ft_printf("f = [%10.5d]\n", -123);
-	result_r =    printf("r = [%10.5d]\n", -123);
-	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
-	result_f = ft_printf("f = [%10.5d]\n", -123);
-	result_r =    printf("r = [%10.5d]\n", -123);
-	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
-	result_f = ft_printf("f = [%d]\n", -1);
-	result_r =    printf("r = [%d]\n", -1);
-	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
-
 }
