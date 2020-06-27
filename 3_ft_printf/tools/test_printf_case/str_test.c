@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 14:09:08 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/03 15:50:25 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/27 17:21:37 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,22 @@ int		main(void)
 
 	printf("\nprintf(\"%%*s\", -7 \"abcde\")\n");
 	printf("\t\treturn : %d\n", printf("\t\tresult : |%*s|\n", -7, "abcde") - 14);
+
+	printf("\nprintf(\"%%7.s\", \"abcde\")\n");
+	printf("\t\treturn : %d\n", printf("\t\tresult : |%7.s|\n", "abcde") - 14);
+
+	printf("\nprintf(\"%%7.1s\", \"abcde\")\n");
+	printf("\t\treturn : %d\n", printf("\t\tresult : |%7.1s|\n", "abcde") - 14);
+
+	printf("\nprintf(\"%%7.15s\", \"abcde\")\n");
+	printf("\t\treturn : %d\n", printf("\t\tresult : |%7.15s|\n", "abcde") - 14);
+
+	printf("\nprintf(\"%%2.15s\", \"abcde\")\n");
+	printf("\t\treturn : %d\n", printf("\t\tresult : |%2.15s|\n", "abcde") - 14);
+
+	printf("\nprintf(\"%%3s\", \"abcde\")\n");
+	printf("\t\treturn : %d\n", printf("\t\tresult : |%3s|\n", "abcde") - 14);
+
+	printf("\nprintf(\"%%3.4s\", \"abcde\")\n");
+	printf("\t\treturn : %d\n", printf("\t\tresult : |%3.4s|\n", "abcde") - 14);
 }
