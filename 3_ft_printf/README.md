@@ -5,12 +5,12 @@
 ### :bulb: cspdiuxX%
    
 #### Conversions
-%c -> Print character value   
-%s -> Print string value   
+%c -> Print character value :check:   
+%s -> Print string value :check:   
 %p -> Print pointer address value in hexadecimal   
-%d -> Print integer value as a signed decimal number   
-%i -> Same as %d   
-%u -> Print integer value as a decimal number without sign 
+%d -> Print integer value as a signed decimal number :check:   
+%i -> Same as %d :check:   
+%u -> Print integer value as a decimal number without sign :check: 
 %x -> Print integer value in hexadecimal number without sign, 10\~15 is  'a'\~'f' /  
 %X -> Print integer value in hexadecimal number without sign, 10\~15 is  'A'\~'F'  
 %% -> % after % prints "%"
