@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 16:09:32 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/27 16:22:05 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/27 16:38:29 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,12 @@ int			write_int_with_flag(char *input_string, t_flag *data_flag)
 
 void		make_int_flag(t_flag *data_flag, char *data, int flag_width, char *input_string)
 {
+	int				str_len;
+
+	str_len = ft_strlen(input_string);
 	data_flag->left_range = get_range(data, flag_width);
-	data_flag->width = get_width(data, flag_width, input_string);
-	data_flag->precision = get_precision(data, input_string, data_flag);
+	data_flag->width = get_width(data, flag_width, str_len);
+	data_flag->precision = get_precision(data, str_len, data_flag);
 	data_flag->zero_fill = find_zero(data);
 }
 

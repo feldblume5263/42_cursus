@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 14:18:42 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/25 15:12:24 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/27 16:55:18 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,22 @@ int			main(void)
 	result_f = ft_printf("f결과 = [%d]\n", -143);
 	result_r =    printf("r결과 = [%d]\n", -143);
 	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
-
+	result_f = ft_printf("f = [%c]\n", 'd');
+	result_r =    printf("r = [%c]\n", 'd');
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%5.c]\n", 'd');
+	result_r =    printf("r = [%5.c]\n", 'd');
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%3c]\n", 'd');
+	result_r =    printf("r = [%3c]\n", 'd');
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%-3c]\n", 'd');
+	result_r =    printf("r = [%-3c]\n", 'd');
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%*c]\n", -3, 'd');
+	result_r =    printf("r = [%*c]\n", -3, 'd');
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%*c]\n", 3, 'd');
+	result_r =    printf("r = [%*c]\n", 3, 'd');
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
 }

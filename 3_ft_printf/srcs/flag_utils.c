@@ -6,20 +6,18 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 19:19:57 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/27 16:14:42 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/27 16:39:58 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include "../includes/libft.h"
 
-int			get_precision(char *data, char *input_string, t_flag *data_flag)
+int			get_precision(char *data, int str_len, t_flag *data_flag)
 {
 	int				idx;
 	int				precision;
-	int				str_len;
 
-	str_len = ft_strlen(input_string);
 	if (data_flag->minus_flag == TRUE)
 		str_len++;
 	precision = 0;
@@ -53,13 +51,11 @@ int			find_zero(char *data)
 	return (FALSE);
 }
 
-int			get_width(char *data, int flag_width, char *input_string)
+int			get_width(char *data, int flag_width, int str_len)
 {
 	int				large_width;
 	int				idx;
-	int				str_len;
 
-	str_len = ft_strlen(input_string);
 	large_width = 0;
 	if (flag_width < 0)
 		flag_width *= (-1);
