@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/27 17:03:14 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/27 17:33:04 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/27 17:34:35 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int			write_string_with_flag(char *input_string, t_flag *data_flag)
 	return (write_idx);
 }
 
-#include <stdio.h>
 int			get_str_precision(char *data, int str_len, t_flag *data_flag)
 {
 	int				idx;
