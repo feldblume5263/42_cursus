@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_u_itoa.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/03 21:19:08 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/27 15:53:24 by junhpark         ###   ########.fr       */
+/*   Created: 2020/06/25 17:25:11 by junhpark          #+#    #+#             */
+/*   Updated: 2020/06/27 15:57:56 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		mk_ten(int count_ten)
+int		make_u_ten(int count_ten)
 {
-	int		ten;
+	int				ten;
 
 	ten = 1;
 	while (count_ten > 0)
@@ -25,9 +25,9 @@ int		mk_ten(int count_ten)
 	return (ten);
 }
 
-char	*pick_number(char *str, long long n, int count_ten, int minus_flag)
+char	*pick_u_number(char *str, long long n, int count_ten, int minus_flag)
 {
-	int		i;
+	int				i;
 
 	i = 0;
 	if (minus_flag == 1)
@@ -37,8 +37,8 @@ char	*pick_number(char *str, long long n, int count_ten, int minus_flag)
 	}
 	while (count_ten >= 0)
 	{
-		str[i] = (n / mk_ten(count_ten)) + 48;
-		n -= (str[i] - 48) * mk_ten(count_ten);
+		str[i] = (n / make_u_ten(count_ten)) + 48;
+		n -= (str[i] - 48) * make_u_ten(count_ten);
 		i++;
 		count_ten--;
 	}
@@ -46,10 +46,10 @@ char	*pick_number(char *str, long long n, int count_ten, int minus_flag)
 	return (str);
 }
 
-char	*mk_str(long long n, int count_ten, int minus_flag)
+char	*make_str(long long n, int count_ten, int minus_flag)
 {
-	char	*str;
-	int		i;
+	char			*str;
+	int				i ;
 
 	if (minus_flag == 0)
 	{
@@ -63,16 +63,16 @@ char	*mk_str(long long n, int count_ten, int minus_flag)
 		n *= (-1);
 	}
 	i = 0;
-	str = pick_number(str, n, count_ten, minus_flag);
+	str = pick_u_number(str, n, count_ten, minus_flag);
 	return (str);
 }
 
-char	*ft_itoa(int n)
+char	*ft_u_itoa(unsigned int n)
 {
-	long long	cp_n;
-	int			count_ten;
-	int			minus_flag;
-	char		*str;
+	unsigned int	cp_n;
+	int				count_ten;
+	int				minus_flag;
+	char			*str;
 
 	count_ten = 0;
 	cp_n = n;
@@ -88,6 +88,6 @@ char	*ft_itoa(int n)
 		count_ten++;
 	}
 	cp_n = n;
-	str = mk_str(cp_n, count_ten, minus_flag);
+	str = make_str(cp_n, count_ten, minus_flag);
 	return (str);
 }

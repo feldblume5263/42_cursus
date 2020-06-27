@@ -6,14 +6,14 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 17:08:00 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/25 16:27:10 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/27 16:18:55 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include "../includes/libft.h"
 
-int			get_padding(t_flag *data_flag, int str_len)
+int			get_padding(t_flag *data_flag)
 {
 	int				padding;
 

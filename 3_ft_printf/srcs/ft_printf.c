@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 14:57:54 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/25 14:18:28 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/27 16:24:06 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,16 @@ int			wrirte_data_from_ap(char *data, va_list ap, int data_len)
 	int				print_len;
 
 	data_flag = malloc(sizeof(t_flag) * 1);
+	print_len = 0;
 	if (data[data_len - 1] == 'd')
-		print_len = ft_int(data, ap, data_len, data_flag);
+		print_len = ft_int(data, ap, data_flag);
+	/*if (data[data_len - 1] == 'c')
+		print_len = ft_char(data, ap, data_flag);*/
 	return (print_len);
 }
 
 int			write_by_conv(char *format, va_list ap)
 {
-	char			*data;
 	int				data_len;
 	int				idx;
 	int				return_byte;
@@ -55,7 +57,6 @@ int			write_by_conv(char *format, va_list ap)
 
 int			ft_printf(const char *format, ...)
 {
-	char			*res_string;
 	int				str_len;
 	va_list			ap;
 
