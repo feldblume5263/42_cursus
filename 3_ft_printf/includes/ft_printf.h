@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:34:16 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/27 17:24:38 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/27 17:39:45 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ void		make_char_flag(t_flag *data_flag, char *data, int flag_width);
 int			write_char_with_flag(char ret_char, t_flag *data_flag);
 int			ft_string(char *data, va_list ap, t_flag *data_flag);
 void		make_string_flag(t_flag *data_flag, char *data, int flag_width, char *input_string);
-int			write_int_with_flag(char *input_string, t_flag *data_flag);
+int			write_string_with_flag(char *input_string, t_flag *data_flag);
 int			get_str_precision(char *data, int str_len, t_flag *data_flag);
-
 
 # endif

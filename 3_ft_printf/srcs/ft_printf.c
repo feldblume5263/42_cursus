@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 14:57:54 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/27 17:12:23 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/27 18:12:36 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ int			wrirte_data_from_ap(char *data, va_list ap, int data_len)
 
 	data_flag = malloc(sizeof(t_flag) * 1);
 	print_len = 0;
-	if (data[data_len - 1] == 'd')
+	if (data[data_len - 1] == 'd' || data[data_len - 1] == 'i')
 		print_len = ft_int(data, ap, data_flag);
+	else if (data[data_len - 1] == 'u')
+		print_len = ft_unsigned_int(data, ap, data_flag);
 	else if (data[data_len - 1] == 'c')
 		print_len = ft_char(data, ap, data_flag);
 	else if (data[data_len - 1] == 's')

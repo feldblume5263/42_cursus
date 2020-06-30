@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 14:18:42 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/27 17:13:53 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/27 17:49:00 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,14 @@ int			main(void)
 	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
 	result_f = ft_printf("f = [%*s]\n", 15, "life is 42");
 	result_r =    printf("r = [%*s]\n", 15, "life is 42");
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%*.4s]\n", -15, "life is 42");
+	result_r =    printf("r = [%*.4s]\n", -15, "life is 42");
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%*.4s]\n", 15, "life is 42");
+	result_r =    printf("r = [%*.4s]\n", 15, "life is 42");
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%s]\n", "사십이서울");
+	result_r =    printf("r = [%s]\n", "사십이서울");
 	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
 }
