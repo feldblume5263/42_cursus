@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_int.c                                           :+:      :+:    :+:   */
+/*   print_int.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 16:09:32 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/27 18:43:03 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/01 15:44:18 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,18 @@ int			ft_int(char *data, va_list ap, t_flag *data_flag)
 	}
 	num = va_arg(ap, int);
 	data_flag->minus_flag = FALSE;
-	if (num < 0)
+	/*if (num < 0)
 	{
 		num *= (-1);
 		data_flag->minus_flag = TRUE;
-	}
+	}*/
 	input_string = ft_itoa(num);
+	if (*input_string == '-')
+	{
+		*input_string = '\0';
+		input_string++;
+		data_flag->minus_flag = TRUE;
+	}
 	make_int_flag(data_flag, data, flag_width, input_string);
 	return (write_int_with_flag(input_string, data_flag));
 }

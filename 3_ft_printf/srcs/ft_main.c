@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 14:18:42 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/27 17:49:00 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/01 16:50:30 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ int			main(void)
 	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
 	result_f = ft_printf("f = [%d]\n", -1);
 	result_r =    printf("r = [%d]\n", -1);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%d]\n", -2147483647);
+	result_r =    printf("r = [%d]\n", -2147483647);
 	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
 	result_f = ft_printf("f = [%10.5d]\n", -123);
 	result_r =    printf("r = [%10.5d]\n", -123);
@@ -90,5 +93,60 @@ int			main(void)
 	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
 	result_f = ft_printf("f = [%s]\n", "사십이서울");
 	result_r =    printf("r = [%s]\n", "사십이서울");
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%X]\n", number);
+	result_r =    printf("r = [%X]\n", number);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%X]\n", 123);
+	result_r =    printf("r = [%X]\n", 123);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%10.5X]\n", 123);
+	result_r =    printf("r = [%10.5X]\n", 123);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%X]\n", -1);
+	result_r =    printf("r = [%X]\n", -1);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%X]\n", 132);
+	result_r =    printf("r = [%X]\n", 132);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%10.5X]\n", 123332);
+	result_r =    printf("r = [%10.5X]\n", 123332);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%10.5X]\n", -123);
+	result_r =    printf("r = [%10.5X]\n", -123);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%X]\n", 143);
+	result_r =    printf("r = [%X]\n", 143);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f결과 = [%X]\n", 14323);
+	result_r =    printf("r결과 = [%X]\n", 14323);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%x]\n", number);
+	result_r =    printf("r = [%x]\n", number);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%x]\n", -123);
+	result_r =    printf("r = [%x]\n", -123);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%10.5x]\n", 123);
+	result_r =    printf("r = [%10.5x]\n", 123);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%x]\n", -1);
+	result_r =    printf("r = [%x]\n", -1);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%x]\n", 1345);
+	result_r =    printf("r = [%x]\n", 1345);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%10.5x]\n", 123);
+	result_r =    printf("r = [%10.5x]\n", 123);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%10.5x]\n", 12323);
+	result_r =    printf("r = [%10.5x]\n", 12323);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%x]\n", 143);
+	result_r =    printf("r = [%x]\n", 143);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f결과 = [%x]\n", 14332);
+	result_r =    printf("r결과 = [%x]\n", 14332);
 	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
 }

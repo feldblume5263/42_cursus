@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 14:57:54 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/27 18:12:36 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/30 18:06:41 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ int			wrirte_data_from_ap(char *data, va_list ap, int data_len)
 		print_len = ft_char(data, ap, data_flag);
 	else if (data[data_len - 1] == 's')
 		print_len = ft_string(data, ap, data_flag);
+	else if (data[data_len - 1] == 'X')
+		print_len = ft_hexa_u(data, ap, data_flag);
+	else if (data[data_len - 1] == 'x')
+		print_len = ft_hexa_l(data, ap, data_flag);
 	return (print_len);
 }
 

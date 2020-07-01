@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_unsigned_int.c                                  :+:      :+:    :+:   */
+/*   print_unsigned_int.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 17:20:01 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/27 18:18:52 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/01 16:40:16 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 int			write_unsigned_int_with_flag(char *input_string, t_flag *data_flag)
 {
-	int				padding;
-	int				write_idx;
-	int				str_len;
+	int					padding;
+	int					write_idx;
+	int					str_len;
 
 	str_len = ft_strlen(input_string);
 	padding = get_padding(data_flag);
@@ -35,10 +35,10 @@ int			write_unsigned_int_with_flag(char *input_string, t_flag *data_flag)
 
 int			ft_unsigned_int(char *data, va_list ap, t_flag *data_flag)
 {
-	int				flag_width;
-	char			*input_string;
-	int				idx;
-	int				num;
+	int					flag_width;
+	char				*input_string;
+	int					idx;
+	unsigned long long	num;
 
 	flag_width = FALSE;
 	idx = 0;
@@ -48,9 +48,9 @@ int			ft_unsigned_int(char *data, va_list ap, t_flag *data_flag)
 			flag_width = va_arg(ap, int);
 		idx++;
 	}
-	num = va_arg(ap, unsigned int);
+	num = (unsigned long long)va_arg(ap, unsigned int);
 	data_flag->minus_flag = FALSE;
-	input_string = ft_u_itoa(num);
+	input_string = ft_itoa_u(num);
 	make_int_flag(data_flag, data, flag_width, input_string);
 	write_int_with_flag(input_string, data_flag);
 	return (write_int_with_flag(input_string, data_flag));

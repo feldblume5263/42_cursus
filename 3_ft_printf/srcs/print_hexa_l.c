@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hexa_u.c                                     :+:      :+:    :+:   */
+/*   print_hexa_l.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/30 14:39:41 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/01 16:52:14 by junhpark         ###   ########.fr       */
+/*   Created: 2020/06/30 17:59:11 by junhpark          #+#    #+#             */
+/*   Updated: 2020/07/01 16:51:55 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include "../includes/libft.h"
 
-int			write_hexa_u_with_flag(char *input_string, t_flag *data_flag)
+int			write_hexa_l_with_flag(char *input_string, t_flag *data_flag)
 {
 	int				padding;
 	int				write_idx;
@@ -38,7 +38,7 @@ int			write_hexa_u_with_flag(char *input_string, t_flag *data_flag)
 	return (write_idx);
 }
 
-void		make_hexa_u_flag(t_flag *data_flag, char *data, int flag_width, char *input_string)
+void		make_hexa_l_flag(t_flag *data_flag, char *data, int flag_width, char *input_string)
 {
 	int				str_len;
 
@@ -49,7 +49,7 @@ void		make_hexa_u_flag(t_flag *data_flag, char *data, int flag_width, char *inpu
 	data_flag->zero_fill = find_zero(data);
 }
 
-int			ft_hexa_u(char *data, va_list ap, t_flag *data_flag)
+int			ft_hexa_l(char *data, va_list ap, t_flag *data_flag)
 {
 	int				flag_width;
 	char			*input_string;
@@ -66,7 +66,7 @@ int			ft_hexa_u(char *data, va_list ap, t_flag *data_flag)
 	}
 	num = (long long)va_arg(ap, int);
 	data_flag->minus_flag = FALSE;
-	input_string = ft_itoa_base_u_up(num);
+	input_string = ft_itoa_base_u(num);
 	make_int_flag(data_flag, data, flag_width, input_string);
 	return (write_int_with_flag(input_string, data_flag));
 }

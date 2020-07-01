@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:34:16 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/27 17:39:45 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/06/30 18:02:24 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,11 @@ int			ft_string(char *data, va_list ap, t_flag *data_flag);
 void		make_string_flag(t_flag *data_flag, char *data, int flag_width, char *input_string);
 int			write_string_with_flag(char *input_string, t_flag *data_flag);
 int			get_str_precision(char *data, int str_len, t_flag *data_flag);
+int			ft_hexa_u(char *data, va_list ap, t_flag *data_flag);
+void		make_hexa_u_flag(t_flag *data_flag, char *data, int flag_width, char *input_string);
+int			write_hexa_u_with_flag(char *input_string, t_flag *data_flag);
+int			ft_hexa_l(char *data, va_list ap, t_flag *data_flag);
+void		make_hexa_l_flag(t_flag *data_flag, char *data, int flag_width, char *input_string);
+int			write_hexa_l_with_flag(char *input_string, t_flag *data_flag);
 
 # endif

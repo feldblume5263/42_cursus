@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_itoa_ll.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/03 21:19:08 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/30 17:20:49 by junhpark         ###   ########.fr       */
+/*   Created: 2020/06/30 16:00:57 by junhpark          #+#    #+#             */
+/*   Updated: 2020/06/30 16:46:48 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	get_len(int num)
+static size_t	get_len_ll(long long num)
 {
 	size_t		len;
 	long long	cp_num;
@@ -32,19 +32,19 @@ static size_t	get_len(int num)
 	return (++len);
 }
 
-char			*ft_itoa(int num)
+char			*ft_itoa_ll(long long num)
 {
 	size_t		len;
 	size_t		idx;
 	long long	cp_num;
 	char		*result;
 
-	len = get_len(num);
+	len = get_len_ll(num);
 	if (!(result = (char *)malloc(sizeof(char) * (len + 1))))
 		return (0);
 	result[len] = 0;
 	idx = 0;
-	cp_num = num < 0 ? (long long)num * -1 : (long long)num;
+	cp_num = num < 0 ? num * -1 : num;
 	while (idx < len)
 	{
 		if (idx == len - 1 && num < 0)

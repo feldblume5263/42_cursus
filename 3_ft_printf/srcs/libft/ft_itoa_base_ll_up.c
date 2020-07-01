@@ -1,50 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_itoa_base_ll_up.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/03 21:19:08 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/30 17:20:49 by junhpark         ###   ########.fr       */
+/*   Created: 2020/06/30 16:48:32 by junhpark          #+#    #+#             */
+/*   Updated: 2020/06/30 17:28:17 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	get_len(int num)
+static size_t	get_len_base_ll_up(long long num)
 {
 	size_t		len;
 	long long	cp_num;
 
 	len = 0;
-	cp_num = (long long)num;
+	cp_num = num;
 	if (cp_num < 0)
 	{
 		len++;
 		cp_num *= -1;
 	}
-	while (cp_num >= 10)
+	while (cp_num >= 16)
 	{
 		len++;
-		cp_num /= 10;
+		cp_num /= 16;
 	}
 	return (++len);
 }
 
-char			*ft_itoa(int num)
+char			*ft_itoa_base_ll_up(long long num)
 {
 	size_t		len;
 	size_t		idx;
 	long long	cp_num;
 	char		*result;
 
-	len = get_len(num);
+	len = get_len_base_ll_up(num);
 	if (!(result = (char *)malloc(sizeof(char) * (len + 1))))
 		return (0);
 	result[len] = 0;
 	idx = 0;
-	cp_num = num < 0 ? (long long)num * -1 : (long long)num;
+	cp_num = num < 0 ? num * -1 : num;
 	while (idx < len)
 	{
 		if (idx == len - 1 && num < 0)
@@ -52,8 +52,11 @@ char			*ft_itoa(int num)
 			result[0] = '-';
 			break ;
 		}
-		result[len - idx - 1] = cp_num % 10 + '0';
-		cp_num /= 10;
+		if (cp_num % 16 >= 0 && cp_num % 16<= 9)
+			result[len - idx - 1] = cp_num % 16 + '0';
+		else if (cp_num % 16 >= 10 && cp_num % 16 <= 15)
+			result[len - idx - 1] = cp_num % 16 - 10 + 'A';
+		cp_num /= 16;
 		idx++;
 	}
 	return (result);
