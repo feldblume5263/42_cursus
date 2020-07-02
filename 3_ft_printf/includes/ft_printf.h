@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:34:16 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/01 17:24:20 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/02 19:14:47 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct	s_flag
 	int		left_range;
 	int		zero_fill;
 	int		minus_flag;
+	int		len;
 }				t_flag;
 
 int			ft_printf(const char *format, ...);
@@ -68,5 +69,9 @@ int			write_hexa_l_with_flag(char *input_string, t_flag *data_flag);
 int			ft_pointer(char *data, va_list ap, t_flag *data_flag);
 void		make_pointer_flag(t_flag *data_flag, char *data, int flag_width, char *input_string);
 int			write_pointer_with_flag(char *input_string, t_flag *data_flag);
+int			ft_percent(char *data, va_list ap, t_flag *data_flag);
+void		make_percent_flag(t_flag *data_flag, char *data, int flag_width);
+int			write_percent_with_flag(char ret_char, t_flag *data_flag);
+int			write_percent_zero(t_flag *data_flag, int str_len);
 
 # endif

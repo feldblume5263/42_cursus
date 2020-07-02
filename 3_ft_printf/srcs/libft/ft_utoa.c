@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base_u.c                                   :+:      :+:    :+:   */
+/*   ft_itoa_u.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/30 16:37:17 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/01 16:48:57 by junhpark         ###   ########.fr       */
+/*   Created: 2020/06/30 15:57:21 by junhpark          #+#    #+#             */
+/*   Updated: 2020/07/02 15:03:59 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	get_len_base_u(unsigned int num)
+static size_t	get_ulen(unsigned int num)
 {
-	size_t				len;
-	unsigned long long	cp_num;
+	size_t					len;
+	unsigned long long		cp_num;
 
 	len = 0;
 	cp_num = (unsigned long long)num;
@@ -24,22 +24,22 @@ static size_t	get_len_base_u(unsigned int num)
 		len++;
 		cp_num *= -1;
 	}
-	while (cp_num >= 16)
+	while (cp_num >= 10)
 	{
 		len++;
-		cp_num /= 16;
+		cp_num /= 10;
 	}
 	return (++len);
 }
 
-char			*ft_itoa_base_u(unsigned int num)
+char			*ft_utoa(unsigned int num)
 {
-	size_t				len;
-	size_t				idx;
-	unsigned long long	cp_num;
-	char				*result;
+	size_t					len;
+	size_t					idx;
+	unsigned long long		cp_num;
+	char					*result;
 
-	len = get_len_base_u(num);
+	len = get_ulen(num);
 	cp_num = (unsigned long long)num;
 	if (!(result = (char *)malloc(sizeof(char) * (len + 1))))
 		return (0);
@@ -47,11 +47,8 @@ char			*ft_itoa_base_u(unsigned int num)
 	idx = 0;
 	while (idx < len)
 	{
-		if (cp_num % 16 >= 0 && cp_num % 16<= 9)
-			result[len - idx - 1] = cp_num % 16 + '0';
-		else if (cp_num % 16 >= 10 && cp_num % 16 <= 15)
-			result[len - idx - 1] = cp_num % 16 - 10 + 'a';
-		cp_num /= 16;
+		result[len - idx - 1] = cp_num % 10 + '0';
+		cp_num /= 10;
 		idx++;
 	}
 	return (result);

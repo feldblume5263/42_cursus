@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 16:23:53 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/30 16:47:29 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/02 15:05:16 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,7 @@ char			*ft_itoa_base(int num)
 	cp_num = num < 0 ? (long long)num * -1 : (long long)num;
 	while (idx < len)
 	{
-		if (idx == len - 1 && num < 0)
-		{
-			result[0] = '-';
-			break ;
-		}
-		if (cp_num % 16 >= 0 && cp_num % 16<= 9)
+		if (cp_num % 16 >= 0 && cp_num % 16 <= 9)
 			result[len - idx - 1] = cp_num % 16 + '0';
 		else if (cp_num % 16 >= 10 && cp_num % 16 <= 15)
 			result[len - idx - 1] = cp_num % 16 - 10 + 'a';

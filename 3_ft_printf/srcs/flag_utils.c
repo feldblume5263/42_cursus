@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 19:19:57 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/27 18:17:18 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/02 20:19:33 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ int			get_precision(char *data, int str_len, t_flag *data_flag)
 	int				idx;
 	int				precision;
 
-	if (data_flag->minus_flag == TRUE)
-		str_len++;
-	precision = 0;
+	precision = -1;
 	idx = 0;
 	while (data[idx])
 	{
@@ -28,10 +26,8 @@ int			get_precision(char *data, int str_len, t_flag *data_flag)
 			precision = ft_atoi(&data[idx + 1]);
 		idx++;
 	}
-	if (str_len > precision)
-		precision = str_len;
-	if (precision > data_flag->width)
-		precision = data_flag->width;
+	data_flag->len = (data_flag->width > precision ? data_flag->width : precision);
+	data_flag->len = (data_flag->len > str_len ? data_flag->width : str_len);
 	return (precision);
 }
 
@@ -57,6 +53,7 @@ int			get_width(char *data, int flag_width, int str_len)
 	int				idx;
 
 	large_width = 0;
+	str_len = 0;
 	if (flag_width < 0)
 		flag_width *= (-1);
 	large_width = flag_width;
@@ -65,8 +62,6 @@ int			get_width(char *data, int flag_width, int str_len)
 		idx++;
 	if (ft_atoi(&(data[idx])) > large_width)
 		large_width = ft_atoi(&(data[idx]));
-	if (str_len > large_width)
-		large_width = str_len;
 	return (large_width);
 }
 

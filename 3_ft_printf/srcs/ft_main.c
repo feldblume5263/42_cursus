@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 14:18:42 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/01 17:42:49 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/02 20:46:47 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@ int			main(void)
 	int		result_r;
 
 	int		number = 343;
-	char	*ptr = "abcde";
-
+	//char	*ptr = "abcde";
 
 	printf("\n");
+	result_f = ft_printf("f = [%04.7d]\n", -123);
+	result_r =    printf("r = [%04.7d]\n", -123);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
 	result_f = ft_printf("f = [%d]\n", number);
 	result_r =    printf("r = [%d]\n", number);
 	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
@@ -39,8 +41,14 @@ int			main(void)
 	result_f = ft_printf("f = [%d]\n", -2147483647);
 	result_r =    printf("r = [%d]\n", -2147483647);
 	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
-	result_f = ft_printf("f = [%10.5d]\n", -123);
-	result_r =    printf("r = [%10.5d]\n", -123);
+	result_f = ft_printf("f = [%9.5d]\n", -123);
+	result_r =    printf("r = [%9.5d]\n", -123);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%09.5d]\n", -123);
+	result_r =    printf("r = [%09.5d]\n", -123);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%09.0d]\n", -123);
+	result_r =    printf("r = [%09.0d]\n", -123);
 	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
 	result_f = ft_printf("f = [%10.5d]\n", -123);
 	result_r =    printf("r = [%10.5d]\n", -123);
@@ -48,8 +56,13 @@ int			main(void)
 	result_f = ft_printf("f = [%d]\n", -143);
 	result_r =    printf("r = [%d]\n", -143);
 	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
-	result_f = ft_printf("f결과 = [%d]\n", -143);
-	result_r =    printf("r결과 = [%d]\n", -143);
+	result_f = ft_printf("f = [%7.5d]\n", -123);
+	result_r =    printf("r = [%7.5d]\n", -123);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%7.9d]\n", -123);
+	result_r =    printf("r = [%7.9d]\n", -123);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	/*
 	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
 	result_f = ft_printf("f = [%c]\n", 'd');
 	result_r =    printf("r = [%c]\n", 'd');
@@ -151,6 +164,12 @@ int			main(void)
 	result_f = ft_printf("f결과 = [%x]\n", 14332);
 	result_r =    printf("r결과 = [%x]\n", 14332);
 	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%x]\n", 111258886);
+	result_r =    printf("r = [%x]\n", 111258886);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%x]\n", 187043078);
+	result_r =    printf("r = [%x]\n", 187043078);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
 	result_f = ft_printf("f = [%p]\n", ptr);
 	result_r =    printf("r = [%p]\n", ptr);
 	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
@@ -172,4 +191,46 @@ int			main(void)
 	result_f = ft_printf("f = [%-20p]\n", NULL);
 	result_r =    printf("r = [%-20p]\n", NULL);
 	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%%]\n");
+	result_r =    printf("r = [%%]\n");
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%4%]\n");
+	result_r =    printf("r = [%4%]\n");
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%3.6%]\n");
+	result_r =    printf("r = [%3.6%]\n");
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%6.3%]\n");
+	result_r =    printf("r = [%6.3%]\n");
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%*.6%]\n",10);
+	result_r =    printf("r = [%*.6%]\n", 10);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%*.%]\n",10);
+	result_r =    printf("r = [%*.%]\n", 10);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%-*.%]\n",10);
+	result_r =    printf("r = [%-*.%]\n", 10);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%-0*.%]\n",10);
+	result_r =    printf("r = [%-0*.%]\n", 10);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%0*.%]\n",10);
+	result_r =    printf("r = [%0*.%]\n", 10);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%0.3%]\n");
+	result_r =    printf("r = [%0.3%]\n");
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%03%]\n");
+	result_r =    printf("r = [%03%]\n");
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%03.5%]\n");
+	result_r =    printf("r = [%03.5%]\n");
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%04.7d]\n", -123);
+	result_r =    printf("r = [%04.7d]\n", -123);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+
+
+*/
 }

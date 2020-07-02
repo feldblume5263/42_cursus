@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 16:09:32 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/01 17:12:52 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/02 19:21:02 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int			write_int_with_flag(char *input_string, t_flag *data_flag)
 	write_idx += write_zero(data_flag, str_len);
 	write(1, input_string, str_len);
 	write_idx += str_len;
-	while (write_idx < data_flag->width)
+	while (write_idx < data_flag->len)
 	{
 		write(1, " ", 1);
 		write_idx++;
