@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 14:39:41 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/01 16:52:14 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/01 17:12:25 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,6 @@ int			write_hexa_u_with_flag(char *input_string, t_flag *data_flag)
 	str_len = ft_strlen(input_string);
 	padding = get_padding(data_flag);
 	write_idx = write_padding(padding);
-	if (data_flag->minus_flag == TRUE)
-	{
-		write(1, "-", 1);
-		write_idx++;
-	}
 	write_idx += write_zero(data_flag, str_len);
 	write(1, input_string, str_len);
 	write_idx += str_len;
@@ -64,7 +59,7 @@ int			ft_hexa_u(char *data, va_list ap, t_flag *data_flag)
 			flag_width = va_arg(ap, int);
 		idx++;
 	}
-	num = (long long)va_arg(ap, int);
+	num = va_arg(ap, int);
 	data_flag->minus_flag = FALSE;
 	input_string = ft_itoa_base_u_up(num);
 	make_int_flag(data_flag, data, flag_width, input_string);

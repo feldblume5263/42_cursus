@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 14:18:42 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/01 16:50:30 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/01 17:42:49 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int			main(void)
 	int		result_r;
 
 	int		number = 343;
+	char	*ptr = "abcde";
+
 
 	printf("\n");
 	result_f = ft_printf("f = [%d]\n", number);
@@ -148,5 +150,26 @@ int			main(void)
 	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
 	result_f = ft_printf("f결과 = [%x]\n", 14332);
 	result_r =    printf("r결과 = [%x]\n", 14332);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%p]\n", ptr);
+	result_r =    printf("r = [%p]\n", ptr);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%20p]\n", ptr);
+	result_r =    printf("r = [%20p]\n", ptr);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%-20p]\n", ptr);
+	result_r =    printf("r = [%-20p]\n", ptr);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%20p]\n", ptr);
+	result_r =    printf("r = [%20p]\n", ptr);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%-20p]\n", ptr);
+	result_r =    printf("r = [%-20p]\n", ptr);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%-20p]\n", (void *)0);
+	result_r =    printf("r = [%-20p]\n", (void *)0);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+	result_f = ft_printf("f = [%-20p]\n", NULL);
+	result_r =    printf("r = [%-20p]\n", NULL);
 	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
 }

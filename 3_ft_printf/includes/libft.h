@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 16:48:46 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/01 16:47:24 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/01 17:23:07 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int				ft_atoi(const char *str);
 char			*ft_itoa(int num);
 char			*ft_itoa_base(int num);
 char			*ft_itoa_base_ll(long long num);
-char			*ft_itoa_base_ll_up(long long num);
 char			*ft_itoa_base_u(unsigned int num);
 char			*ft_itoa_base_u_up(unsigned int num);
 char			*ft_itoa_ll(long long num);
