@@ -6,12 +6,11 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 17:08:00 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/03 18:43:24 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/04 22:41:47 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
-#include "../includes/libft.h"
+#include "ft_printf.h"
 
 int			get_padding(t_flag *data_flag)
 {

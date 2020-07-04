@@ -6,12 +6,11 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 16:02:09 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/27 16:21:35 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/04 22:40:57 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
-#include "../includes/libft.h"
+#include "ft_printf.h"
 
 int			inspect_chunk(char *chr, char *chunk)
 {

@@ -6,12 +6,11 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 14:57:54 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/04 21:14:49 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/04 22:40:48 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
-#include "../includes/libft.h"
+#include "ft_printf.h"
 
 int			wrirte_data_from_ap(char *data, va_list ap, int data_len)
 {

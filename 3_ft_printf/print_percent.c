@@ -6,12 +6,11 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 21:11:05 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/04 21:24:46 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/04 22:41:26 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
-#include "../includes/libft.h"
+#include "ft_printf.h"
 
 int			write_percent_with_flag(char ret_char, t_flag *data_flag)
 {

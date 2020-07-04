@@ -6,67 +6,54 @@
 #    By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/04 21:28:10 by junhpark          #+#    #+#              #
-#    Updated: 2020/07/04 21:49:23 by junhpark         ###   ########.fr        #
+#    Updated: 2020/07/04 22:41:55 by junhpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
-LIBFT = ./libft/libft.a
+NAME		= libftprintf.a
+LIBFT		= libft
+LIBFT_LIB	= libft.a
 
-AR = ar
-ARFLAGS = rcs
+SRCS		= ft_printf \
+			get_conv_tool.c \
+			flag_utils.c \
+			write_utils.c \
+			print_int.c \
+			print_unsigned_int.c \
+			print_char.c \
+			print_string.c \
+			print_hexa_l.c \
+			print_hexa_u.c \
+			print_pointer.c \
+			print_percent.c
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g
-INCLUDES = -I./includes -I./libft
-LIB_FLAGS = -L./libft -lft -L. -lftprintf
+OBJS		= $(SRCS:.c=.o)
+INCS		= .
+RM			= rm -f
+LIBC		= ar rc
+CC			= gcc
+CFLAGS		= -Wall -Wextra -Werror
 
-RM = rm -f
+.c.o :
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o) -I$(INCS)
 
-FILES = ft_printf \
-	get_conv_tool \
-	flag_utils \
-	write_utils \
-	print_int \
-	print_unsigned_int \
-	print_char \
-	print_string \
-	print_hexa_l \
-	print_hexa_u \
-	print_pointer \
-	print_percent
+$(NAME) : $(OBJS)
+	make all -C $(LIBFT)/
+	cp $(LIBFT)/$(LIBFT_LIB) $(NAME)
+	$(LIBC) $(NAME) $(OBJS)
 
-SRC_DIR = ./srcs/
-SRCS = $(addprefix ($SRC_DIR), $(addsuffix .c, $(FILES)))
+all : $(NAME)
 
-OBJ_DIR = ./objs/
-OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))
+fclean : clean
+	$(RM) $(NAME) $(bonus)
+	make fclean -C $(LIBFT)
 
-$(NAME): $(LIBFT) $(OBJS)
-	$(AR) $(ARFLAGS) $@ $(OBJS)
-
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
-
-$(LIBFT):
-	$(MAKE) -C ./libft all
-	$(MAKE) -C ./libft bonus
-
-all: $(NAME)
-
-clean:
+clean :
 	$(RM) $(OBJS)
-	$(MAKE) -C ./libft clean
+	make clean -C $(LIBFT)
 
-fclean: clean
-	$(RM) $(NAME)
-	$(MAKE) -C ./libft fclean
-	$(RM) -r a.out a.out.dSYM leaks_result
+re : fclean all
 
-re: clean all
+bonus : all
 
-test: $(NAME)
-	$(CC) $(CFLAGS) $(INCLUDES) $(LIB_FLAGS) test_main.c && ./a.out
-
-.PHONY: test bonus all clean fclean re
+.PHONY: all clean fclean re bonus .c.o

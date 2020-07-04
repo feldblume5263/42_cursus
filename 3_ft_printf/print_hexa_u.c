@@ -6,12 +6,11 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 14:39:41 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/04 21:07:31 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/04 22:41:13 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
-#include "../includes/libft.h"
+#include "ft_printf.h"
 
 int			write_hexa_u_with_flag(char *input_string, t_flag *data_flag)
 {
