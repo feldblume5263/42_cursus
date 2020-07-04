@@ -6,16 +6,16 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 15:57:21 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/01 16:49:54 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/04 20:57:46 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	get_len_u(unsigned int num)
+static size_t	get_ulen(unsigned int num)
 {
 	size_t					len;
-	unsigned long long		cp_num;
+	unsigned int			cp_num;
 
 	len = 0;
 	cp_num = (unsigned long long)num;
@@ -32,14 +32,14 @@ static size_t	get_len_u(unsigned int num)
 	return (++len);
 }
 
-char			*ft_itoa_u(unsigned int num)
+char			*ft_utoa(unsigned int num)
 {
 	size_t					len;
 	size_t					idx;
-	unsigned long long		cp_num;
+	unsigned int			cp_num;
 	char					*result;
 
-	len = get_len_u(num);
+	len = get_ulen(num);
 	cp_num = (unsigned long long)num;
 	if (!(result = (char *)malloc(sizeof(char) * (len + 1))))
 		return (0);
