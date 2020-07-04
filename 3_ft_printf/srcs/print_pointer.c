@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 17:08:48 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/04 19:47:41 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/04 21:07:39 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int			ft_pointer(char *data, va_list ap, t_flag *data_flag)
 	}
 	num = va_arg(ap, long long);
 	data_flag->minus_flag = FALSE;
-	input_string = ft_itoa_base_ll(num);
+	input_string = ft_lltoa_base(num);
 	make_pointer_flag(data_flag, data, flag_width, input_string);
 	return (write_pointer_with_flag(input_string, data_flag));
 }
