@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 14:57:54 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/04 20:23:29 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/04 21:14:49 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int			wrirte_data_from_ap(char *data, va_list ap, int data_len)
 		print_len = ft_hexa_l(data, ap, data_flag);
 	else if (data[data_len - 1] == 'p')
 		print_len = ft_pointer(data, ap, data_flag);
+	else if (data[data_len - 1] == '%')
+		print_len = ft_percent(data, ap, data_flag);
 	return (print_len);
 }
 
