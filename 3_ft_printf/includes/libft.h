@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 16:48:46 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/04 19:27:18 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/04 21:00:22 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+size_t			ft_strlen(const char *str);
 int				ft_atoi(const char *str);
 char			*ft_itoa(int num);
-char			*ft_itoa_base(int num);
-char			*ft_itoa_base_ll(long long num);
-char			*ft_itoa_base_u(unsigned int num);
-char			*ft_itoa_base_u_up(unsigned int num);
-char			*ft_itoa_ll(long long num);
-char			*ft_itoa_u(unsigned int num);
-size_t			ft_strlen(const char *str);
+char			*ft_utoa(unsigned int num);
+char			*ft_lltoa_base(long long num);
+char			*ft_utoa_base(unsigned int num);
+char			*ft_utoa_base_up(unsigned int num);
 
 typedef	struct	s_list
 {
@@ -75,6 +73,6 @@ void			ft_lstdelone(t_list *lst, void (*del)(void *));
 void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
-		void (*del)(void *));
+				void (*del)(void *));
 
 #endif

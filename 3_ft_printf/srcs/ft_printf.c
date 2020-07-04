@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 14:57:54 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/01 17:08:26 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/04 20:23:29 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ int			write_by_conv(char *format, va_list ap)
 		{
 			idx++;
 			data_len = get_data_len(&(format[idx]));
-			return_byte += wrirte_data_from_ap((prepare_data(&(format[idx]), data_len)), ap, data_len);
+			return_byte += wrirte_data_from_ap(\
+				(prepare_data(&(format[idx]), data_len)), ap, data_len);
 			idx += data_len;
 		}
 	}
