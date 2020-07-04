@@ -6,7 +6,7 @@
 #    By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/04 21:28:10 by junhpark          #+#    #+#              #
-#    Updated: 2020/07/04 22:41:55 by junhpark         ###   ########.fr        #
+#    Updated: 2020/07/04 22:49:39 by junhpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		= libftprintf.a
 LIBFT		= libft
 LIBFT_LIB	= libft.a
 
-SRCS		= ft_printf \
+SRCS		= ft_printf.c \
 			get_conv_tool.c \
 			flag_utils.c \
 			write_utils.c \
