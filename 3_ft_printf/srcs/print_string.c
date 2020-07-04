@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_string.c                                        :+:      :+:    :+:   */
+/*   print_string.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/27 17:03:14 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/30 14:38:46 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/04 19:31:54 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int			get_str_precision(char *data, int str_len, t_flag *data_flag)
 			precision = ft_atoi(&data[idx + 1]);
 		idx++;
 	}
-	//printf("%d ", precision);
 	if (str_len < precision)
 		precision = str_len;
 	if (precision > data_flag->width)

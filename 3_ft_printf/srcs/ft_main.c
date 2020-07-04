@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 14:18:42 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/03 22:19:00 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/04 19:41:46 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,5 +173,7 @@ int			main(void)
 	result_f = ft_printf("f = [%-20p]\n", NULL);
 	result_r =    printf("r = [%-20p]\n", NULL);
 	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
-
+	result_f = ft_printf("f = [%-7.5d]\n", -1345);
+	result_r =    printf("r = [%-7.5d]\n", -1345);
+	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
 }

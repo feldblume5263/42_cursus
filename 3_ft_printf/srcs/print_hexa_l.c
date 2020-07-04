@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 17:59:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/01 17:12:19 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/04 19:34:17 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ int			ft_hexa_l(char *data, va_list ap, t_flag *data_flag)
 	num = va_arg(ap, int);
 	data_flag->minus_flag = FALSE;
 	input_string = ft_itoa_base_u(num);
-	make_int_flag(data_flag, data, flag_width, input_string);
-	return (write_int_with_flag(input_string, data_flag));
+	make_hexa_l_flag(data_flag, data, flag_width, input_string);
+	return (write_hexa_l_with_flag(input_string, data_flag));
 }
