@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 17:08:00 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/27 17:01:02 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/03 18:43:24 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int			get_padding(t_flag *data_flag)
 {
 	int				padding;
 
+	if (data_flag->zero_fill == TRUE && data_flag->precision_remove == TRUE)
+		return (0);
 	padding = 0;
 	if (data_flag->left_range == FALSE)
 		padding += data_flag->width - data_flag->precision;
@@ -45,10 +47,23 @@ int			write_zero(t_flag *data_flag, int str_len)
 	int				write_idx;
 
 	write_idx = 0;
-	while (write_idx < (data_flag->precision - str_len))
+	if (data_flag->zero_fill == TRUE && data_flag->precision_remove == TRUE)
 	{
-		write(1, "0", 1);
-		write_idx++;
+		if (data_flag->minus_flag == TRUE)
+			str_len++;
+		while (write_idx < (data_flag->width - str_len))
+		{
+			write(1, "0", 1);
+			write_idx++;
+		}
+	}
+	else
+	{
+		while (write_idx < (data_flag->precision - str_len))
+		{
+			write(1, "0", 1);
+			write_idx++;
+		}
 	}
 	return (write_idx);
 }

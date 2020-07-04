@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 14:18:42 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/01 17:42:49 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/03 22:19:00 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ int			main(void)
 
 	int		number = 343;
 	char	*ptr = "abcde";
-
-
-	printf("\n");
+	ft_printf("\n");
+	result_f = ft_printf("f = [%08d]\n", -12345);
+	result_r =    printf("r = [%08d]\n", -12345);
+	printf("result_f = %d\nresult_r = %d\n", result_f, result_r);
 	result_f = ft_printf("f = [%d]\n", number);
 	result_r =    printf("r = [%d]\n", number);
 	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
@@ -172,4 +173,5 @@ int			main(void)
 	result_f = ft_printf("f = [%-20p]\n", NULL);
 	result_r =    printf("r = [%-20p]\n", NULL);
 	printf("result_f = %d\nresult_r = %d\n\n", result_f, result_r);
+
 }

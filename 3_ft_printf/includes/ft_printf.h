@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:34:16 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/01 17:24:20 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/03 18:24:50 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct	s_flag
 {
 	int		width;
 	int		precision;
+	int		precision_remove;
 	int		left_range;
 	int		zero_fill;
 	int		minus_flag;

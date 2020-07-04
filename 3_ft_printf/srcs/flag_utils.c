@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 19:19:57 by junhpark          #+#    #+#             */
-/*   Updated: 2020/06/27 18:17:18 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/03 18:36:19 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,26 @@ int			get_precision(char *data, int str_len, t_flag *data_flag)
 	int				idx;
 	int				precision;
 
-	if (data_flag->minus_flag == TRUE)
-		str_len++;
+	data_flag->precision_remove = FALSE;
 	precision = 0;
 	idx = 0;
 	while (data[idx])
 	{
+		data_flag->precision_remove = TRUE;
 		if (data[idx] == '.')
+		{
+			data_flag->precision_remove = FALSE;
+			if (data[idx + 1] < '0' || data[idx + 1] > '9')
+				data_flag->precision_remove = TRUE;
 			precision = ft_atoi(&data[idx + 1]);
+			break;
+		}
 		idx++;
 	}
 	if (str_len > precision)
 		precision = str_len;
 	if (precision > data_flag->width)
-		precision = data_flag->width;
+		data_flag->width = precision;
 	return (precision);
 }
 
