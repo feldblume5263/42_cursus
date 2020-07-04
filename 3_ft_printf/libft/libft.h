@@ -6,16 +6,16 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 16:48:46 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/04 20:59:37 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/04 21:00:22 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
+# include <string.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 size_t			ft_strlen(const char *str);
 int				ft_atoi(const char *str);
