@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 19:19:57 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/05 17:28:35 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/05 23:02:50 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,23 @@ int			get_precision(char *data, int str_len, t_flag *data_flag)
 	int				idx;
 	int				precision;
 
-	if (data_flag->precision < 0)
-		data_flag->precision = 0;
+	if (data_flag->minus_flag == TRUE)
+		str_len--;
 	data_flag->precision_remove = FALSE;
 	precision = 0;
-	idx = 0;
-	while (data[idx])
+	idx = -1;
+	while (data[++idx])
 	{
 		data_flag->precision_remove = TRUE;
-		if (data[idx] == '.')
+		if (data[idx] == '.' && ft_atoi(&data[idx + 1]) >= 0 && data_flag->precision >= 0)
 		{
 			data_flag->precision_remove = FALSE;
 			precision = ft_atoi(&data[idx + 1]);
-			break;
+			break ;
 		}
-		idx++;
 	}
+	if (data_flag->real_zero == TRUE && precision == 0 && data_flag->precision == 0)
+		return (0);
 	if (str_len > precision)
 		precision = str_len;
 	if (precision > data_flag->width)
@@ -45,7 +46,7 @@ int			find_zero(char *data)
 	int				idx;
 
 	idx = 0;
-	while(data[idx])
+	while (data[idx])
 	{
 		if ((data[idx] >= '1' && data[idx] <= '9') || data[idx] == '.')
 			return (FALSE);
@@ -63,7 +64,10 @@ int			get_width(char *data, int str_len, t_flag *data_flag)
 
 	large_width = 0;
 	if (data_flag->width < 0)
+	{
 		data_flag->width *= (-1);
+		data_flag->zero_fill = FALSE;
+	}
 	idx = 0;
 	while (data[idx] && (data[idx] < '0' || data[idx] > '9'))
 		idx++;
@@ -100,9 +104,9 @@ void		get_star(char *data, t_flag *data_flag, va_list ap)
 	idx = 0;
 	while (data[idx])
 	{
-		if (data[idx] == '*' && data[idx] != '.')
+		if (data[idx] == '*' && data[idx - 1] != '.')
 			data_flag->width = va_arg(ap, int);
-		else if (data[idx] == '*' && data[idx] == '.')
+		if (data[idx] == '*' && data[idx - 1] == '.')
 			data_flag->precision = va_arg(ap, int);
 		idx++;
 	}

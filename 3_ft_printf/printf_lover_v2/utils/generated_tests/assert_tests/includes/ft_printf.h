@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
-# include "libft/libft.h"
+#include "../includes/libft.h"
 
 # define CONV "cspdiuxX%"
 # define FLAG ".-*0"
