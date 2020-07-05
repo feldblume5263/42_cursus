@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/27 15:59:40 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/04 22:41:02 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/05 17:32:51 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ int			write_char_with_flag(char ret_char, t_flag *data_flag)
 	return (write_idx);
 }
 
-void		make_char_flag(t_flag *data_flag, char *data, int flag_width)
+void		make_char_flag(t_flag *data_flag, char *data)
 {
-	data_flag->left_range = get_range(data, flag_width);
-	data_flag->width = get_width(data, flag_width, 1);
+	data_flag->left_range = get_range(data, data_flag);
+	data_flag->width = get_width(data, 1, data_flag);
 	data_flag->precision = get_precision(data, 1, data_flag);
 	data_flag->minus_flag = FALSE;
 	data_flag->zero_fill = FALSE;
@@ -41,19 +41,10 @@ void		make_char_flag(t_flag *data_flag, char *data, int flag_width)
 
 int			ft_char(char *data, va_list ap, t_flag *data_flag)
 {
-	int				flag_width;
-	int				idx;
 	char			ret_char;
 
-	flag_width = FALSE;
-	idx = 0;
-	while (data[idx])
-	{
-		if (data[idx] == '*')
-			flag_width = va_arg(ap, int);
-		idx++;
-	}
+	get_star(data, data_flag, ap);
 	ret_char = va_arg(ap, int);
-	make_char_flag(data_flag, data, flag_width);
+	make_char_flag(data_flag, data);
 	return (write_char_with_flag(ret_char, data_flag));
 }

@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 19:19:57 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/04 22:40:37 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/05 17:28:35 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int			get_precision(char *data, int str_len, t_flag *data_flag)
 	int				idx;
 	int				precision;
 
+	if (data_flag->precision < 0)
+		data_flag->precision = 0;
 	data_flag->precision_remove = FALSE;
 	precision = 0;
 	idx = 0;
@@ -35,7 +37,7 @@ int			get_precision(char *data, int str_len, t_flag *data_flag)
 		precision = str_len;
 	if (precision > data_flag->width)
 		data_flag->width = precision;
-	return (precision);
+	return (precision > data_flag->precision ? precision : data_flag->precision);
 }
 
 int			find_zero(char *data)
@@ -54,15 +56,14 @@ int			find_zero(char *data)
 	return (FALSE);
 }
 
-int			get_width(char *data, int flag_width, int str_len)
+int			get_width(char *data, int str_len, t_flag *data_flag)
 {
 	int				large_width;
 	int				idx;
 
 	large_width = 0;
-	if (flag_width < 0)
-		flag_width *= (-1);
-	large_width = flag_width;
+	if (data_flag->width < 0)
+		data_flag->width *= (-1);
 	idx = 0;
 	while (data[idx] && (data[idx] < '0' || data[idx] > '9'))
 		idx++;
@@ -70,16 +71,16 @@ int			get_width(char *data, int flag_width, int str_len)
 		large_width = ft_atoi(&(data[idx]));
 	if (str_len > large_width)
 		large_width = str_len;
-	return (large_width);
+	return (large_width > data_flag->width ? large_width : data_flag ->width);
 }
 
-int			get_range(char *data, int flag_width)
+int			get_range(char *data, t_flag *data_flag)
 {
 	int				idx;
 
 	idx = 0;
 
-	if (flag_width < 0)
+	if (data_flag->width < 0)
 		return (TRUE);
 	while (data[idx])
 	{
@@ -88,4 +89,21 @@ int			get_range(char *data, int flag_width)
 		idx++;
 	}
 	return (FALSE);
+}
+
+void		get_star(char *data, t_flag *data_flag, va_list ap)
+{
+	int				idx;
+
+	data_flag->precision = FALSE;
+	data_flag->width = FALSE;
+	idx = 0;
+	while (data[idx])
+	{
+		if (data[idx] == '*' && data[idx] != '.')
+			data_flag->width = va_arg(ap, int);
+		else if (data[idx] == '*' && data[idx] == '.')
+			data_flag->precision = va_arg(ap, int);
+		idx++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 17:20:01 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/04 22:41:42 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/05 17:36:54 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,14 @@ int			write_unsigned_int_with_flag(char *input_string, t_flag *data_flag)
 
 int			ft_unsigned_int(char *data, va_list ap, t_flag *data_flag)
 {
-	int					flag_width;
 	char				*input_string;
-	int					idx;
-	unsigned long long	num;
+	unsigned int		num;
 
-	flag_width = FALSE;
-	idx = 0;
-	while (data[idx])
-	{
-		if (data[idx] == '*')
-			flag_width = va_arg(ap, int);
-		idx++;
-	}
+	get_star(data, data_flag, ap);
 	num = va_arg(ap, unsigned int);
 	data_flag->minus_flag = FALSE;
 	input_string = ft_utoa(num);
-	make_int_flag(data_flag, data, flag_width, input_string);
+	make_int_flag(data_flag, data, input_string);
 	write_int_with_flag(input_string, data_flag);
 	return (write_unsigned_int_with_flag(input_string, data_flag));
 }

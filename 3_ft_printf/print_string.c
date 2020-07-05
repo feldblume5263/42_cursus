@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/27 17:03:14 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/04 22:41:37 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/05 17:35:03 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int			write_string_with_flag(char *input_string, t_flag *data_flag)
 	return (write_idx);
 }
 
-int			get_str_precision(char *data, int str_len, t_flag *data_flag)
+/*int			get_str_precision(char *data, int str_len, t_flag *data_flag)
 {
 	int				idx;
 	int				precision;
@@ -56,35 +56,26 @@ int			get_str_precision(char *data, int str_len, t_flag *data_flag)
 	if (precision > data_flag->width)
 		precision = data_flag->width;
 	return (precision);
-}
+}*/
 
-void		make_string_flag(t_flag *data_flag, char *data, int flag_width, char *input_string)
+void		make_string_flag(t_flag *data_flag, char *data, char *input_string)
 {
 	int				str_len;
 
 	str_len = ft_strlen(input_string);
-	data_flag->left_range = get_range(data, flag_width);
-	data_flag->width = get_width(data, flag_width, str_len);
-	data_flag->precision = get_str_precision(data, str_len, data_flag);
+	data_flag->left_range = get_range(data, data_flag);
+	data_flag->width = get_width(data, str_len, data_flag);
+	data_flag->precision = get_precision(data, str_len, data_flag);
 	data_flag->zero_fill = FALSE;
 	data_flag->minus_flag = FALSE;
 }
 
 int			ft_string(char *data, va_list ap, t_flag *data_flag)
 {
-	int				flag_width;
 	char			*input_string;
-	int				idx;
 
-	flag_width = FALSE;
-	idx = 0;
-	while (data[idx])
-	{
-		if (data[idx] == '*')
-			flag_width = va_arg(ap, int);
-		idx++;
-	}
+	get_star(data, data_flag, ap);
 	input_string = va_arg(ap, char *);
-	make_string_flag(data_flag, data, flag_width, input_string);
+	make_string_flag(data_flag, data, input_string);
 	return (write_string_with_flag(input_string, data_flag));
 }

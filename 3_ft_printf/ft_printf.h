@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:34:16 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/04 22:46:45 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/05 17:46:16 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,35 +43,36 @@ int			inspect_chunk(char *chr, char *chunk);
 char		*prepare_data(char *format, int data_len);
 int			get_data_len(char *format);
 int			wrirte_data_from_ap(char *data, va_list ap, int data_len);
-int			get_width(char *data, int flag_width, int str_len);
-int			get_range(char *data, int flag_width);
+int			get_width(char *data, int str_len, t_flag *data_flag);
+int			get_range(char *data, t_flag *data_flag);
 int			get_precision(char *data, int str_len, t_flag *data_flag);
 int			find_zero(char *data);
 int			write_int_with_flag(char *input_string, t_flag *data_flag);
 int			ft_int(char *data, va_list ap, t_flag *data_flag);
-void		make_int_flag(t_flag *data_flag, char *data, int flag_width, char *input_string);
+void		make_int_flag(t_flag *data_flag, char *data, char *input_string);
 int			get_padding(t_flag *data_flag);
 int			write_padding(int padding);
 int			write_zero(t_flag *data_flag, int str_len);
 int			ft_unsigned_int(char *data, va_list ap, t_flag *data_flag);
 int			ft_char(char *data, va_list ap, t_flag *data_flag);
-void		make_char_flag(t_flag *data_flag, char *data, int flag_width);
+void		make_char_flag(t_flag *data_flag, char *data);
 int			write_char_with_flag(char ret_char, t_flag *data_flag);
 int			ft_string(char *data, va_list ap, t_flag *data_flag);
-void		make_string_flag(t_flag *data_flag, char *data, int flag_width, char *input_string);
+void		make_string_flag(t_flag *data_flag, char *data, char *input_string);
 int			write_string_with_flag(char *input_string, t_flag *data_flag);
-int			get_str_precision(char *data, int str_len, t_flag *data_flag);
+//int			get_str_precision(char *data, int str_len, t_flag *data_flag);
 int			ft_hexa_u(char *data, va_list ap, t_flag *data_flag);
-void		make_hexa_u_flag(t_flag *data_flag, char *data, int flag_width, char *input_string);
+void		make_hexa_u_flag(t_flag *data_flag, char *data, char *input_string);
 int			write_hexa_u_with_flag(char *input_string, t_flag *data_flag);
 int			ft_hexa_l(char *data, va_list ap, t_flag *data_flag);
-void		make_hexa_l_flag(t_flag *data_flag, char *data, int flag_width, char *input_string);
+void		make_hexa_l_flag(t_flag *data_flag, char *data, char *input_string);
 int			write_hexa_l_with_flag(char *input_string, t_flag *data_flag);
 int			ft_pointer(char *data, va_list ap, t_flag *data_flag);
-void		make_pointer_flag(t_flag *data_flag, char *data, int flag_width, char *input_string);
+void		make_pointer_flag(t_flag *data_flag, char *data, char *input_string);
 int			write_pointer_with_flag(char *input_string, t_flag *data_flag);
 int			ft_percent(char *data, va_list ap, t_flag *data_flag);
-void		make_percent_flag(t_flag *data_flag, char *data, int flag_width);
+void		make_percent_flag(t_flag *data_flag, char *data);
 int			write_percent_with_flag(char ret_char, t_flag *data_flag);
+void		get_star(char *data, t_flag *data_flag, va_list ap);
 
 # endif

@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 14:39:41 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/04 22:41:13 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/05 17:41:29 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,35 +32,26 @@ int			write_hexa_u_with_flag(char *input_string, t_flag *data_flag)
 	return (write_idx);
 }
 
-void		make_hexa_u_flag(t_flag *data_flag, char *data, int flag_width, char *input_string)
+void		make_hexa_u_flag(t_flag *data_flag, char *data, char *input_string)
 {
 	int				str_len;
 
 	str_len = ft_strlen(input_string);
-	data_flag->left_range = get_range(data, flag_width);
-	data_flag->width = get_width(data, flag_width, str_len);
+	data_flag->left_range = get_range(data, data_flag);
+	data_flag->width = get_width(data, str_len, data_flag);
 	data_flag->precision = get_precision(data, str_len, data_flag);
 	data_flag->zero_fill = find_zero(data);
 }
 
 int			ft_hexa_u(char *data, va_list ap, t_flag *data_flag)
 {
-	int				flag_width;
 	char			*input_string;
-	int				idx;
 	unsigned int	num;
 
-	flag_width = FALSE;
-	idx = 0;
-	while (data[idx])
-	{
-		if (data[idx] == '*')
-			flag_width = va_arg(ap, int);
-		idx++;
-	}
+	get_star(data, data_flag, ap);
 	num = va_arg(ap, int);
 	data_flag->minus_flag = FALSE;
 	input_string = ft_utoa_base_up(num);
-	make_hexa_u_flag(data_flag, data, flag_width, input_string);
+	make_hexa_u_flag(data_flag, data, input_string);
 	return (write_hexa_u_with_flag(input_string, data_flag));
 }
