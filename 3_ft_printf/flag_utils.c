@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 19:19:57 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/05 23:02:50 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/06 16:46:57 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int			get_precision(char *data, int str_len, t_flag *data_flag)
 			break ;
 		}
 	}
-	if (data_flag->real_zero == TRUE && precision == 0 && data_flag->precision == 0)
-		return (0);
 	if (str_len > precision)
 		precision = str_len;
 	if (precision > data_flag->width)
