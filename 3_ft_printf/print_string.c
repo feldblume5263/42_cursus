@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/27 17:03:14 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/05 17:35:03 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/07 21:02:43 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int			write_string_with_flag(char *input_string, t_flag *data_flag)
 	return (write_idx);
 }
 
-/*int			get_str_precision(char *data, int str_len, t_flag *data_flag)
+int			get_str_precision(char *data, int str_len, t_flag *data_flag)
 {
 	int				idx;
 	int				precision;
@@ -56,7 +56,7 @@ int			write_string_with_flag(char *input_string, t_flag *data_flag)
 	if (precision > data_flag->width)
 		precision = data_flag->width;
 	return (precision);
-}*/
+}
 
 void		make_string_flag(t_flag *data_flag, char *data, char *input_string)
 {
