@@ -6,11 +6,20 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 17:08:00 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/07 16:27:28 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/07 22:38:12 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void		make_str_flag(char *data, t_flag *data_flag, int str_len)
+{
+	int			width;
+	int			precision;
+
+	width = data_flag->width;
+	precision = data_flag->precision;
+}
 
 int			get_padding(t_flag *data_flag)
 {

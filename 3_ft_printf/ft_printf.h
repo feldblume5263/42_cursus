@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:34:16 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/07 16:28:52 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/07 22:26:00 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,7 @@ int			ft_percent(char *data, va_list ap, t_flag *data_flag);
 void		make_percent_flag(t_flag *data_flag, char *data);
 int			write_percent_with_flag(char ret_char, t_flag *data_flag);
 void		get_star(char *data, t_flag *data_flag, va_list ap);
+int			get_str_width(char *data, int str_len, t_flag *data_flag);
+void		make_str_flag(char *data, t_flag *data_flag, int str_len);
 
 # endif
