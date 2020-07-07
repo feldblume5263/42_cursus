@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:34:16 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/05 22:53:13 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/07 16:28:52 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct	s_flag
 	int		zero_fill;
 	int		minus_flag;
 	int		real_zero;
+	int		x_flag;
 }				t_flag;
 
 int			ft_printf(const char *format, ...);
@@ -61,7 +62,7 @@ int			write_char_with_flag(char ret_char, t_flag *data_flag);
 int			ft_string(char *data, va_list ap, t_flag *data_flag);
 void		make_string_flag(t_flag *data_flag, char *data, char *input_string);
 int			write_string_with_flag(char *input_string, t_flag *data_flag);
-//int			get_str_precision(char *data, int str_len, t_flag *data_flag);
+int			get_str_precision(char *data, int str_len, t_flag *data_flag);
 int			ft_hexa_u(char *data, va_list ap, t_flag *data_flag);
 void		make_hexa_u_flag(t_flag *data_flag, char *data, char *input_string);
 int			write_hexa_u_with_flag(char *input_string, t_flag *data_flag);

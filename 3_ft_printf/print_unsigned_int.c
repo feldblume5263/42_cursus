@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 17:20:01 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/05 17:36:54 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/07 16:08:06 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@ int			write_unsigned_int_with_flag(char *input_string, t_flag *data_flag)
 	padding = get_padding(data_flag);
 	write_idx = write_padding(padding);
 	write_idx += write_zero(data_flag, str_len);
-	write(1, input_string, str_len);
-	write_idx += str_len;
+	if (!(ft_atoi(input_string) == 0 && data_flag->precision == 0 \
+		&& data_flag->precision_remove == FALSE))
+	{
+		write(1, input_string, str_len);
+		write_idx += str_len;
+	}
 	while (write_idx < data_flag->width)
 	{
 		write(1, " ", 1);
@@ -42,6 +46,5 @@ int			ft_unsigned_int(char *data, va_list ap, t_flag *data_flag)
 	data_flag->minus_flag = FALSE;
 	input_string = ft_utoa(num);
 	make_int_flag(data_flag, data, input_string);
-	write_int_with_flag(input_string, data_flag);
 	return (write_unsigned_int_with_flag(input_string, data_flag));
 }

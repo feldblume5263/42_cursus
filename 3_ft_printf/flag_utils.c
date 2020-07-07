@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 19:19:57 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/06 16:46:57 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/07 15:59:27 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,12 @@ int			get_precision(char *data, int str_len, t_flag *data_flag)
 			break ;
 		}
 	}
+	precision = precision > data_flag->precision ? precision : data_flag->precision;
+	if (precision == 0 && data_flag->precision_remove == FALSE && data_flag->real_zero == TRUE)
+		str_len = 0;
 	if (str_len > precision)
 		precision = str_len;
-	if (precision > data_flag->width)
-		data_flag->width = precision;
-	return (precision > data_flag->precision ? precision : data_flag->precision);
+	return (precision);
 }
 
 int			find_zero(char *data)
@@ -71,9 +72,15 @@ int			get_width(char *data, int str_len, t_flag *data_flag)
 		idx++;
 	if (ft_atoi(&(data[idx])) > large_width)
 		large_width = ft_atoi(&(data[idx]));
+	large_width = large_width > data_flag->width ? large_width : data_flag ->width;
+	if (data_flag->precision == 0 && data_flag->precision_remove == FALSE \
+		&& data_flag->real_zero == TRUE)
+		str_len = 0;
 	if (str_len > large_width)
 		large_width = str_len;
-	return (large_width > data_flag->width ? large_width : data_flag ->width);
+	if (data_flag->precision > large_width)
+		large_width = data_flag->precision;
+	return (large_width);
 }
 
 int			get_range(char *data, t_flag *data_flag)
