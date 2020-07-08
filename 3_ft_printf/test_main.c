@@ -4,8 +4,8 @@
 int			main(void)
 {
 
-	printf("my result = %d\n", ft_printf("ft_printf = |%3.s|\n", "abcdef"));
-	printf("ra result = %d\n",    printf("   printf = |%3.s|\n", "abcdef"));
+	printf("my result = %d\n", ft_printf("ft_printf = |%-16.14s|\n", NULL));
+	printf("ra result = %d\n",    printf("   printf = |%-16.14s|\n", NULL));
 
 
 	/*
