@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 21:11:05 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/05 17:44:14 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/08 20:29:16 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int			write_percent_with_flag(char ret_char, t_flag *data_flag)
 {
 	int				padding;
 	int				write_idx;
-
 	write_idx = 0;
 	padding = get_padding(data_flag);
 	write_idx += write_padding(padding);
@@ -35,7 +34,7 @@ void		make_percent_flag(t_flag *data_flag, char *data)
 {
 	data_flag->left_range = get_range(data, data_flag);
 	data_flag->width = get_width(data, 1, data_flag);
-	data_flag->precision = FALSE;
+	data_flag->precision = 1;
 	data_flag->zero_fill = find_zero(data);
 	data_flag->minus_flag = FALSE;
 	data_flag->precision_remove = TRUE;

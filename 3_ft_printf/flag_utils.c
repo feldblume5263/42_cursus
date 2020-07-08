@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 19:19:57 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/07 22:30:21 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/08 20:22:31 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,17 @@ int			get_range(char *data, t_flag *data_flag)
 	idx = 0;
 
 	if (data_flag->width < 0)
+	{
+		data_flag->zero_fill = FALSE;
 		return (TRUE);
+	}
 	while (data[idx])
 	{
 		if (data[idx] == '-')
+		{
+			data_flag->zero_fill = FALSE;
 			return (TRUE);
+		}
 		idx++;
 	}
 	return (FALSE);

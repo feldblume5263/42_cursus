@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 16:09:32 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/07 18:14:25 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/08 20:22:52 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void		make_int_flag(t_flag *data_flag, char *data, char *input_string)
 		str_len++;
 	if (ft_atoi(input_string) == 0)
 		data_flag->real_zero = TRUE;
-	data_flag->left_range = get_range(data, data_flag);
 	data_flag->zero_fill = find_zero(data);
+	data_flag->left_range = get_range(data, data_flag);
 	data_flag->precision = get_precision(data, str_len, data_flag);
 	data_flag->width = get_width(data, str_len, data_flag);
 }
