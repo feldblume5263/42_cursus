@@ -6,13 +6,13 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/27 17:03:14 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/08 15:03:39 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/08 21:04:34 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			write_string_with_flag(char *input_string, t_flag *data_flag)
+int			write_string_with_flag(char *input_string, t_flag *flag)
 {
 	int				padding;
 	int				write_idx;
@@ -20,24 +20,18 @@ int			write_string_with_flag(char *input_string, t_flag *data_flag)
 	int				pre_idx;
 
 	write_idx = 0;
-	str_len = 0;
+	str_len = 6;
 	if (input_string != 0)
 		str_len = ft_strlen(input_string);
 	if (input_string == 0)
-	{
-		str_len = 6;
 		input_string = ft_strdup("(null)");
-	}
-	padding = get_padding(data_flag);
+	padding = get_padding(flag);
 	write_idx += write_padding(padding);
-	pre_idx = 0;
-	while (pre_idx < data_flag->precision)
-	{
+	pre_idx = -1;
+	while (++pre_idx < flag->precision)
 		write(1, &(input_string[pre_idx]), 1);
-		pre_idx++;
-	}
 	write_idx += pre_idx;
-	while (write_idx < data_flag->width)
+	while (write_idx < flag->width)
 	{
 		write(1, " ", 1);
 		write_idx++;
@@ -45,33 +39,33 @@ int			write_string_with_flag(char *input_string, t_flag *data_flag)
 	return (write_idx);
 }
 
-void		make_string_flag(t_flag *data_flag, char *data, char *input_string)
+void		make_string_flag(t_flag *flag, char *data, char *input_string)
 {
 	int				str_len;
 
 	str_len = 0;
-	data_flag->real_zero = FALSE;
+	flag->real_zero = FALSE;
 	if (input_string != 0)
 		str_len = ft_strlen(input_string);
 	if (input_string == 0)
 	{
-		data_flag->real_zero = TRUE;
+		flag->real_zero = TRUE;
 		str_len = 6;
 	}
-	data_flag->left_range = get_range(data, data_flag);
-	data_flag->precision = get_str_precision(data, data_flag);
-	data_flag->width = get_str_width(data, data_flag);
-	data_flag->zero_fill = FALSE;
-	data_flag->minus_flag = FALSE;
-	make_str_flag(data_flag, str_len);
+	flag->left_range = get_range(data, flag);
+	flag->precision = get_str_precision(data, flag);
+	flag->width = get_str_width(data, flag);
+	flag->zero_fill = FALSE;
+	flag->minus_flag = FALSE;
+	make_str_flag(flag, str_len);
 }
 
-int			ft_string(char *data, va_list ap, t_flag *data_flag)
+int			ft_string(char *data, va_list ap, t_flag *flag)
 {
 	char			*input_string;
 
-	get_star(data, data_flag, ap);
+	get_star(data, flag, ap);
 	input_string = va_arg(ap, char *);
-	make_string_flag(data_flag, data, input_string);
-	return (write_string_with_flag(input_string, data_flag));
+	make_string_flag(flag, data, input_string);
+	return (write_string_with_flag(input_string, flag));
 }

@@ -6,25 +6,25 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 17:08:00 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/08 20:14:33 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/08 21:04:30 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			get_padding(t_flag *data_flag)
+int			get_padding(t_flag *flag)
 {
 	int				padding;
 
-	if (data_flag->zero_fill == TRUE && data_flag->precision_remove == TRUE)
+	if (flag->zero_fill == TRUE && flag->precision_remove == TRUE)
 		return (0);
 	padding = 0;
-	if (data_flag->left_range == FALSE)
-		padding += data_flag->width - data_flag->precision;
-	if (data_flag->minus_flag == TRUE)
+	if (flag->left_range == FALSE)
+		padding += flag->width - flag->precision;
+	if (flag->minus_flag == TRUE)
 		padding -= 1;
-	if (data_flag->x_flag == TRUE && data_flag->precision_remove == FALSE \
-		&& data_flag->precision == 0 && data_flag->real_zero == TRUE)
+	if (flag->x_flag == TRUE && flag->precision_remove == FALSE \
+		&& flag->precision == 0 && flag->real_zero == TRUE)
 		padding -= 2;
 	if (padding < 0)
 		padding = 0;
@@ -44,16 +44,16 @@ int			write_padding(int padding)
 	return (write_idx);
 }
 
-int			write_zero(t_flag *data_flag, int str_len)
+int			write_zero(t_flag *flag, int str_len)
 {
 	int				write_idx;
 
 	write_idx = 0;
-	if (data_flag->zero_fill == TRUE && data_flag->precision_remove == TRUE)
+	if (flag->zero_fill == TRUE && flag->precision_remove == TRUE)
 	{
-		if (data_flag->minus_flag == TRUE)
+		if (flag->minus_flag == TRUE)
 			str_len++;
-		while (write_idx < (data_flag->width - str_len))
+		while (write_idx < (flag->width - str_len))
 		{
 			write(1, "0", 1);
 			write_idx++;
@@ -61,7 +61,7 @@ int			write_zero(t_flag *data_flag, int str_len)
 	}
 	else
 	{
-		while (write_idx < (data_flag->precision - str_len))
+		while (write_idx < (flag->precision - str_len))
 		{
 			write(1, "0", 1);
 			write_idx++;
