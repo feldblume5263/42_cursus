@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 16:48:46 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/04 21:00:22 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/11 16:54:56 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 
 size_t			ft_strlen(const char *str);
+char			*ft_strdup(const char *s);
 int				ft_atoi(const char *str);
 char			*ft_itoa(int num);
 char			*ft_utoa(unsigned int num);
@@ -48,7 +49,6 @@ char			**ft_split(char const *s, char c);
 char			*ft_strcat(char *dest, char *src);
 char			*ft_strchr(char *str, int c);
 char			*ft_strcpy(char *dest, char *src);
-char			*ft_strdup(const char *s);
 char			*ft_strjoin(char const *s1, char const *s2);
 size_t			ft_strlcat (char *dest, const char *src, size_t n);
 size_t			ft_strlcpy(char *dst, const char *src, size_t size);

@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 14:57:54 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/08 21:04:44 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/11 16:47:13 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int			wrirte_data_from_ap(char *data, va_list ap, int data_len)
 	t_flag			*flag;
 	int				print_len;
 
-	flag = malloc(sizeof(t_flag) * 1);
+	if (!(flag = malloc(sizeof(t_flag) * 1)))
+		return (0);
 	print_len = 0;
 	if (data[data_len - 1] == 'd' || data[data_len - 1] == 'i')
 		print_len = ft_int(data, ap, flag);
@@ -35,6 +36,8 @@ int			wrirte_data_from_ap(char *data, va_list ap, int data_len)
 		print_len = ft_pointer(data, ap, flag);
 	else if (data[data_len - 1] == '%')
 		print_len = ft_percent(data, ap, flag);
+	free(flag);
+	free(data);
 	return (print_len);
 }
 
