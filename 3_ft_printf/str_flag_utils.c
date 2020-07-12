@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 13:31:55 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/08 21:10:37 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/12 17:19:55 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int			get_str_width(char *data, t_flag *flag)
 		flag->zero_fill = FALSE;
 	}
 	idx = 0;
-	while (data[idx] && (data[idx] < '0' \
+	while (data[idx] && (data[idx] < '1' \
 			|| data[idx] > '9') && data[idx] != '.')
 		idx++;
 	if (data[idx] != '.')

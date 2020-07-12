@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:34:16 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/11 20:49:39 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/12 16:47:14 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct	s_flag
 	int			minus_flag;
 	int			real_zero;
 	int			x_flag;
+	int			zero_minus;
 }				t_flag;
 
 int				ft_printf(const char *format, ...);
@@ -83,5 +84,6 @@ int				write_percent_with_flag(char ret_char, t_flag *flag);
 void			get_star(char *data, t_flag *flag, va_list ap);
 int				get_str_width(char *data, t_flag *flag);
 void			make_str_flag(t_flag *flag, int str_len);
+void			zero_minus_flag(char *data, t_flag *flag);
 
 #endif
