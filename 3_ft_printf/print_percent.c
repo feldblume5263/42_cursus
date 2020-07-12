@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/04 21:11:05 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/08 21:04:36 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/12 15:50:33 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void		make_percent_flag(t_flag *flag, char *data)
 	flag->width = get_width(data, 1, flag);
 	flag->precision = 1;
 	flag->zero_fill = find_zero(data);
+	if (flag->left_range == TRUE)
+		flag->zero_fill = FALSE;
 	flag->minus_flag = FALSE;
 	flag->precision_remove = TRUE;
 }

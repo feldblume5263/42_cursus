@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 16:02:09 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/11 21:18:42 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/12 16:23:18 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,11 @@ int			get_data_len(char *format)
 	int				data_len;
 
 	data_len = 0;
-	while ((inspect_chunk(&(format[data_len]), FLAG) == TRUE && format[data_len])
-		|| (format[data_len] >= '0' && format[data_len] <= '9'))
+	while (format[data_len] && ((inspect_chunk(&(format[data_len]), \
+		FLAG) == TRUE) || (format[data_len] >= '0' && format[data_len] <= '9')))
 		data_len++;
-	data_len++;
+	if (inspect_chunk(&(format[data_len]), CONV) == TRUE && format[data_len])
+		data_len++;
 	return (data_len);
 }
 
@@ -46,7 +47,7 @@ char		*prepare_data(char *format, int data_len)
 	if (!(data = (char *)malloc(sizeof(char) * (data_len + 1))))
 		return (NULL);
 	idx = 0;
-	while (idx < data_len)
+	while (idx < data_len && format[idx])
 	{
 		data[idx] = format[idx];
 		idx++;
