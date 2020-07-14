@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 16:02:09 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/12 17:41:23 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/14 20:34:37 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char		*prepare_data(char *format, int data_len)
 	int				idx;
 
 	if (!(data = (char *)malloc(sizeof(char) * (data_len + 1))))
-		return (NULL);
+		return (MALLOC_ERROR);
 	idx = 0;
 	while (idx < data_len && format[idx])
 	{

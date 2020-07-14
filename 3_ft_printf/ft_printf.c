@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 14:57:54 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/12 16:12:46 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/14 21:54:55 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,38 @@ int			wrirte_data_from_ap(char *data, va_list ap, int data_len)
 	int				print_len;
 
 	if (!(flag = malloc(sizeof(t_flag) * 1)))
-		return (0);
-	print_len = 0;
+		return (MALLOC_ERROR);
+	prepare_flag(data, flag, ap);
 	if (data[data_len - 1] == 'd' || data[data_len - 1] == 'i')
-		print_len = ft_int(data, ap, flag);
-	else if (data[data_len - 1] == 'u')
-		print_len = ft_unsigned_int(data, ap, flag);
-	else if (data[data_len - 1] == 'c')
-		print_len = ft_char(data, ap, flag);
-	else if (data[data_len - 1] == 's')
-		print_len = ft_string(data, ap, flag);
-	else if (data[data_len - 1] == 'X')
-		print_len = ft_hexa_u(data, ap, flag);
-	else if (data[data_len - 1] == 'x')
-		print_len = ft_hexa_l(data, ap, flag);
-	else if (data[data_len - 1] == 'p')
-		print_len = ft_pointer(data, ap, flag);
-	else if (data[data_len - 1] == '%')
-		print_len = ft_percent(data, ap, flag);
+		return (print_len = ft_int(data, ap, flag));
 	free(flag);
 	free(data);
-	return (print_len);
+	return (print_len = 0);
+}
+
+void		prepare_flag(char *data, t_flag *flag, va_list ap)
+{
+	int				idx;
+
+	flag->width = FALSE;
+	flag->width_minus = FALSE;
+	flag->precision = FALSE;
+	flag->precision_remove = TRUE;
+	flag->left_range = FALSE;
+	flag->zero_fill = FALSE;
+	flag->minus_flag = FALSE;
+	idx = 0;
+	while (data[idx])
+	{
+		if (data[idx] == '*' && data[idx - 1] != '.')
+			flag->width = va_arg(ap, int);
+		if (data[idx] == '*' && data[idx - 1] == '.')
+		{
+			flag->precision = va_arg(ap, int);
+			flag->precision_remove = FALSE;
+		}
+		idx++;
+	}
 }
 
 int			write_by_conv(char *format, va_list ap)

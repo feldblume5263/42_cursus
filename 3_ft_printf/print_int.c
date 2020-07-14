@@ -5,66 +5,45 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/12 16:09:32 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/12 17:14:30 by junhpark         ###   ########.fr       */
+/*   Created: 2020/07/14 17:28:25 by junhpark          #+#    #+#             */
+/*   Updated: 2020/07/14 22:39:22 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			write_int_with_flag(char *input_string, t_flag *flag)
+void		int_rule(t_flag *flag, t_write *write, char *input_string)
 {
-	int				padding;
-	int				write_idx;
+	int				num;
+	int				width;
+	int				prec;
 	int				str_len;
 
-	str_len = ft_strlen(input_string);
-	padding = get_padding(flag);
-	write_idx = write_padding(padding);
-	if (flag->minus_flag == TRUE)
+	num = ft_atoi(input_string);
+	str_len = flag->str_len;
+	if (num == 0 && flag->precision == 0 && flag->precision_remove == FALSE)
 	{
-		write(1, "-", 1);
-		write_idx++;
+		input_string = ft_strdup("");
+		flag->str_len = 0;
+		str_len = 0;
 	}
-	write_idx += write_zero(flag, str_len);
-	if (!(ft_atoi(input_string) == 0 && flag->precision == 0 \
-		&& flag->precision_remove == FALSE))
-	{
-		write(1, input_string, ft_strlen(input_string));
-		write_idx += ft_strlen(input_string);
-	}
-	while (write_idx < flag->width)
-	{
-		write(1, " ", 1);
-		write_idx++;
-	}
-	return (write_idx);
-}
-
-void		make_int_flag(t_flag *flag, char *data, char *input_string)
-{
-	int				str_len;
-
-	flag->real_zero = FALSE;
-	str_len = ft_strlen(input_string);
-	if (flag->minus_flag == TRUE)
+	/*if (flag->minus_flag == TRUE)
 		str_len++;
-	if (ft_atoi(input_string) == 0)
-		flag->real_zero = TRUE;
-	flag->zero_fill = find_zero(data);
-	flag->left_range = get_range(data, flag);
-	flag->precision = get_precision(data, str_len, flag);
-	flag->width = get_width(data, str_len, flag);
+	prec = flag->precision > str_len ? flag->precision : str_len;
+	width = flag->width > prec ? flag->width : prec;
+	write->padding = width - prec;
+	write->zero = prec - flag->str_len;*/
 }
 
 int			ft_int(char *data, va_list ap, t_flag *flag)
 {
+	t_write			*write;
 	char			*input_string;
 	int				num;
 
-	get_star(data, flag, ap);
+	if (!(write = malloc(sizeof(t_write) * 1)))
+		return (MALLOC_ERROR);
 	num = va_arg(ap, int);
-	flag->minus_flag = FALSE;
 	input_string = ft_itoa(num);
 	if (*input_string == '-')
 	{
@@ -72,6 +51,7 @@ int			ft_int(char *data, va_list ap, t_flag *flag)
 		input_string++;
 		flag->minus_flag = TRUE;
 	}
-	make_int_flag(flag, data, input_string);
-	return (write_int_with_flag(input_string, flag));
+	get_flag(data, flag, input_string);
+	int_rule(flag, write, input_string);
+	return (0);
 }
