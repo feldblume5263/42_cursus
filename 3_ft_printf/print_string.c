@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   print_string.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/15 19:41:10 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/15 20:57:37 by junhpark         ###   ########.fr       */
+/*   Created: 2020/07/15 20:58:14 by junhpark          #+#    #+#             */
+/*   Updated: 2020/07/15 22:03:19 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			write_char(t_write *writes, char input_string)
+int			write_string(t_flag *flag, t_write *writes, char *input_string)
 {
 	int				write_idx;
+	int				idx;
 
 	write_idx = 0;
-	while (write_idx < writes->padding)
+	idx = 0;
+	while (idx < writes->padding)
 	{
 		write(1, " ", 1);
 		write_idx++;
+		idx++;
 	}
-	write(1, &input_string, 1);
-	write_idx++;
+	write(1, input_string, flag->precision);
+	write_idx += flag->str_len;
 	while (write_idx < writes->length)
 	{
 		write(1, " ", 1);
@@ -32,33 +35,39 @@ int			write_char(t_write *writes, char input_string)
 	return (write_idx);
 }
 
-void		char_rule(t_flag *flag, t_write *writes)
+void		string_rule(t_flag *flag, t_write *writes, char *input_string)
 {
 	int				width;
+	int				prec;
 	int				str_len;
 
-	str_len = 1;
-	width = flag->width;
-	writes->length = width;
+	if (input_string == 0)
+		input_string = ft_strdup("(null)");
+	str_len = ft_strlen(input_string);
+	if (flag->precision < 0 || flag->precision_remove == TRUE)
+		flag->precision = str_len;
+	prec = flag->precision < str_len ? flag->precision : str_len;
+	width = flag->width > prec ? flag->width : prec;
 	writes->padding = width - str_len;
 	if (flag->left_range == TRUE)
 		writes->padding = 0;
-	writes->zero = FALSE;
+	writes->length = width;
+	if (flag->precision >= 0)
+		flag->precision = prec;
 }
 
-int			ft_char(char *data, va_list ap, t_flag *flag)
+int			ft_string(char *data, va_list ap, t_flag *flag)
 {
 	t_write			*writes;
-	char			input_string;
+	char			*input_string;
 	int				ret_value;
 
 	if (!(writes = malloc(sizeof(t_write) * 1)))
 		return (MALLOC_ERROR);
-	input_string = va_arg(ap, int);
-	flag->ischar = TRUE;
-	get_flag(data, flag, &input_string);
-	char_rule(flag, writes);
-	ret_value = write_char(writes, input_string);
+	input_string = va_arg(ap, char *);
+	get_flag(data, flag, input_string);
+	string_rule(flag, writes, input_string);
+	ret_value = write_string(flag, writes, input_string);
 	free(writes);
 	free(flag);
 	free(data);

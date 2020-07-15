@@ -6,15 +6,15 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 17:25:41 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/15 20:49:11 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/15 21:58:17 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "ft_printf.h"
+//#include "ft_printf.h"
 
 int			main(void)
 {
-	ft_printf("|%c|\n", 's');
-	printf("|%c|\n", 's');
+	//ft_printf("|%7s|\n", "abc");
+	printf("|%7s|\n", "abc");
 }
