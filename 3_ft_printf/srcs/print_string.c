@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/27 17:03:14 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/08 21:04:34 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/15 20:10:32 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,12 @@ void		make_string_flag(t_flag *flag, char *data, char *input_string)
 int			ft_string(char *data, va_list ap, t_flag *flag)
 {
 	char			*input_string;
+	int				ret;
 
 	get_star(data, flag, ap);
 	input_string = va_arg(ap, char *);
 	make_string_flag(flag, data, input_string);
-	return (write_string_with_flag(input_string, flag));
+	ret = write_string_with_flag(input_string, flag);
+	free(flag);
+	return (ret);
 }

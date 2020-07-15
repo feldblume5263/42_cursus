@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 17:28:25 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/15 19:27:14 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/15 20:18:37 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ int			ft_unsigned_int(char *data, va_list ap, t_flag *flag)
 	int_rule(flag, writes, input_string);
 	ret_value = write_int(flag, writes, input_string);
 	free(writes);
+	free(flag);
+	free(data);
 	return (ret_value);
 }
 
@@ -131,5 +133,7 @@ int			ft_int(char *data, va_list ap, t_flag *flag)
 	int_rule(flag, writes, input_string);
 	ret_value = write_int(flag, writes, input_string);
 	free(writes);
+	free(flag);
+	free(data);
 	return (ret_value);
 }

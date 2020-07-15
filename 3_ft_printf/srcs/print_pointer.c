@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 17:08:48 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/08 21:04:35 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/15 20:10:28 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int			ft_pointer(char *data, va_list ap, t_flag *flag)
 {
 	char			*input_string;
 	long long		num;
+	int				ret;
 
 	get_star(data, flag, ap);
 	num = va_arg(ap, long long);
@@ -62,5 +63,7 @@ int			ft_pointer(char *data, va_list ap, t_flag *flag)
 	flag->x_flag = TRUE;
 	input_string = ft_lltoa_base(num);
 	make_pointer_flag(flag, data, input_string);
-	return (write_pointer_with_flag(input_string, flag));
+	ret = write_pointer_with_flag(input_string, flag);
+	free(flag);
+	return (ret);
 }

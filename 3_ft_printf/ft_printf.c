@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 14:57:54 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/15 19:23:55 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/15 20:46:42 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int			wrirte_data_from_ap(char *data, va_list ap, int data_len)
 		return (print_len = ft_int(data, ap, flag));
 	else if (data[data_len - 1] == 'u')
 		return (print_len = ft_unsigned_int(data, ap, flag));
-	free(flag);
-	free(data);
+	else if (data[data_len - 1] == 'c')
+		return (print_len = ft_char(data, ap, flag));
 	return (print_len = 0);
 }
 
@@ -40,6 +40,7 @@ void		prepare_flag(char *data, t_flag *flag, va_list ap)
 	flag->left_range = FALSE;
 	flag->zero_fill = FALSE;
 	flag->minus_flag = FALSE;
+	flag->ischar = FALSE;
 	idx = 0;
 	while (data[idx])
 	{

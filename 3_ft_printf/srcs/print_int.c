@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/12 16:09:32 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/14 21:53:15 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/15 20:12:27 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int			ft_int(char *data, va_list ap, t_flag *flag)
 {
 	char			*input_string;
 	int				num;
+	int				ret;
 
 	get_star(data, flag, ap);
 	num = va_arg(ap, int);
@@ -73,5 +74,6 @@ int			ft_int(char *data, va_list ap, t_flag *flag)
 		flag->minus_flag = TRUE;
 	}
 	make_int_flag(flag, data, input_string);
-	return (write_int_with_flag(input_string, flag));
+	ret = write_int_with_flag(input_string, flag);
+	return (ret);
 }

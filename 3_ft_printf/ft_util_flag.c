@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 17:54:55 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/14 22:28:27 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/15 20:48:18 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@
 void		get_flag(char *data, t_flag *flag, char *input_data)
 {
 	flag->str_len = 0;
-	if (input_data != 0)
+	if (input_data != 0 && flag->ischar != TRUE)
 		flag->str_len = ft_strlen(input_data);
+	if (flag->ischar == TRUE)
+		flag->str_len = 1;
 	flag->width = get_width(data, flag);
 	flag->precision = get_precision(data, flag);
 	flag->left_range = get_range(data, flag);

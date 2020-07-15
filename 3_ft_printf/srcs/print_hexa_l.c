@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 17:59:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/08 21:04:40 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/15 20:10:09 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,14 @@ int			ft_hexa_l(char *data, va_list ap, t_flag *flag)
 {
 	char			*input_string;
 	unsigned int	num;
+	int				ret;
 
 	get_star(data, flag, ap);
 	num = va_arg(ap, unsigned int);
 	flag->minus_flag = FALSE;
 	input_string = ft_utoa_base(num);
 	make_hexa_l_flag(flag, data, input_string);
-	return (write_hexa_l_with_flag(input_string, flag));
+	ret = write_hexa_l_with_flag(input_string, flag);
+	free(flag);
+	return (ret);
 }

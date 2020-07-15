@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/27 15:59:40 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/08 21:04:41 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/15 20:10:06 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,12 @@ void		make_char_flag(t_flag *flag, char *data)
 int			ft_char(char *data, va_list ap, t_flag *flag)
 {
 	char			ret_char;
+	int				ret;
 
 	get_star(data, flag, ap);
 	ret_char = va_arg(ap, int);
 	make_char_flag(flag, data);
-	return (write_char_with_flag(ret_char, flag));
+	ret = write_char_with_flag(ret_char, flag);
+	free(flag);
+	return (ret);
 }
