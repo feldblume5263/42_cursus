@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:34:16 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/14 22:08:42 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/15 19:20:54 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct	s_write
 {
 	int			padding;
 	int			zero;
+	int			length;
 }				t_write;
 
 //prepare data
@@ -64,5 +65,11 @@ int				get_zero(char *data, t_flag *flag);
 
 //int
 int				ft_int(char *data, va_list ap, t_flag *flag);
+void			int_rule(t_flag *flag, t_write *writes, char *input_string);
+int				write_int(t_flag *flag, t_write *writes, char *input_string);
+int				write_int_b(t_flag *flag, t_write *writes);
+
+//unsinged int
+int				ft_unsigned_int(char *data, va_list ap, t_flag *flag);
 
 #endif

@@ -6,14 +6,15 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 17:25:41 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/14 22:38:37 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/15 19:07:40 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-//#include "ft_printf.h"
+#include "ft_printf.h"
 
 int			main(void)
 {
-	printf("|%3.2d|\n", -234);
+	ft_printf("|%0*.*d|\n", 4, -4, -12);
+	printf("|%0*.*d|\n", 4, -4, -12);
 }

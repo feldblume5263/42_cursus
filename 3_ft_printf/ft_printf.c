@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 14:57:54 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/14 21:54:55 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/15 19:23:55 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int			wrirte_data_from_ap(char *data, va_list ap, int data_len)
 	prepare_flag(data, flag, ap);
 	if (data[data_len - 1] == 'd' || data[data_len - 1] == 'i')
 		return (print_len = ft_int(data, ap, flag));
+	else if (data[data_len - 1] == 'u')
+		return (print_len = ft_unsigned_int(data, ap, flag));
 	free(flag);
 	free(data);
 	return (print_len = 0);

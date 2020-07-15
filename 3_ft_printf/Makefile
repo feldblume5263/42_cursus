@@ -6,7 +6,7 @@
 #    By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/04 21:28:10 by junhpark          #+#    #+#              #
-#    Updated: 2020/07/11 20:48:34 by junhpark         ###   ########.fr        #
+#    Updated: 2020/07/15 18:40:42 by junhpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,17 +16,8 @@ LIBFT_LIB	= libft.a
 
 SRCS		= ft_printf.c \
 			get_conv_tool.c \
-			flag_utils.c \
-			write_utils.c \
-			print_int.c \
-			print_unsigned_int.c \
-			print_char.c \
-			print_string.c \
-			print_hexa_l.c \
-			print_hexa_u.c \
-			print_pointer.c \
-			print_percent.c \
-			str_flag_utils.c
+			ft_util_flag.c \
+			print_int.c
 
 OBJS		= $(SRCS:.c=.o)
 INCS		= .
