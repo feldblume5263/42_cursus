@@ -6,12 +6,11 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 17:54:55 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/19 16:12:25 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/19 17:01:00 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 void		get_flag(char *data, t_flag *flag, char *input_data)
 {

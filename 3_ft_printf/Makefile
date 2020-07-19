@@ -6,7 +6,7 @@
 #    By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/04 21:28:10 by junhpark          #+#    #+#              #
-#    Updated: 2020/07/15 21:55:11 by junhpark         ###   ########.fr        #
+#    Updated: 2020/07/19 17:08:54 by junhpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ SRCS		= ft_printf.c \
 			ft_util_flag.c \
 			print_int.c \
 			print_char.c \
-			print_string.c
+			print_string.c \
+			print_hexa.c \
+			print_pointer.c
 
 OBJS		= $(SRCS:.c=.o)
 INCS		= .

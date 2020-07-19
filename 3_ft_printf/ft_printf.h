@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/03 16:34:16 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/15 21:48:10 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/19 16:49:52 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,17 @@ int				write_char(t_write *writes, char input_string);
 int				ft_string(char *data, va_list ap, t_flag *flag);
 void			string_rule(t_flag *flag, t_write *writes, char *input_string);
 int				write_string(t_flag *flag, t_write *writes, char *input_string);
+
+//hexa
+int				ft_hexa_low(char *data, va_list ap, t_flag *flag);
+int				ft_hexa_up(char *data, va_list ap, t_flag *flag);
+void			hexa_rule(t_flag *flag, t_write *writes, char *input_string);
+int				write_hexa(t_flag *flag, t_write *writes, char *input_string);
+int				write_hexa_b(t_flag *flag, t_write *writes);
+
+//pointer
+int				ft_pointer(char *data, va_list ap, t_flag *flag);
+void			pointer_rule(t_flag *flag, t_write *writes, char *input_string);
+int				write_pointer(t_flag *flag, t_write *writes, char *input_string);
 
 #endif
