@@ -26,8 +26,8 @@ FROMM(ios) Gemeinsam entwickeln (04.2020 ~ ): <https://github.com/feldblume5263/
 |:----:|:----:| ---- | ---- |:----:|
 | libft | C | Makefile, memory allocation, linked list, library | 01.03.20 ~ 13.04.20 | :red_circle: |
 | GNL | C | static variable, file descriptor | 04.05.20 ~ 27.05.20 | :red_circle: |
-| printf | C | static arguments | 31.05.20 ~ | :bulb: |
-| netwhat | | | | :white_circle: |
+| printf | C | static arguments | 31.05.20 ~ 20.07.20 | :red_circle: |
+| netwhat | | | |  :bulb: |
 | ft_server | | | | :white_circle: |
 | miniRT | | | | :white_circle: |
 | cub3d | | | | :white_circle: |
