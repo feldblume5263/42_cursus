@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/31 14:57:54 by junhpark          #+#    #+#             */
-/*   Updated: 2020/07/19 18:26:43 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/07/20 16:03:56 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,4 +103,10 @@ int			ft_printf(const char *format, ...)
 	str_len = write_by_conv((char *)format, ap);
 	va_end(ap);
 	return (str_len);
+}
+#include <stdio.h>
+int			main(void)
+{
+	ft_printf("%c%s%c%d%c%s%d%u%%\n", 0, "abc", 1, 4, 0, "abc", 5, 34);
+	   printf("%c%s%c%d%c%s%d%u%%\n", 0, "abc", 1, 4, 0, "abc", 5, 34);
 }

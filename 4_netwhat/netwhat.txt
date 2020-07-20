@@ -14,14 +14,23 @@ IP 주소는 5036이나 5047, 인터넷에서만 사용되는 전화번호라�
 
 
 @ What is a Netmask
+@ What is the subnet of an IP with Netmask
 
 넷마스크란 하나의 네트워크를 몇 개의 네트워크로 나누어 사용할 때에 나눠진 각각의 네트워크를 구분하기 위해 사용하는 특수한 bit를 의미한다. 장확한 명칭은 "Subnet Mask"이다.
 하나의 네트워크를 여러개로 나누는 이유는 트래픽 부하를 줄이기 위해서이다. 이렇게 나누어진 각각의 네트워크들은 독립된 네트워크로 구성이 가능하다. 즉, 넷마스크는 하나의 네트워크를 2개 이상의 네트워크로 나눠 사용할 때에 각각의 네트워크를 구분할 수 있도록 해주는 것입니다.
-예를 들어 192.168.0.3rhk 192.168.0.4를 보면, 192.168.0은 네트워크 영역이고 3과 4는 호스트 IP이다. 이를 해석하면 192.168.0이라는 네트워크에서 서로 통신할 수 있는 3과 4가 존재한다.
+예를 들어 192.168.0.3과 192.168.0.4를 보면, 192.168.0은 네트워크 영역이고 3과 4는 호스트 IP이다. 이를 해석하면 192.168.0이라는 네트워크에서 서로 통신할 수 있는 3과 4가 존재한다.
 
-What is the subnet of an IP with Netmask 
-What is the broadcast address of a subnet 
+
+ 
+@What is the broadcast address of a subnet 
+
+broadcast는 컴퓨터 네트워크의 다지점 연결. 브로드 캐스트 주소를 사용하면 따로 수신자를 지정하지 않고도 네트워크의 모든 사용자에게 데이커 패킷을 보낼 수 있다.
+브로드 캐스트 IP주소는 각 네트워크에서 한 번만 할당되며, 항상 서브넷의 마지막 IP주소이다.
+ex)	192.128.64.1 ~ 192.128.64.254  :  호스트 주소 범위
+	192.128.64.255 : 브로드 캐스트 주소
+
 What are the different ways to represent an ip address with the Netmask 
+
 What are the differences between public and private IPs 
 What is a class of IP addresses 
 What is TCP 
