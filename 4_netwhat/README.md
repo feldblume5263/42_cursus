@@ -5,9 +5,9 @@
 ####  -What is an IP address :heavy_check_mark:
 ####  -What is a Netmask :heavy_check_mark:
 ####  -What is the subnet of an IP with Netmask :heavy_check_mark:
-####  -What is the broadcast address of a subnet
-####  -What are the different ways to represent an ip address with the Netmask
-####  -What are the differences between public and private IPs
+####  -What is the broadcast address of a subnet :heavy_check_mark:
+####  -What are the different ways to represent an ip address with the Netmask :heavy_check_mark:
+####  -What are the differences between public and private IPs :heavy_check_mark:
 ####  -What is a class of IP addresses :heavy_check_mark:
 ####  -What is TCP
 ####  -What is UDP
