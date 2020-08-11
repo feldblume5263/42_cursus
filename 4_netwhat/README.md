@@ -15,7 +15,7 @@
 ####  -What is the OSI model :heavy_check_mark:
 ####  -What is a DHCP server and the DHCP protocol :heavy_check_mark:
 ####  -What is a DNS server and the DNS protocol :heavy_check_mark:
-####  -What are the rules to make 2 devices communicate using IP addresses
-####  -How does routing work with IP
-####  -What is a default gateway for routing
-####  -What is a port from an IP point of view and what is it used for when connecting to another device
+####  -What are the rules to make 2 devices communicate using IP addresses :heavy_check_mark:
+####  -How does routing work with IP :heavy_check_mark:
+####  -What is a default gateway for routing :heavy_check_mark:
+####  -What is a port from an IP point of view and what is it used for when connecting to another device :heavy_check_mark:
