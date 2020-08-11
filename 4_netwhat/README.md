@@ -13,8 +13,8 @@
 ####  -What is UDP :heavy_check_mark:
 ####  -What are the network layers :heavy_check_mark:
 ####  -What is the OSI model :heavy_check_mark:
-####  -What is a DHCP server and the DHCP protocol
-####  -What is a DNS server and the DNS protocol
+####  -What is a DHCP server and the DHCP protocol :heavy_check_mark:
+####  -What is a DNS server and the DNS protocol :heavy_check_mark:
 ####  -What are the rules to make 2 devices communicate using IP addresses
 ####  -How does routing work with IP
 ####  -What is a default gateway for routing
