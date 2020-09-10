@@ -14,7 +14,9 @@ FROMM(ios) Gemeinsam entwickeln (04.2020 ~ ): <https://github.com/feldblume5263/
    
 ## Verfügbare Entwicklungssprachen
 **C**   
- :red_circle: :red_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle:   
+ :red_circle: :red_circle: :red_circle: :red_circle: :red_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle:
+**C++**   
+ :red_circle: :red_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle:
 **SWIFT**   
  :red_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle: :white_circle:   
     
