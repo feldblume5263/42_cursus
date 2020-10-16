@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 14:41:12 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/10/15 21:34:17 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/10/16 13:42:25 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ int				main_loop(t_game *game)
 	draw_player(game);
 	mlx_hook(game->win, X_EVENT_KEY_PRESS, 0, &player_keypressed, game->player);
 	mlx_hook(game->win, X_EVENT_KEY_RELEASE, 0, &player_keyReleased, game->player);
-	printf("%f\n", game->player->walkDirection);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
+	draw_vision(game);
+
 	return (0);
 }
 

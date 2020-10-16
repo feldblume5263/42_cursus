@@ -1,21 +1,38 @@
 #include "../includes/cub.h"
 
-void			draw_player(t_game *game)
+void			draw_vision(t_game *game)
 {
-	int			i;
-	int			j;
+	int			len;
 
-	i = 0;
-	while (i < game->player->radius)
+	len = 0;
+	while (len < 30)
 	{
-		j = 0;
-		while (j < game->player->radius)
-		{
-			game->img.data[(game->player->y  + i) * WINDOW_WIDTH + game->player->x + j] = 0x222;
-			j++;
-		}
-		i++;
+		mlx_pixel_put(game->mlx, game->win, game->player->x +
+		(cos(game->player->rotationAngle) * len),game->player->y
+		+ (sin(game->player->rotationAngle) * len), 0x000000);
+		len ++;
 	}
+}
+
+int				player_keyReleased(int keycode, t_player *player)
+{
+	if (keycode == KEY_UP)
+	{
+		player->walkDirection = 0;
+	}
+	else if (keycode == KEY_DOWN)
+	{
+		player->walkDirection = 0;
+	}
+	else if (keycode == KEY_RIGHT)
+	{
+		player->turnDirection = 0;
+	}
+	else if (keycode == KEY_LEFT)
+	{
+		player->turnDirection = 0;
+	}
+	return (0);
 }
 
 int				player_keypressed(int keycode, t_player *player)
@@ -39,23 +56,20 @@ int				player_keypressed(int keycode, t_player *player)
 	return (0);
 }
 
-int				player_keyReleased(int keycode, t_player *player)
+void			draw_player(t_game *game)
 {
-	if (keycode == KEY_UP)
+	int			i;
+	int			j;
+
+	i = 0;
+	while (i < game->player->radius)
 	{
-		player->walkDirection = 0;
+		j = 0;
+		while (j < game->player->radius)
+		{
+			game->img.data[(game->player->y  + i) * WINDOW_WIDTH + game->player->x + j] = 0x222;
+			j++;
+		}
+		i++;
 	}
-	else if (keycode == KEY_DOWN)
-	{
-		player->walkDirection = 0;
-	}
-	else if (keycode == KEY_RIGHT)
-	{
-		player->turnDirection = 0;
-	}
-	else if (keycode == KEY_LEFT)
-	{
-		player->turnDirection = 0;
-	}
-	return (0);
 }

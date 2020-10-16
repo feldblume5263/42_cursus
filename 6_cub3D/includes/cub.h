@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/10/15 21:21:30 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/10/16 12:22:37 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,5 +121,6 @@ void			draw_line(t_game *game, double x1, double y1, double x2, double y2);
 void			draw_player(t_game *game);
 int				player_keypressed(int keycode, t_player *player);
 int				player_keyReleased(int keycode, t_player *player);
+void			draw_vision(t_game *game);
 
 #endif

@@ -27,7 +27,7 @@ void			map_init(t_game *game)
 		{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
 	};
-	memcpy(game->map, walls, sizeof(int) * MAP_ROWS * MAP_COLS);
+	memcpy(game->map, walls, sizeof(int) * MAP_ROWS * MAP_COLS); // TO DO
 	return ;
 }
 
