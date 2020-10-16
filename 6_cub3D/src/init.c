@@ -34,7 +34,8 @@ void			map_init(t_game *game)
 void			img_init(t_game *game)
 {
 	game->img.img = mlx_new_image(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
-	game->img.data = (int *)mlx_get_data_addr(game->img.img, &game->img.bpp, &game->img.size_l, &game->img.endian);
+	game->img.data = (int *)mlx_get_data_addr(game->img.img,
+		&game->img.bpp, &game->img.size_l, &game->img.endian);
 }
 
 

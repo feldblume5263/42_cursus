@@ -17,7 +17,7 @@ void			update_player(t_game *game)
 	}
 }
 
-void			draw_vision(t_game *game)
+void			draw_view(t_game *game)
 {
 	int			len;
 
@@ -26,7 +26,7 @@ void			draw_vision(t_game *game)
 	{
 		mlx_pixel_put(game->mlx, game->win, game->player->x +
 		(cos(game->player->rotationAngle) * len),game->player->y
-		+ (sin(game->player->rotationAngle) * len), 0x000000);
+		+ (sin(game->player->rotationAngle) * len), 0xCC0000);
 		len ++;
 	}
 }
@@ -84,7 +84,7 @@ void			draw_player(t_game *game)
 		j = 0;
 		while (j < game->player->radius)
 		{
-			game->img.data[(game->player->y  + i) * WINDOW_WIDTH + game->player->x + j] = 0x222;
+			game->img.data[(game->player->y  + i) * WINDOW_WIDTH + game->player->x + j] = 0xCC0000;
 			j++;
 		}
 		i++;
