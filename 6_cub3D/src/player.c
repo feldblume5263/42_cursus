@@ -1,5 +1,22 @@
 #include "../includes/cub.h"
 
+void			update_player(t_game *game)
+{
+	double		moveStep;
+	double		newX;
+	double		newY;
+
+	moveStep = game->player->walkDirection * game->player->moveSpeed;
+	game->player->rotationAngle += game->player->turnDirection * game->player->rotationSpeed;
+	newX = game->player->x + cos(game->player->rotationAngle) * moveStep;
+	newY = game->player->y + sin(game->player->rotationAngle) * moveStep;
+	if (!(inspect_wall(game, newX, newY))) // only set new position if it is not colliding with the map walls
+	{
+		game->player->x = newX;
+		game->player->y = newY;
+	}
+}
+
 void			draw_vision(t_game *game)
 {
 	int			len;

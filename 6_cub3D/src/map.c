@@ -1,5 +1,19 @@
 #include "../includes/cub.h"
 
+int				inspect_wall(t_game *game, double x, double y)
+{
+	int			idx_x;
+	int			idx_y;
+
+	idx_x = floor(x / TILE_SIZE);
+	idx_y = floor(y / TILE_SIZE);
+	printf("(%d, %d)\n", idx_x, idx_y);
+	if (game->map[idx_y][idx_x] > 0)
+		return (1);
+	else
+		return (0);
+}
+
 void			draw_line(t_game *game, double x1, double y1, double x2, double y2)
 {
 	double		deltaX;

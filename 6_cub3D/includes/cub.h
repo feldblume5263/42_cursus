@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/10/16 12:22:37 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/10/16 16:23:22 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ typedef struct	s_player
 {
 	int			x;
 	int			y;
-	int			radius;
+	double		radius;
 	double		turnDirection;
 	double		walkDirection;
 	double		rotationAngle;
@@ -112,6 +112,7 @@ void			window_init(t_game *game);
 void			img_init(t_game *game);
 void			map_init(t_game *game);
 void			player_init(t_game *game);
+int				inspect_wall(t_game *game, double x, double y);
 
 void			draw_rectangles(t_game *game);
 void			draw_rectangle(t_game *game, int x, int y, int color);
@@ -122,5 +123,6 @@ void			draw_player(t_game *game);
 int				player_keypressed(int keycode, t_player *player);
 int				player_keyReleased(int keycode, t_player *player);
 void			draw_vision(t_game *game);
+void			update_player(t_game *game);
 
 #endif
