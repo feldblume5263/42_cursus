@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/10/18 14:33:28 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/10/18 20:10:45 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,14 @@
 # define TILE_SIZE				32
 # define MAP_ROWS				11
 # define MAP_COLS				15
-# define TILE_SIZE				32
 
 # define WINDOW_WIDTH			MAP_COLS * TILE_SIZE
 # define WINDOW_HEIGHT			MAP_ROWS * TILE_SIZE
 # define TO_COORD(X, Y)			((int)floor(Y) * WINDOW_WIDTH + (int)floor(X)) // TODO
 
-# define FOV					60 * (M_PI / 180)
-# define WALL_STRIP_WIDTH		4
-# define RAYS					WINDOW_WIDTH / WALL_STRIP_WIDTH
+# define FOV					120 * (M_PI / 180)
+# define WALL_STRIP_WIDTH		10
+# define RAYS					(WINDOW_WIDTH / WALL_STRIP_WIDTH) * 1.0
 
 # define KEY_Q					12
 # define KEY_W					13

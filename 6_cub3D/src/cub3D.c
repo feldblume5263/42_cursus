@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 14:41:12 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/10/18 00:15:50 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/10/18 20:11:53 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int				main_loop(t_game *gm)
 	mlx_put_image_to_window(gm->mlx, gm->win, gm->img.img, 0, 0);
 	update_player(gm);
 	cast_rays(gm);
-	draw_view(gm);
+	//draw_view(gm);
 
 	return (0);
 }
