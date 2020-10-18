@@ -1,20 +1,19 @@
 #include "../includes/cub.h"
 
-int				inspect_wall(t_game *game, double x, double y)
+int				inspect_wall(t_game *gm, double x, double y)
 {
 	int			idx_x;
 	int			idx_y;
 
 	idx_x = floor(x / TILE_SIZE);
 	idx_y = floor(y / TILE_SIZE);
-	printf("(%d, %d)\n", idx_x, idx_y);
-	if (game->map[idx_y][idx_x] > 0)
+	if (gm->map[idx_y][idx_x] > 0)
 		return (1);
 	else
 		return (0);
 }
 
-void			draw_line(t_game *game, double x1, double y1, double x2, double y2)
+void			draw_line(t_game *gm, double x1, double y1, double x2, double y2)
 {
 	double		deltaX;
 	double		deltaY;
@@ -27,13 +26,13 @@ void			draw_line(t_game *game, double x1, double y1, double x2, double y2)
 	deltaY /= step;
 	while (fabs(x2 - x1) > 0.01 || fabs(y2 - y1) > 0.01)
 	{
-		game->img.data[TO_COORD(x1, y1)] = 0xb3b3b3;
+		gm->img.data[TO_COORD(x1, y1)] = 0xb3b3b3;
 		x1 += deltaX;
 		y1 += deltaY;
 	}
 }
 
-void			draw_lines(t_game *game)
+void			draw_lines(t_game *gm)
 {
 	int			i;
 	int			j;
@@ -41,20 +40,20 @@ void			draw_lines(t_game *game)
 	i = 0;
 	while (i < MAP_COLS)
 	{
-		draw_line(game, i * TILE_SIZE, 0, i * TILE_SIZE, WINDOW_HEIGHT);
+		draw_line(gm, i * TILE_SIZE, 0, i * TILE_SIZE, WINDOW_HEIGHT);
 		i++;
 	}
-	draw_line(game, MAP_COLS * TILE_SIZE - 1, 0, MAP_COLS * TILE_SIZE - 1, WINDOW_HEIGHT);
+	draw_line(gm, MAP_COLS * TILE_SIZE - 1, 0, MAP_COLS * TILE_SIZE - 1, WINDOW_HEIGHT);
 	j = 0;
 	while (j < MAP_ROWS)
 	{
-		draw_line(game, 0, j * TILE_SIZE, WINDOW_WIDTH, j * TILE_SIZE);
+		draw_line(gm, 0, j * TILE_SIZE, WINDOW_WIDTH, j * TILE_SIZE);
 		j++;
 	}
-	draw_line(game, 0, MAP_ROWS * TILE_SIZE - 1, WINDOW_WIDTH, MAP_ROWS * TILE_SIZE - 1);
+	draw_line(gm, 0, MAP_ROWS * TILE_SIZE - 1, WINDOW_WIDTH, MAP_ROWS * TILE_SIZE - 1);
 }
 
-void			draw_rectangle(t_game *game, int x, int y, int color)
+void			draw_rectangle(t_game *gm, int x, int y, int color)
 {
 	int			i;
 	int			j;
@@ -67,14 +66,14 @@ void			draw_rectangle(t_game *game, int x, int y, int color)
 		j = 0;
 		while (j < TILE_SIZE)
 		{
-			game->img.data[(y  + i) * WINDOW_WIDTH + x + j] = color;
+			gm->img.data[(y  + i) * WINDOW_WIDTH + x + j] = color;
 			j++;
 		}
 		i++;
 	}
 }
 
-void			draw_rectangles(t_game *game)
+void			draw_rectangles(t_game *gm)
 {
 	int			i;
 	int			j;
@@ -85,10 +84,10 @@ void			draw_rectangles(t_game *game)
 		j = 0;
 		while (j < MAP_COLS)
 		{
-			if (game->map[i][j] == 1)
-				draw_rectangle(game, j, i, 0x000000);
-			else if (game->map[i][j] == 0)
-				draw_rectangle(game, j, i, 0xFFFFFF);
+			if (gm->map[i][j] == 1)
+				draw_rectangle(gm, j, i, 0x000000);
+			else if (gm->map[i][j] == 0)
+				draw_rectangle(gm, j, i, 0xFFFFFF);
 			j++;
 		}
 		i++;

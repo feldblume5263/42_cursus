@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/10/16 18:41:11 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/10/18 14:33:28 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 # define WINDOW_WIDTH			MAP_COLS * TILE_SIZE
 # define WINDOW_HEIGHT			MAP_ROWS * TILE_SIZE
-# define TO_COORD(X, Y)			((int)floor(Y) * WINDOW_WIDTH + (int)floor(X))
+# define TO_COORD(X, Y)			((int)floor(Y) * WINDOW_WIDTH + (int)floor(X)) // TODO
 
 # define FOV					60 * (M_PI / 180)
 # define WALL_STRIP_WIDTH		4
@@ -64,6 +64,11 @@ typedef struct	s_tex
 	double		height;
 }				t_tex;
 
+typedef struct	s_ray
+{
+	double		ray_angle;
+}				t_ray;
+
 typedef struct	s_config
 {
 	int			width;
@@ -90,8 +95,8 @@ typedef struct	s_img
 
 typedef struct	s_player
 {
-	int			x;
-	int			y;
+	double		x;
+	double		y;
 	double		radius;
 	double		turnDirection;
 	double		walkDirection;
@@ -107,27 +112,32 @@ typedef struct	s_game
 	t_img		img;
 	int			map[MAP_ROWS][MAP_COLS];
 	t_player	*player;
+	t_ray		**rays;
 	t_config	config;
 }				t_game;
 
 int				main(void);
-int				main_loop(t_game *game);
+int				main_loop(t_game *gm);
 
-void			window_init(t_game *game);
-void			img_init(t_game *game);
-void			map_init(t_game *game);
-void			player_init(t_game *game);
-int				inspect_wall(t_game *game, double x, double y);
+void			window_init(t_game *gm);
+void			img_init(t_game *gm);
+void			map_init(t_game *gm);
+void			player_init(t_game *gm);
+int				inspect_wall(t_game *gm, double x, double y);
+void			ray_init(t_game *gm);
 
-void			draw_rectangles(t_game *game);
-void			draw_rectangle(t_game *game, int x, int y, int color);
-void			draw_lines(t_game *game);
-void			draw_line(t_game *game, double x1, double y1, double x2, double y2);
+void			draw_rectangles(t_game *gm);
+void			draw_rectangle(t_game *gm, int x, int y, int color);
+void			draw_lines(t_game *gm);
+void			draw_line(t_game *gm, double x1, double y1, double x2, double y2);
 
-void			draw_player(t_game *game);
+void			draw_player(t_game *gm);
 int				player_keypressed(int keycode, t_player *player);
 int				player_keyReleased(int keycode, t_player *player);
-void			draw_view(t_game *game);
-void			update_player(t_game *game);
+void			draw_view(t_game *gm);
+void			update_player(t_game *gm);
+
+void			cast_rays(t_game *gm);
+void			draw_ray(t_game *gm, double ray_angle);
 
 #endif

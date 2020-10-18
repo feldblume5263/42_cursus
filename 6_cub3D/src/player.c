@@ -1,32 +1,36 @@
 #include "../includes/cub.h"
 
-void			update_player(t_game *game)
+void			update_player(t_game *gm)
 {
-	double		moveStep;
-	double		newX;
-	double		newY;
+	double		move_step;
+	double		new_x;
+	double		new_y;
 
-	moveStep = game->player->walkDirection * game->player->moveSpeed;
-	game->player->rotationAngle += game->player->turnDirection * game->player->rotationSpeed;
-	newX = game->player->x + cos(game->player->rotationAngle) * moveStep;
-	newY = game->player->y + sin(game->player->rotationAngle) * moveStep;
-	if (!(inspect_wall(game, newX, newY))) // only set new position if it is not colliding with the map walls
+	move_step = (gm->player->walkDirection * gm->player->moveSpeed);
+	gm->player->rotationAngle += (gm->player->turnDirection * gm->player->rotationSpeed);
+	new_x = gm->player->x + cos(gm->player->rotationAngle) * move_step;
+	new_y = gm->player->y + sin(gm->player->rotationAngle) * move_step;
+	if (!(inspect_wall(gm, new_x, new_y))) // only set new position if it is not colliding with the map walls
 	{
-		game->player->x = newX;
-		game->player->y = newY;
+		gm->player->x = new_x;
+		gm->player->y = new_y;
 	}
 }
 
-void			draw_view(t_game *game)
+void			draw_view(t_game *gm)
 {
 	int			len;
 
 	len = 0;
 	while (len < 30)
 	{
-		mlx_pixel_put(game->mlx, game->win, game->player->x +
-		(cos(game->player->rotationAngle) * len),game->player->y
-		+ (sin(game->player->rotationAngle) * len), 0xCC0000);
+		mlx_pixel_put (
+			gm->mlx,
+			gm->win,
+			gm->player->x + (cos(gm->player->rotationAngle) * len),
+			gm->player->y + (sin(gm->player->rotationAngle) * len),
+			0xCC0000
+		);
 		len ++;
 	}
 }
@@ -64,7 +68,7 @@ int				player_keypressed(int keycode, t_player *player)
 	}
 	else if (keycode == KEY_RIGHT)
 	{
-		player->turnDirection = +1;
+		player->turnDirection = 1;
 	}
 	else if (keycode == KEY_LEFT)
 	{
@@ -73,18 +77,18 @@ int				player_keypressed(int keycode, t_player *player)
 	return (0);
 }
 
-void			draw_player(t_game *game)
+void			draw_player(t_game *gm)
 {
-	int			i;
-	int			j;
+	double		i;
+	double		j;
 
 	i = 0;
-	while (i < game->player->radius)
+	while (i < gm->player->radius)
 	{
 		j = 0;
-		while (j < game->player->radius)
+		while (j < gm->player->radius)
 		{
-			game->img.data[(game->player->y  + i) * WINDOW_WIDTH + game->player->x + j] = 0xCC0000;
+			gm->img.data[TO_COORD(gm->player->x + j, gm->player->y + i)] = 0xCC0000;
 			j++;
 		}
 		i++;
