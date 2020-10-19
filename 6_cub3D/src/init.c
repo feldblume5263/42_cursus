@@ -1,6 +1,15 @@
 #include "../includes/cub.h"
 
-void			ray_init(t_game *gm)
+void			ray_init(t_game *gm, int idx)
+{
+	gm->rays[idx] = (t_ray *)malloc(sizeof(t_ray));
+	gm->rays[idx]->ray_angle = 0;
+	gm->rays[idx]->wall_hit_x = 0;
+	gm->rays[idx]->wall_hit_y = 0;
+	gm->rays[idx]->distance = 0;
+}
+
+void			rays_init(t_game *gm)
 {
 	gm->rays = (t_ray **)malloc(sizeof(t_ray *) * RAYS);
 }

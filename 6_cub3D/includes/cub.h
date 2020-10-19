@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/10/18 20:10:45 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/10/19 01:08:44 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,13 @@ typedef struct	s_tex
 typedef struct	s_ray
 {
 	double		ray_angle;
+	double		wall_hit_x;
+	double		wall_hit_y;
+	double		distance;
+	double		is_up;
+	double		is_down;
+	double		is_left;
+	double		is_right;
 }				t_ray;
 
 typedef struct	s_config
@@ -122,8 +129,8 @@ void			window_init(t_game *gm);
 void			img_init(t_game *gm);
 void			map_init(t_game *gm);
 void			player_init(t_game *gm);
-int				inspect_wall(t_game *gm, double x, double y);
-void			ray_init(t_game *gm);
+void			rays_init(t_game *gm);
+void			ray_init(t_game *gm, int idx);
 
 void			draw_rectangles(t_game *gm);
 void			draw_rectangle(t_game *gm, int x, int y, int color);
@@ -138,5 +145,9 @@ void			update_player(t_game *gm);
 
 void			cast_rays(t_game *gm);
 void			draw_ray(t_game *gm, double ray_angle);
+void			cast_ray(t_game *gm, int idx);
+
+int				inspect_wall(t_game *gm, double x, double y);
+double			noramalize_angle(double angle);
 
 #endif
