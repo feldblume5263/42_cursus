@@ -12,6 +12,8 @@ void			cast_ray(t_game *gm, int idx)
 	// find x_coordinate
 	x_intercept = gm->player->x +
 		(y_intercept - gm->player->y) / tan(gm->rays[idx]->ray_angle);
+	y_step = TILE_SIZE;
+	x_step = y_step / tan(gm->rays[idx]->ray_angle);
 
 }
 

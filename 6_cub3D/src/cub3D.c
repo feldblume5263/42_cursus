@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 14:41:12 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/10/18 20:11:53 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/10/29 18:21:39 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int				main(void)
 	window_init(&gm);
 	img_init(&gm);
 	player_init(&gm);
-	ray_init(&gm);
+	rays_init(&gm);
 	mlx_loop_hook(gm.mlx, &main_loop, &gm);
 	mlx_loop(gm.mlx);
 }
