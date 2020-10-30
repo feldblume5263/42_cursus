@@ -118,12 +118,12 @@ void			cast_ray(t_game *gm, int idx)
 	cast_verti(gm, idx);
 }
 
-void			draw_ray(t_game *gm, double ray_angle)
+void			draw_ray(t_game *gm, double ray_angle, int idx)
 {
 	int			pix_idx;
 
 	pix_idx = 0;
-	while (pix_idx < 100)
+	while (pix_idx < gm->rays[idx]->distance)
 	{
 		mlx_pixel_put(
 			gm->mlx,
@@ -148,7 +148,7 @@ void			cast_rays(t_game *gm)
 		ray_init(gm, idx);
 		gm->rays[idx]->ray_angle = noramalize_angle(input_ray_angle);
 		cast_ray(gm, idx);
-		draw_ray(gm, input_ray_angle);
+		draw_ray(gm, input_ray_angle, idx);
 		input_ray_angle += (FOV / RAYS);
 		idx++;
 	}
