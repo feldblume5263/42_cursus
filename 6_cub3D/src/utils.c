@@ -1,5 +1,17 @@
 #include "../includes/cub.h"
 
+double			get_distance(double x1, double y1, double x2, double y2)
+{
+	double		x;
+	double		y;
+	double		ret;
+
+	x = x2 - x1;
+	y = y2 - y1;
+	ret = sqrt((x * x) + (y * y));
+	return (ret);
+}
+
 double			noramalize_angle(double angle)
 {
 	angle = fmod(angle, (2 * M_PI));

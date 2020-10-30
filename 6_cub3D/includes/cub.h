@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/10/19 01:08:44 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/10/30 23:01:35 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@
 # define TEX_EAST				3
 # define TEX_SPRITE				4
 
+# define INT_MAX				2147483647
+
 typedef struct	s_tex
 {
 	char		*tex_path;
@@ -69,10 +71,16 @@ typedef struct	s_ray
 	double		wall_hit_x;
 	double		wall_hit_y;
 	double		distance;
+	// ray facing direction
 	double		is_up;
 	double		is_down;
 	double		is_left;
 	double		is_right;
+
+	double		x_intercept;
+	double		y_intercept;
+	double		x_step;
+	double		y_step;
 }				t_ray;
 
 typedef struct	s_config
@@ -146,8 +154,13 @@ void			update_player(t_game *gm);
 void			cast_rays(t_game *gm);
 void			draw_ray(t_game *gm, double ray_angle);
 void			cast_ray(t_game *gm, int idx);
+void			cast_horiz(t_game *gm, int idx);
+void			cast_verti(t_game *gm, int idx);
+int				intercept_horiz(t_game *gm, int idx);
+int				intercept_verti(t_game *gm, int idx);
 
 int				inspect_wall(t_game *gm, double x, double y);
 double			noramalize_angle(double angle);
+double			get_distance(double x1, double y1, double x2, double y2);
 
 #endif

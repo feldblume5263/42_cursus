@@ -7,6 +7,10 @@ void			ray_init(t_game *gm, int idx)
 	gm->rays[idx]->wall_hit_x = 0;
 	gm->rays[idx]->wall_hit_y = 0;
 	gm->rays[idx]->distance = 0;
+	gm->rays[idx]->x_intercept = 0;
+	gm->rays[idx]->y_intercept = 0;
+	gm->rays[idx]->x_step = 0;
+	gm->rays[idx]->y_step = 0;
 }
 
 void			rays_init(t_game *gm)
