@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/10/30 23:01:35 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/10/31 01:36:14 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define TO_COORD(X, Y)			((int)floor(Y) * WINDOW_WIDTH + (int)floor(X)) // TODO
 
 # define FOV					120 * (M_PI / 180)
-# define WALL_STRIP_WIDTH		10
+# define WALL_STRIP_WIDTH		5
 # define RAYS					(WINDOW_WIDTH / WALL_STRIP_WIDTH) * 1.0
 
 # define KEY_Q					12
@@ -68,9 +68,13 @@ typedef struct	s_tex
 typedef struct	s_ray
 {
 	double		ray_angle;
-	double		wall_hit_x;
-	double		wall_hit_y;
+	double		hit_x;
+	double		hit_y;
 	double		distance;
+	double		h_x;
+	double		h_y;
+	double		v_x;
+	double		v_y;
 	// ray facing direction
 	double		is_up;
 	double		is_down;
@@ -152,7 +156,7 @@ void			draw_view(t_game *gm);
 void			update_player(t_game *gm);
 
 void			cast_rays(t_game *gm);
-void			draw_ray(t_game *gm, double ray_angle);
+void			draw_ray(t_game *gm, double ray_angle, int idx);
 void			cast_ray(t_game *gm, int idx);
 void			cast_horiz(t_game *gm, int idx);
 void			cast_verti(t_game *gm, int idx);

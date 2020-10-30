@@ -17,38 +17,8 @@ int				intercept_verti(t_game *gm, int idx)
 		if (inspect_wall(gm, touch_x, touch_y))
 		{
 			hit_flag = 1;
-			gm->rays[idx]->wall_hit_x = touch_x;
-			gm->rays[idx]->wall_hit_y = touch_y;
-			break ;
-		}
-		else
-		{
-			touch_x += gm->rays[idx]->x_step;
-			touch_y += gm->rays[idx]->y_step;
-		}
-	}
-	return (hit_flag);
-}
-
-int				intercept_horiz(t_game *gm, int idx)
-{
-	double		touch_x;
-	double		touch_y;
-	int			hit_flag;
-
-	hit_flag = 0;
-	touch_x = gm->rays[idx]->x_intercept;
-	touch_y = gm->rays[idx]->y_intercept;
-	if (gm->rays[idx]->is_up)
-		touch_y--;
-	while (touch_x >= 0 && touch_x <= WINDOW_WIDTH
-		&& touch_y >= 0 && touch_y <= WINDOW_HEIGHT)
-	{
-		if (inspect_wall(gm, touch_x, touch_y))
-		{
-			hit_flag = 1;
-			gm->rays[idx]->wall_hit_x = touch_x;
-			gm->rays[idx]->wall_hit_y = touch_y;
+			gm->rays[idx]->v_x = touch_x;
+			gm->rays[idx]->v_y = touch_y;
 			break ;
 		}
 		else
@@ -77,14 +47,44 @@ void			cast_verti(t_game *gm, int idx)
 	gm->rays[idx]->y_step *= (gm->rays[idx]->is_up && gm->rays[idx]->y_step > 0) ? -1 : 1;
 	gm->rays[idx]->y_step *= (gm->rays[idx]->is_down && gm->rays[idx]->y_step < 0) ? -1 : 1;
 	hit_flag = intercept_verti(gm, idx);
-	temp = get_distance(gm->player->x, gm->player->y, gm->rays[idx]->wall_hit_x,
-		gm->rays[idx]->wall_hit_y);
+	temp = get_distance(gm->player->x, gm->player->y, gm->rays[idx]->v_x,
+		gm->rays[idx]->v_y);
 	was_hit_verti = 0;
 	if (temp < gm->rays[idx]->distance && hit_flag)
 	{
 		gm->rays[idx]->distance = temp;
 		was_hit_verti = 1;
 	}
+}
+
+int				intercept_horiz(t_game *gm, int idx)
+{
+	double		touch_x;
+	double		touch_y;
+	int			hit_flag;
+
+	hit_flag = 0;
+	touch_x = gm->rays[idx]->x_intercept;
+	touch_y = gm->rays[idx]->y_intercept;
+	if (gm->rays[idx]->is_up)
+		touch_y--;
+	while (touch_x >= 0 && touch_x <= WINDOW_WIDTH
+		&& touch_y >= 0 && touch_y <= WINDOW_HEIGHT)
+	{
+		if (inspect_wall(gm, touch_x, touch_y))
+		{
+			hit_flag = 1;
+			gm->rays[idx]->h_x = touch_x;
+			gm->rays[idx]->h_y = touch_y;
+			break ;
+		}
+		else
+		{
+			touch_x += gm->rays[idx]->x_step;
+			touch_y += gm->rays[idx]->y_step;
+		}
+	}
+	return (hit_flag);
 }
 
 void			cast_horiz(t_game *gm, int idx)
@@ -103,7 +103,7 @@ void			cast_horiz(t_game *gm, int idx)
 	gm->rays[idx]->x_step *= (gm->rays[idx]->is_right && gm->rays[idx]->x_step < 0) ? -1 : 1;
 	hit_flag = intercept_horiz(gm, idx);
 	gm->rays[idx]->distance = (hit_flag) ?
-	get_distance(gm->player->x, gm->player->y, gm->rays[idx]->wall_hit_x, gm->rays[idx]->wall_hit_y)
+	get_distance(gm->player->x, gm->player->y, gm->rays[idx]->h_x, gm->rays[idx]->h_y)
 	: INT_MAX;
 }
 
@@ -116,6 +116,10 @@ void			cast_ray(t_game *gm, int idx)
 	gm->rays[idx]->is_left = !(gm->rays[idx]->is_right);
 	cast_horiz(gm, idx);
 	cast_verti(gm, idx);
+	gm->rays[idx]->hit_x = gm->rays[idx]->h_x < gm->rays[idx]->v_x ?
+		gm->rays[idx]->h_x : gm->rays[idx]->v_x;
+	gm->rays[idx]->hit_x = gm->rays[idx]->h_y < gm->rays[idx]->v_y ?
+		gm->rays[idx]->h_y : gm->rays[idx]->v_y;
 }
 
 void			draw_ray(t_game *gm, double ray_angle, int idx)
