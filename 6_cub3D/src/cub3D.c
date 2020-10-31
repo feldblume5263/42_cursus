@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 14:41:12 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/10/29 18:21:39 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/10/31 13:14:04 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int				main_loop(t_game *gm)
 	draw_rectangles(gm);
 	draw_lines(gm);
 	draw_player(gm);
-	mlx_hook(gm->win, X_EVENT_KEY_PRESS, 0, &player_keypressed, gm->player);
-	mlx_hook(gm->win, X_EVENT_KEY_RELEASE, 0, &player_keyReleased, gm->player);
+	mlx_hook(gm->win, X_EVENT_KEY_PRESS, 0, &player_keypressed, gm->p);
+	mlx_hook(gm->win, X_EVENT_KEY_RELEASE, 0, &player_keyReleased, gm->p);
 	mlx_put_image_to_window(gm->mlx, gm->win, gm->img.img, 0, 0);
 	update_player(gm);
 	cast_rays(gm);

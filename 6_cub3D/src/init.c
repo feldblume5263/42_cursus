@@ -1,34 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/31 13:57:24 by Feldblume         #+#    #+#             */
+/*   Updated: 2020/10/31 14:00:32 by Feldblume        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub.h"
 
 void			ray_init(t_game *gm, int idx)
 {
-	gm->rays[idx] = (t_ray *)malloc(sizeof(t_ray));
-	gm->rays[idx]->ray_angle = 0;
-	gm->rays[idx]->hit_x = 0;
-	gm->rays[idx]->hit_y = 0;
-	gm->rays[idx]->distance = 0;
-	gm->rays[idx]->x_intercept = 0;
-	gm->rays[idx]->y_intercept = 0;
-	gm->rays[idx]->x_step = 0;
-	gm->rays[idx]->y_step = 0;
+	gm->r[idx] = (t_ray *)malloc(sizeof(t_ray));
+	gm->r[idx]->ray_angle = 0;
+	gm->r[idx]->hit_x = 0;
+	gm->r[idx]->hit_y = 0;
+	gm->r[idx]->distance = 0;
+	gm->r[idx]->x_intercept = 0;
+	gm->r[idx]->y_intercept = 0;
+	gm->r[idx]->x_step = 0;
+	gm->r[idx]->y_step = 0;
+	gm->r[idx]->h_x = 0;;
+	gm->r[idx]->h_y = 0;
+	gm->r[idx]->v_x = 0;
+	gm->r[idx]->v_y = 0;
+	gm->r[idx]->verti_flag = 0;
+	gm->r[idx]->horiz_flag = 0;
 }
 
 void			rays_init(t_game *gm)
 {
-	gm->rays = (t_ray **)malloc(sizeof(t_ray *) * RAYS);
+	gm->r = (t_ray **)malloc(sizeof(t_ray *) * RAYS);
 }
 
 void			player_init(t_game *gm)
 {
-	gm->player = (t_player *)malloc(sizeof(t_player));
-	gm->player->x = WINDOW_WIDTH / 2;
-	gm->player->y = WINDOW_HEIGHT / 2;
-	gm->player->radius = 3;
-	gm->player->turnDirection = 0; // -1 if left, +1 if right
-	gm->player->walkDirection = 0; // -1 if back, +1 if front
-	gm->player->rotationAngle = M_PI / 2;
-	gm->player->moveSpeed = 2.0;
-	gm->player->rotationSpeed = 2.0 * (M_PI / 180);
+	gm->p = (t_player *)malloc(sizeof(t_player));
+	gm->p->x = WINDOW_WIDTH / 2;
+	gm->p->y = WINDOW_HEIGHT / 2;
+	gm->p->radius = 3;
+	gm->p->turn_dir = 0;
+	gm->p->walk_dir = 0;
+	gm->p->rot_angle = M_PI / 2;
+	gm->p->mv_speed = 5.0;
+	gm->p->rot_speed = 5.0 * (M_PI / 180);
 }
 
 void			map_init(t_game *gm)

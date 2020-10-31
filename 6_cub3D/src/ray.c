@@ -1,125 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ray.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/31 13:34:43 by Feldblume         #+#    #+#             */
+/*   Updated: 2020/10/31 13:59:42 by Feldblume        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub.h"
-
-int				intercept_verti(t_game *gm, int idx)
-{
-	double		touch_x;
-	double		touch_y;
-	int			hit_flag;
-
-	hit_flag = 0;
-	touch_x = gm->rays[idx]->x_intercept;
-	touch_y = gm->rays[idx]->y_intercept;
-	if (gm->rays[idx]->is_left)
-		touch_x--;
-	while (touch_x >= 0 && touch_x <= WINDOW_WIDTH
-		&& touch_y >= 0 && touch_y <= WINDOW_HEIGHT)
-	{
-		if (inspect_wall(gm, touch_x, touch_y))
-		{
-			hit_flag = 1;
-			gm->rays[idx]->v_x = touch_x;
-			gm->rays[idx]->v_y = touch_y;
-			break ;
-		}
-		else
-		{
-			touch_x += gm->rays[idx]->x_step;
-			touch_y += gm->rays[idx]->y_step;
-		}
-	}
-	return (hit_flag);
-}
-
-void			cast_verti(t_game *gm, int idx)
-{
-	double		temp;
-	int			hit_flag;
-	int			was_hit_verti;
-
-	hit_flag = 0;
-	gm->rays[idx]->x_intercept = floor(gm->player->x / TILE_SIZE) * TILE_SIZE;
-	gm->rays[idx]->x_intercept += gm->rays[idx]->is_right ? TILE_SIZE : 0;
-	gm->rays[idx]->y_intercept = gm->player->y +
-		(gm->rays[idx]->x_intercept - gm->player->x) * tan(gm->rays[idx]->ray_angle);
-	gm->rays[idx]->x_step = TILE_SIZE;
-	gm->rays[idx]->x_step *= gm->rays[idx]->is_left ? -1 : 1;
-	gm->rays[idx]->y_step = gm->rays[idx]->x_step * tan(gm->rays[idx]->ray_angle);
-	gm->rays[idx]->y_step *= (gm->rays[idx]->is_up && gm->rays[idx]->y_step > 0) ? -1 : 1;
-	gm->rays[idx]->y_step *= (gm->rays[idx]->is_down && gm->rays[idx]->y_step < 0) ? -1 : 1;
-	hit_flag = intercept_verti(gm, idx);
-	temp = get_distance(gm->player->x, gm->player->y, gm->rays[idx]->v_x,
-		gm->rays[idx]->v_y);
-	was_hit_verti = 0;
-	if (temp < gm->rays[idx]->distance && hit_flag)
-	{
-		gm->rays[idx]->distance = temp;
-		was_hit_verti = 1;
-	}
-}
-
-int				intercept_horiz(t_game *gm, int idx)
-{
-	double		touch_x;
-	double		touch_y;
-	int			hit_flag;
-
-	hit_flag = 0;
-	touch_x = gm->rays[idx]->x_intercept;
-	touch_y = gm->rays[idx]->y_intercept;
-	if (gm->rays[idx]->is_up)
-		touch_y--;
-	while (touch_x >= 0 && touch_x <= WINDOW_WIDTH
-		&& touch_y >= 0 && touch_y <= WINDOW_HEIGHT)
-	{
-		if (inspect_wall(gm, touch_x, touch_y))
-		{
-			hit_flag = 1;
-			gm->rays[idx]->h_x = touch_x;
-			gm->rays[idx]->h_y = touch_y;
-			break ;
-		}
-		else
-		{
-			touch_x += gm->rays[idx]->x_step;
-			touch_y += gm->rays[idx]->y_step;
-		}
-	}
-	return (hit_flag);
-}
-
-void			cast_horiz(t_game *gm, int idx)
-{
-	int			hit_flag;
-
-	hit_flag = 0;
-	gm->rays[idx]->y_intercept = floor(gm->player->y / TILE_SIZE) * TILE_SIZE;
-	gm->rays[idx]->y_intercept += gm->rays[idx]->is_down ? TILE_SIZE : 0;
-	gm->rays[idx]->x_intercept = gm->player->x +
-		(gm->rays[idx]->y_intercept - gm->player->y) / tan(gm->rays[idx]->ray_angle);
-	gm->rays[idx]->y_step = TILE_SIZE;
-	gm->rays[idx]->y_step *= gm->rays[idx]->is_up ? -1 : 1;
-	gm->rays[idx]->x_step = gm->rays[idx]->y_step / tan(gm->rays[idx]->ray_angle);
-	gm->rays[idx]->x_step *= (gm->rays[idx]->is_left && gm->rays[idx]->x_step > 0) ? -1 : 1;
-	gm->rays[idx]->x_step *= (gm->rays[idx]->is_right && gm->rays[idx]->x_step < 0) ? -1 : 1;
-	hit_flag = intercept_horiz(gm, idx);
-	gm->rays[idx]->distance = (hit_flag) ?
-	get_distance(gm->player->x, gm->player->y, gm->rays[idx]->h_x, gm->rays[idx]->h_y)
-	: INT_MAX;
-}
 
 void			cast_ray(t_game *gm, int idx)
 {
-	gm->rays[idx]->is_down = (gm->rays[idx]->ray_angle > 0 && gm->rays[idx]->ray_angle < M_PI);
-	gm->rays[idx]->is_up = !(gm->rays[idx]->is_down);
-	gm->rays[idx]->is_right = gm->rays[idx]->ray_angle
-	< (0.5 * M_PI) || gm->rays[idx]->ray_angle > (1.5 * M_PI);
-	gm->rays[idx]->is_left = !(gm->rays[idx]->is_right);
+	gm->r[idx]->is_down = (gm->r[idx]->ray_angle > 0
+		&& gm->r[idx]->ray_angle < M_PI);
+	gm->r[idx]->is_up = !(gm->r[idx]->is_down);
+	gm->r[idx]->is_right = gm->r[idx]->ray_angle
+	< (0.5 * M_PI) || gm->r[idx]->ray_angle > (1.5 * M_PI);
+	gm->r[idx]->is_left = !(gm->r[idx]->is_right);
 	cast_horiz(gm, idx);
 	cast_verti(gm, idx);
-	gm->rays[idx]->hit_x = gm->rays[idx]->h_x < gm->rays[idx]->v_x ?
-		gm->rays[idx]->h_x : gm->rays[idx]->v_x;
-	gm->rays[idx]->hit_x = gm->rays[idx]->h_y < gm->rays[idx]->v_y ?
-		gm->rays[idx]->h_y : gm->rays[idx]->v_y;
+	gm->r[idx]->hit_x = gm->r[idx]->h_x < gm->r[idx]->v_x ?
+		gm->r[idx]->h_x : gm->r[idx]->v_x;
+	gm->r[idx]->hit_x = gm->r[idx]->h_y < gm->r[idx]->v_y ?
+		gm->r[idx]->h_y : gm->r[idx]->v_y;
 }
 
 void			draw_ray(t_game *gm, double ray_angle, int idx)
@@ -127,15 +33,14 @@ void			draw_ray(t_game *gm, double ray_angle, int idx)
 	int			pix_idx;
 
 	pix_idx = 0;
-	while (pix_idx < gm->rays[idx]->distance)
+	while (pix_idx < gm->r[idx]->distance)
 	{
 		mlx_pixel_put(
 			gm->mlx,
 			gm->win,
-			gm->player->x + (cos(ray_angle) * pix_idx),
-			gm->player->y + (sin(ray_angle) * pix_idx),
-			0x444444
-		);
+			gm->p->x + (cos(ray_angle) * pix_idx),
+			gm->p->y + (sin(ray_angle) * pix_idx),
+			0xEAE200);
 		pix_idx++;
 	}
 }
@@ -143,17 +48,17 @@ void			draw_ray(t_game *gm, double ray_angle, int idx)
 void			cast_rays(t_game *gm)
 {
 	double		input_ray_angle;
-	int			idx;
+	int			ray_idx;
 
-	idx = 0;
-	input_ray_angle = gm->player->rotationAngle - (FOV / 2.0);
-	while (idx < RAYS)
+	ray_idx = 0;
+	input_ray_angle = gm->p->rot_angle - (FOV / 2.0);
+	while (ray_idx < RAYS)
 	{
-		ray_init(gm, idx);
-		gm->rays[idx]->ray_angle = noramalize_angle(input_ray_angle);
-		cast_ray(gm, idx);
-		draw_ray(gm, input_ray_angle, idx);
+		ray_init(gm, ray_idx);
+		gm->r[ray_idx]->ray_angle = noramalize_angle(input_ray_angle);
+		cast_ray(gm, ray_idx);
+		draw_ray(gm, input_ray_angle, ray_idx);
 		input_ray_angle += (FOV / RAYS);
-		idx++;
+		ray_idx++;
 	}
 }

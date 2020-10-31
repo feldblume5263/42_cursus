@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/10/31 01:36:14 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/10/31 15:38:40 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #include "libft.h"
 
 # define USE_MATH_DEFINES
-# define TILE_SIZE				32
+# define TILE_SIZE				64
 # define MAP_ROWS				11
 # define MAP_COLS				15
 
@@ -30,8 +30,10 @@
 # define TO_COORD(X, Y)			((int)floor(Y) * WINDOW_WIDTH + (int)floor(X)) // TODO
 
 # define FOV					120 * (M_PI / 180)
-# define WALL_STRIP_WIDTH		5
+# define WALL_STRIP_WIDTH		1
 # define RAYS					(WINDOW_WIDTH / WALL_STRIP_WIDTH) * 1.0
+
+# define MINILIZE				0.2
 
 # define KEY_Q					12
 # define KEY_W					13
@@ -75,6 +77,8 @@ typedef struct	s_ray
 	double		h_y;
 	double		v_x;
 	double		v_y;
+	double		verti_flag;
+	double		horiz_flag;
 	// ray facing direction
 	double		is_up;
 	double		is_down;
@@ -116,11 +120,11 @@ typedef struct	s_player
 	double		x;
 	double		y;
 	double		radius;
-	double		turnDirection;
-	double		walkDirection;
-	double		rotationAngle;
-	double		moveSpeed;
-	double		rotationSpeed;
+	double		turn_dir;
+	double		walk_dir;
+	double		rot_angle;
+	double		mv_speed;
+	double		rot_speed;
 }				t_player;
 
 typedef struct	s_game
@@ -129,8 +133,8 @@ typedef struct	s_game
 	void		*win;
 	t_img		img;
 	int			map[MAP_ROWS][MAP_COLS];
-	t_player	*player;
-	t_ray		**rays;
+	t_player	*p;
+	t_ray		**r;
 	t_config	config;
 }				t_game;
 
@@ -158,6 +162,7 @@ void			update_player(t_game *gm);
 void			cast_rays(t_game *gm);
 void			draw_ray(t_game *gm, double ray_angle, int idx);
 void			cast_ray(t_game *gm, int idx);
+
 void			cast_horiz(t_game *gm, int idx);
 void			cast_verti(t_game *gm, int idx);
 int				intercept_horiz(t_game *gm, int idx);
