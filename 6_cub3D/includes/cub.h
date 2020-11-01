@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/10/31 15:38:40 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/10/31 16:33:29 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define WALL_STRIP_WIDTH		1
 # define RAYS					(WINDOW_WIDTH / WALL_STRIP_WIDTH) * 1.0
 
-# define MINILIZE				0.2
+# define MINI				0.2
 
 # define KEY_Q					12
 # define KEY_W					13

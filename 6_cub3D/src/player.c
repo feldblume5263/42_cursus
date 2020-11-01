@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:57:38 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/10/31 13:57:41 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/10/31 16:33:14 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,6 @@ void			update_player(t_game *gm)
 	{
 		gm->p->x = new_x;
 		gm->p->y = new_y;
-	}
-}
-
-void			draw_view(t_game *gm)
-{
-	int			len;
-
-	len = 0;
-	while (len < 30)
-	{
-		mlx_pixel_put (
-			gm->mlx,
-			gm->win,
-			gm->p->x + (cos(gm->p->rot_angle) * len),
-			gm->p->y + (sin(gm->p->rot_angle) * len),
-			0xCC0000
-		);
-		len ++;
 	}
 }
 
@@ -100,7 +82,7 @@ void			draw_player(t_game *gm)
 		j = 0;
 		while (j < gm->p->radius)
 		{
-			gm->img.data[TO_COORD(gm->p->x + j, gm->p->y + i)] = 0xCC0000;
+			gm->img.data[TO_COORD(gm->p->x * MINI + j, gm->p->y * MINI + i)] = 0xCC0000;
 			j++;
 		}
 		i++;

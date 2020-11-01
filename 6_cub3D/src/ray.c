@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:34:43 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/10/31 13:59:42 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/10/31 16:35:11 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void			draw_ray(t_game *gm, double ray_angle, int idx)
 		mlx_pixel_put(
 			gm->mlx,
 			gm->win,
-			gm->p->x + (cos(ray_angle) * pix_idx),
-			gm->p->y + (sin(ray_angle) * pix_idx),
+			gm->p->x * MINI + (cos(ray_angle) * pix_idx * MINI),
+			gm->p->y * MINI + (sin(ray_angle) * pix_idx * MINI),
 			0xEAE200);
 		pix_idx++;
 	}

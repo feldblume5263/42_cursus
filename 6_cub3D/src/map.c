@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:59:02 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/10/31 15:39:47 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/10/31 16:33:11 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void			draw_line(t_game *gm, double x1, double y1, double x2, double y2)
 	deltaY /= step;
 	while (fabs(x2 - x1) > 0.01 || fabs(y2 - y1) > 0.01)
 	{
-		gm->img.data[TO_COORD(x1, y1)] = 0xb3b3b3;
+		gm->img.data[TO_COORD(x1 * MINI, y1 * MINI)] = 0xb3b3b3;
 		x1 += deltaX;
 		y1 += deltaY;
 	}
@@ -39,17 +39,21 @@ void			draw_lines(t_game *gm)
 	i = 0;
 	while (i < MAP_COLS)
 	{
-		draw_line(gm, i * TILE_SIZE, 0, i * TILE_SIZE, WINDOW_HEIGHT);
+		draw_line(gm, i * TILE_SIZE, 0,
+			i * TILE_SIZE, WINDOW_HEIGHT);
 		i++;
 	}
-	draw_line(gm, MAP_COLS * (TILE_SIZE - 1) * MINILIZE, 0, (MAP_COLS * TILE_SIZE - 1) * MINILIZE, WINDOW_HEIGHT);
+	draw_line(gm, MAP_COLS * TILE_SIZE - 1, 0,
+		MAP_COLS * TILE_SIZE - 1, WINDOW_HEIGHT);
 	j = 0;
 	while (j < MAP_ROWS)
 	{
-		draw_line(gm, 0, j * TILE_SIZE * MINILIZE, WINDOW_WIDTH * MINILIZE, j * TILE_SIZE * MINILIZE);
+		draw_line(gm, 0, j * TILE_SIZE, WINDOW_WIDTH,
+			j * TILE_SIZE);
 		j++;
 	}
-	draw_line(gm, 0, MAP_ROWS * TILE_SIZE - 1, WINDOW_WIDTH, MAP_ROWS * TILE_SIZE - 1);
+	draw_line(gm, 0, MAP_ROWS * TILE_SIZE - 1,
+		WINDOW_WIDTH, MAP_ROWS * TILE_SIZE - 1);
 }
 
 void			draw_rectangle(t_game *gm, int x, int y, int color)
@@ -57,13 +61,13 @@ void			draw_rectangle(t_game *gm, int x, int y, int color)
 	int			i;
 	int			j;
 
-	x *= (TILE_SIZE);
-	y *= (TILE_SIZE);
+	x *= (TILE_SIZE * MINI);
+	y *= (TILE_SIZE * MINI);
 	i = 0;
-	while (i < TILE_SIZE)
+	while (i < TILE_SIZE * MINI)
 	{
 		j = 0;
-		while (j < TILE_SIZE)
+		while (j < TILE_SIZE * MINI)
 		{
 			gm->img.data[(y  + i) * WINDOW_WIDTH + x + j] = color;
 			j++;
