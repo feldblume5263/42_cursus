@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 16:36:10 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/01 15:34:36 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/01 21:34:32 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,5 @@ void			rendering(t_game *gm)
 		ray = gm->r[ray_idx];
 		sight_height = (WINDOW_WIDTH / 2) / tan(FOV / 2);
 		wall_height = (TILE_SIZE / gm->r[ray_idx]->distance) * sight_height;
-
 	}
 }
