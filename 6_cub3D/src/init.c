@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:57:24 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/10/31 14:00:32 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/03 18:07:26 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void			player_init(t_game *gm)
 	gm->p = (t_player *)malloc(sizeof(t_player));
 	gm->p->x = WINDOW_WIDTH / 2;
 	gm->p->y = WINDOW_HEIGHT / 2;
-	gm->p->radius = 3;
+	gm->p->radius = 6;
 	gm->p->turn_dir = 0;
 	gm->p->walk_dir = 0;
 	gm->p->rot_angle = M_PI / 2;

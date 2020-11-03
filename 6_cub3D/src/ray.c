@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:34:43 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/10/31 16:35:11 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/03 17:51:56 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void			cast_rays(t_game *gm)
 		ray_init(gm, ray_idx);
 		gm->r[ray_idx]->ray_angle = noramalize_angle(input_ray_angle);
 		cast_ray(gm, ray_idx);
-		draw_ray(gm, input_ray_angle, ray_idx);
+		//draw_ray(gm, input_ray_angle, ray_idx);
 		input_ray_angle += (FOV / RAYS);
 		ray_idx++;
 	}

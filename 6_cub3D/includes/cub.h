@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/10/31 16:33:29 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/03 17:46:25 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@
 # define WINDOW_HEIGHT			MAP_ROWS * TILE_SIZE
 # define TO_COORD(X, Y)			((int)floor(Y) * WINDOW_WIDTH + (int)floor(X)) // TODO
 
-# define FOV					120 * (M_PI / 180)
+# define FOV					60 * (M_PI / 180)
 # define WALL_STRIP_WIDTH		1
 # define RAYS					(WINDOW_WIDTH / WALL_STRIP_WIDTH) * 1.0
 
-# define MINI				0.2
+# define MINI					0.2
 
 # define KEY_Q					12
 # define KEY_W					13
@@ -167,6 +167,9 @@ void			cast_horiz(t_game *gm, int idx);
 void			cast_verti(t_game *gm, int idx);
 int				intercept_horiz(t_game *gm, int idx);
 int				intercept_verti(t_game *gm, int idx);
+
+void			rendering(t_game *gm);
+void			render_wall(t_game *gm, int idx, int top, int bot);
 
 int				inspect_wall(t_game *gm, double x, double y);
 double			noramalize_angle(double angle);
