@@ -6,19 +6,20 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/05 13:34:02 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/05 21:04:31 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_H
 # define CUB_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include "mlx.h"
-#include "libft.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <math.h>
+# include "mlx.h"
+# include "gnl.h"
+# include "libft.h"
 
 # define USE_MATH_DEFINES
 # define TILE_SIZE				64

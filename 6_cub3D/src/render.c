@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 16:36:10 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/05 20:41:11 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/05 20:50:59 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,14 @@ int				get_wall_color(t_game *gm, int idx, int landscape, int type)
 
 int				get_wall_type(t_game *gm, int idx)
 {
-	if (gm->r[idx]->verti_flag)
+	if (gm->r[idx]->horiz_flag && gm->r[idx]->is_down)
 		return (0);
-	if (gm->r[idx]->horiz_flag)
+	else if (gm->r[idx]->horiz_flag && gm->r[idx]->is_up)
 		return (1);
-	else
+	else if (gm->r[idx]->verti_flag && gm->r[idx]->is_right)
 		return (2);
+	else
+		return (3);
 }
 
 void			render_wall(t_game *gm, int idx, int top, int bot)
