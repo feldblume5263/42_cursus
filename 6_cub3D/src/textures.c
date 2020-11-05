@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 15:15:20 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/05 17:52:05 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/05 19:26:44 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ void			load_texture(t_game *gm)
 	gm->conf.tex[TEX_SOUTH].tex_path = strdup("./textures/SO.xpm");
 	gm->conf.tex[TEX_WEST].tex_path = strdup("./textures/WE.xpm");
 	gm->conf.tex[TEX_EAST].tex_path = strdup("./textures/EA.xpm");
+	gm->conf.tex[TEX_SPRITE].tex_path = strdup("./textures/ITEM.xpm");
+
 	tex_idx = 0;
-	while (tex_idx < TEXTURES - 1)
+	while (tex_idx < TEXTURES)
 	{
 		gm->conf.tex[tex_idx].texture =
 			load_image(gm, gm->conf.tex[tex_idx].tex_path, &texture, tex_idx);

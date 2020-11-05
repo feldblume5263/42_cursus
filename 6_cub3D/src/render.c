@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 16:36:10 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/05 17:54:29 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/05 20:41:11 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ int				get_wall_color(t_game *gm, int idx, int landscape, int type)
 	int			wall_strip_height;
 	int			distance_top;
 
-	project_height = (WINDOW_WIDTH / 2) / tan(FOV / 2);
+	project_height = (WINDOW_WIDTH / 2.0) / tan(FOV / 2.0);
 	wall_strip_height = floor((TILE_SIZE / gm->r[idx]->distance)
 		* project_height);
-	distance_top = landscape + (wall_strip_height / 2) - (WINDOW_HEIGHT / 2);
+	distance_top = landscape + ((int)wall_strip_height / 2) - (WINDOW_HEIGHT / 2);
 	if (gm->r[idx]->verti_flag)
-		tex_x = (int)gm->r[idx]->hit_y % TILE_SIZE;
+		tex_x = (int)(gm->r[idx]->hit_y) % TILE_SIZE;
 	else
-		tex_x = (int)gm->r[idx]->hit_x % TILE_SIZE;
+		tex_x = (int)(gm->r[idx]->hit_x) % TILE_SIZE;
 	tex_y = (distance_top *
 		((double)gm->conf.tex[type].height / wall_strip_height));
 	return (gm->conf.tex[type].texture

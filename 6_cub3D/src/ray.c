@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:34:43 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/05 17:56:43 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/05 20:23:12 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ void			cast_ray(t_game *gm, int idx)
 	gm->r[idx]->is_left = !(gm->r[idx]->is_right);
 	cast_horiz(gm, idx);
 	cast_verti(gm, idx);
-	if (get_distance(gm->p->x, gm->p->y, gm->r[idx]->h_x, gm->r[idx]->h_y)
-		< get_distance(gm->p->x, gm->p->y, gm->r[idx]->v_x, gm->r[idx]->v_y))
+	if (!(gm->r[idx]->verti_flag))
 	{
 		gm->r[idx]->hit_x = gm->r[idx]->h_x;
 		gm->r[idx]->hit_y = gm->r[idx]->h_y;
