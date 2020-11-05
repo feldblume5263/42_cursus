@@ -3,20 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
+/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 16:36:10 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/03 19:28:40 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/05 17:54:29 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+int				get_wall_color(t_game *gm, int idx, int landscape, int type)
+{
+	int			tex_x;
+	int			tex_y;
+	double		project_height;
+	int			wall_strip_height;
+	int			distance_top;
+
+	project_height = (WINDOW_WIDTH / 2) / tan(FOV / 2);
+	wall_strip_height = floor((TILE_SIZE / gm->r[idx]->distance)
+		* project_height);
+	distance_top = landscape + (wall_strip_height / 2) - (WINDOW_HEIGHT / 2);
+	if (gm->r[idx]->verti_flag)
+		tex_x = (int)gm->r[idx]->hit_y % TILE_SIZE;
+	else
+		tex_x = (int)gm->r[idx]->hit_x % TILE_SIZE;
+	tex_y = (distance_top *
+		((double)gm->conf.tex[type].height / wall_strip_height));
+	return (gm->conf.tex[type].texture
+		[(int)gm->conf.tex[type].width * tex_y + tex_x]);
+}
+
+int				get_wall_type(t_game *gm, int idx)
+{
+	if (gm->r[idx]->verti_flag)
+		return (0);
+	if (gm->r[idx]->horiz_flag)
+		return (1);
+	else
+		return (2);
+}
 
 void			render_wall(t_game *gm, int idx, int top, int bot)
 {
 	int			ceil;
 	int			landscape;
 	int			floor;
+	int			tex_color;
 
 	ceil = 0;
 	landscape = top;
@@ -27,8 +60,8 @@ void			render_wall(t_game *gm, int idx, int top, int bot)
 	}
 	while (landscape < bot)
 	{
-		gm->img.data[(WINDOW_WIDTH * landscape) + idx] =
-			gm->r[idx]->verti_flag ? 0xEFDB00 : 0xF2EA00;
+		tex_color = get_wall_color(gm, idx, landscape, get_wall_type(gm, idx));
+		gm->img.data[(WINDOW_WIDTH * landscape) + idx] = tex_color;
 		landscape++;
 	}
 	floor = bot;

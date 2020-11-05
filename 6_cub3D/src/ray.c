@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
+/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:34:43 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/03 17:51:56 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/05 17:56:43 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,18 @@ void			cast_ray(t_game *gm, int idx)
 	gm->r[idx]->is_left = !(gm->r[idx]->is_right);
 	cast_horiz(gm, idx);
 	cast_verti(gm, idx);
-	gm->r[idx]->hit_x = gm->r[idx]->h_x < gm->r[idx]->v_x ?
-		gm->r[idx]->h_x : gm->r[idx]->v_x;
-	gm->r[idx]->hit_x = gm->r[idx]->h_y < gm->r[idx]->v_y ?
-		gm->r[idx]->h_y : gm->r[idx]->v_y;
+	if (get_distance(gm->p->x, gm->p->y, gm->r[idx]->h_x, gm->r[idx]->h_y)
+		< get_distance(gm->p->x, gm->p->y, gm->r[idx]->v_x, gm->r[idx]->v_y))
+	{
+		gm->r[idx]->hit_x = gm->r[idx]->h_x;
+		gm->r[idx]->hit_y = gm->r[idx]->h_y;
+	}
+	else
+	{
+		gm->r[idx]->hit_x = gm->r[idx]->v_x;
+		gm->r[idx]->hit_y = gm->r[idx]->v_y;
+	}
+
 }
 
 void			draw_ray(t_game *gm, double ray_angle, int idx)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
+/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/04 15:56:23 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/05 13:34:02 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,17 +97,17 @@ typedef struct	s_ray
 
 typedef struct	s_config
 {
-	int			width;
-	int			height;
-	int			rows;
-	int			colums;
-	double		tile;
+	// int			width;
+	// int			height;
+	// int			rows;
+	// int			colums;
+	// double		tile;
 	t_tex		tex[TEXTURES];
-	int			floor_color;
-	int			ceiling_color;
-	char		**map;
-	double		rotation_speed;
-	double		move_speed;
+	// int			floor_color;
+	// int			ceiling_color;
+	// char		**map;
+	// double		rotation_speed;
+	// double		move_speed;
 }				t_config;
 
 typedef struct	s_img
@@ -141,7 +141,7 @@ typedef struct	s_game
 	int			map[MAP_ROWS][MAP_COLS];
 	t_player	*p;
 	t_ray		**r;
-	t_config	config;
+	t_config	conf;
 }				t_game;
 
 int				main(void);
