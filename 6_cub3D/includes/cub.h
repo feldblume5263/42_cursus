@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/05 21:04:31 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/05 21:20:48 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,7 @@ void			map_init(t_game *gm);
 void			player_init(t_game *gm);
 void			rays_init(t_game *gm);
 void			ray_init(t_game *gm, int idx);
+void			config_init(t_game *gm);
 
 void			draw_rectangles(t_game *gm);
 void			draw_rectangle(t_game *gm, int x, int y, int color);
@@ -177,6 +178,8 @@ int				intercept_verti(t_game *gm, int idx);
 
 void			rendering(t_game *gm);
 void			render_wall(t_game *gm, int idx, int top, int bot);
+int				get_wall_type(t_game *gm, int idx);
+int				get_wall_color(t_game *gm, int idx, int landscape, int type);
 
 void			load_texture(t_game *game);
 int				*load_image(t_game *game, char *path, t_img *tex, int i);

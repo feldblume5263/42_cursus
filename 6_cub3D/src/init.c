@@ -6,11 +6,16 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:57:24 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/05 13:37:33 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/05 21:17:27 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+void			config_init(t_game *gm)
+{
+
+}
 
 void			ray_init(t_game *gm, int idx)
 {
