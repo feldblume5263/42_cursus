@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 16:36:10 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/03 17:51:46 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/03 19:28:40 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void			render_wall(t_game *gm, int idx, int top, int bot)
 	}
 	while (landscape < bot)
 	{
-		gm->img.data[(WINDOW_WIDTH * landscape) + idx] = 0xEFDB00;
+		gm->img.data[(WINDOW_WIDTH * landscape) + idx] =
+			gm->r[idx]->verti_flag ? 0xEFDB00 : 0xF2EA00;
 		landscape++;
 	}
 	floor = bot;

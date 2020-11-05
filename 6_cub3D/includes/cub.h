@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/03 17:46:25 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/04 15:56:23 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 
 # define MINI					0.2
 
+# define KEY_ESC				53
 # define KEY_Q					12
 # define KEY_W					13
 # define KEY_E					14
@@ -56,6 +57,9 @@
 # define TEX_WEST				2
 # define TEX_EAST				3
 # define TEX_SPRITE				4
+
+# define TEX_WIDTH				64
+# define TEX_HEIGHT				64
 
 # define INT_MAX				2147483647
 
@@ -113,6 +117,8 @@ typedef struct	s_img
 	int			size_l;
 	int			bpp;
 	int			endian;
+	int			img_width;
+	int			img_height;
 }				t_img;
 
 typedef struct	s_player
@@ -170,6 +176,9 @@ int				intercept_verti(t_game *gm, int idx);
 
 void			rendering(t_game *gm);
 void			render_wall(t_game *gm, int idx, int top, int bot);
+
+void			load_texture(t_game *game);
+int				*load_image(t_game *game, char *path, t_img *tex, int i);
 
 int				inspect_wall(t_game *gm, double x, double y);
 double			noramalize_angle(double angle);
