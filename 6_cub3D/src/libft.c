@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   libft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/05 21:10:20 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/06 18:53:15 by Feldblume        ###   ########.fr       */
+/*   Created: 2020/11/06 17:08:46 by Feldblume         #+#    #+#             */
+/*   Updated: 2020/11/06 18:34:29 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-int				get_size_from_data(t_game *gm)
+int					ft_strncmp(const char *s1, const char *s2, unsigned int n)
 {
+	unsigned int	i;
 
-}
-
-int				parse_data(t_game *gm, char *path)
-{
-	int			fd;
-	char		*data_line;
-
-	if ((fd = open(path, O_RDONLY)) < 0)
-	get_size_from_data(gm);
+	i = 0;
+	while ((s1[i] || s2[i]) && i < n)
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
 }

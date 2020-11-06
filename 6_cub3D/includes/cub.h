@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/05 21:20:48 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/06 18:51:32 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdlib.h>
 # include <string.h>
 # include <math.h>
+# include <fcntl.h>
+# include <unistd.h>
 # include "mlx.h"
 # include "gnl.h"
 # include "libft.h"
@@ -84,12 +86,10 @@ typedef struct	s_ray
 	double		v_y;
 	double		verti_flag;
 	double		horiz_flag;
-	// ray facing direction
 	double		is_up;
 	double		is_down;
 	double		is_left;
 	double		is_right;
-
 	double		x_intercept;
 	double		y_intercept;
 	double		x_step;
@@ -98,17 +98,16 @@ typedef struct	s_ray
 
 typedef struct	s_config
 {
-	// int			width;
-	// int			height;
-	// int			rows;
-	// int			colums;
-	// double		tile;
+	int			width;
+	int			height;
+	int			rows;
+	int			colums;
+	double		tile_size;
 	t_tex		tex[TEXTURES];
-	// int			floor_color;
-	// int			ceiling_color;
-	// char		**map;
-	// double		rotation_speed;
-	// double		move_speed;
+	int			floor_color;
+	int			ceiling_color;
+	char		**map;
+	double		fov;
 }				t_config;
 
 typedef struct	s_img
@@ -145,7 +144,7 @@ typedef struct	s_game
 	t_config	conf;
 }				t_game;
 
-int				main(void);
+int				main(int argc, char *argv[]);
 int				main_loop(t_game *gm);
 
 void			window_init(t_game *gm);
@@ -155,6 +154,9 @@ void			player_init(t_game *gm);
 void			rays_init(t_game *gm);
 void			ray_init(t_game *gm, int idx);
 void			config_init(t_game *gm);
+
+int				parse_data(t_game *gm, char *path);
+
 
 void			draw_rectangles(t_game *gm);
 void			draw_rectangle(t_game *gm, int x, int y, int color);

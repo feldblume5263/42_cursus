@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:57:24 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/05 21:17:27 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/06 16:27:40 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,14 @@
 
 void			config_init(t_game *gm)
 {
-
+	gm->conf.width = 0;
+	gm->conf.height = 0;
+	gm->conf.rows = 0;
+	gm->conf.colums = 0;
+	gm->conf.tile_size = 0;
+	gm->conf.floor_color = 0;
+	gm->conf.ceiling_color = 0;
+	gm->conf.fov = 60 * (M_PI / 180);
 }
 
 void			ray_init(t_game *gm, int idx)

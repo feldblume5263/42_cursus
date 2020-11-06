@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 14:41:12 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/05 19:10:40 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/06 18:39:18 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+int				check_input(int argc, char *argv[])
+{
+	if (!(argc == 2 || (argc == 3 && ft_strncmp(argv[2], "--save", 6))))
+	{
+		write(1, "wrong input!\n", 19);
+		return (-1);
+	}
+	return (1);
+}
 
 int				game_close(int key)
 {
@@ -34,10 +44,14 @@ int				main_loop(t_game *gm)
 	return (0);
 }
 
-int				main(void)
+int				main(int argc, char *argv[])
 {
 	t_game		gm;
 
+	if (check_input(argc, argv) < 0)
+		exit(0);
+	config_init(&gm);
+	parse_data(&gm, argv[1]);
 	map_init(&gm);
 	window_init(&gm);
 	img_init(&gm);

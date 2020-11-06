@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gnl.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/14 16:09:10 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/05 21:04:12 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/06 15:38:40 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # define OPEN_MAX 256
 
 # define NL '\n'
-# define NU '\0'
 
 # define LINE 1
 # define ENDOFFILE 0
