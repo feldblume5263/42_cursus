@@ -3,25 +3,93 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
+/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 21:10:20 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/06 18:53:15 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/07 19:04:49 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-int				get_size_from_data(t_game *gm)
+int				is_map(char *d)
 {
+	int			idx;
 
+	idx = 0;
+	while (d[idx])
+	{
+		if (!(ft_strchr(" 012NSWEA", d[idx])))
+			return (0);
+		idx++;
+	}
+	return (1);
+}
+
+int				flag_data(char *d)
+{
+	if (d[0] == 'R' && d[1] == ' ')
+		return (R);
+	else if (d[0] == 'N' && d[1] == 'O' && d[2] == ' ')
+		return (NO);
+	else if (d[0] == 'S' && d[1] == 'O' && d[2] == ' ')
+		return (SO);
+	else if (d[0] == 'W' && d[1] == 'E' && d[2] == ' ')
+		return (WE);
+	else if (d[0] == 'E' && d[1] == 'A' && d[2] == ' ')
+		return (EA);
+	else if (d[0] == 'S' && d[1] == ' ')
+		return (S);
+	else if (d[0] == 'F' && d[1] == ' ')
+		return (F);
+	else if (d[0] == 'C' && d[1] == ' ')
+		return (C);
+	else if (is_map(d))
+		return (M);
+	else
+		return (-1);
+}
+
+int				flag_blank(char *d)
+{
+	int			idx;
+
+	idx = 0;
+	while (d[idx])
+	{
+		if (!(is_blank(d[idx])))
+			return (0);
+		idx++;
+	}
+	return (1);
 }
 
 int				parse_data(t_game *gm, char *path)
 {
 	int			fd;
 	char		*data_line;
+	int			temp;
+	int			flag;
 
 	if ((fd = open(path, O_RDONLY)) < 0)
-	get_size_from_data(gm);
+		exit_with_error("fail to open file\n");
+	while ((temp = get_next_line(fd, &data_line)) > 0)
+	{
+		if (flag_blank(data_line) == 1 && flag != M)
+		{
+			free(data_line);
+			continue;
+		}
+		flag = 0;
+		if ((flag = flag_data(data_line)) > 0)
+		{
+			if (!(put_config(gm, data_line, flag)))
+				exit_with_error("file error!\n");
+			if (flag == M)
+				gm->conf.rows++;
+		}
+		else
+			exit_with_error("file error!\n");
+	}
+	return (1);
 }

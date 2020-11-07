@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
+/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:58:44 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/10/31 13:58:46 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/07 16:19:56 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+int				is_blank(char c)
+{
+	if (c == ' ' || (c >= 9 && c <= 13))
+		return (1);
+	else
+		return (0);
+}
 
 double			get_distance(double x1, double y1, double x2, double y2)
 {

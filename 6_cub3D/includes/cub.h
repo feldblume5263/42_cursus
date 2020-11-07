@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
+/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/06 18:51:32 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/07 16:20:02 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,16 @@
 
 # define TEX_WIDTH				64
 # define TEX_HEIGHT				64
+
+# define R						1
+# define NO						2
+# define SO						3
+# define WE						4
+# define EA						5
+# define S						6
+# define F						7
+# define C						8
+# define M						9
 
 # define INT_MAX				2147483647
 
@@ -156,7 +166,10 @@ void			ray_init(t_game *gm, int idx);
 void			config_init(t_game *gm);
 
 int				parse_data(t_game *gm, char *path);
-
+int				flag_blank(char *d);
+int				flag_data(char *d);
+int				is_map(char *d);
+int				put_config(t_game *g, char *d, int f);
 
 void			draw_rectangles(t_game *gm);
 void			draw_rectangle(t_game *gm, int x, int y, int color);
@@ -186,8 +199,12 @@ int				get_wall_color(t_game *gm, int idx, int landscape, int type);
 void			load_texture(t_game *game);
 int				*load_image(t_game *game, char *path, t_img *tex, int i);
 
+int				is_blank(char c);
 int				inspect_wall(t_game *gm, double x, double y);
 double			noramalize_angle(double angle);
 double			get_distance(double x1, double y1, double x2, double y2);
+
+void			exit_with_error(char *message);
+
 
 #endif
