@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 21:10:20 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/07 19:04:49 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/07 21:28:26 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,9 @@ int				parse_data(t_game *gm, char *path)
 	char		*data_line;
 	int			temp;
 	int			flag;
+	char		*map;
 
+	map = ft_strdup("");
 	if ((fd = open(path, O_RDONLY)) < 0)
 		exit_with_error("fail to open file\n");
 	while ((temp = get_next_line(fd, &data_line)) > 0)
@@ -83,13 +85,14 @@ int				parse_data(t_game *gm, char *path)
 		flag = 0;
 		if ((flag = flag_data(data_line)) > 0)
 		{
-			if (!(put_config(gm, data_line, flag)))
-				exit_with_error("file error!\n");
 			if (flag == M)
 				gm->conf.rows++;
+			if (!(put_config(gm, data_line, flag, map)))
+				exit_with_error("file error!\n");
 		}
 		else
 			exit_with_error("file error!\n");
 	}
+	printf("%s\n", map);
 	return (1);
 }

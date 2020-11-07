@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/07 16:20:02 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/07 21:23:48 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ int				parse_data(t_game *gm, char *path);
 int				flag_blank(char *d);
 int				flag_data(char *d);
 int				is_map(char *d);
-int				put_config(t_game *g, char *d, int f);
+int				put_config(t_game *g, char *d, int f, char *temp);
 
 void			draw_rectangles(t_game *gm);
 void			draw_rectangle(t_game *gm, int x, int y, int color);

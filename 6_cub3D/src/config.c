@@ -6,22 +6,21 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:30:56 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/07 19:21:55 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/07 21:34:50 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-int				get_map(t_game *g, char *d)
+char			*store_map_file(t_game *g, char *d, char *temp)
 {
-	int			idx;
+	char		*temp2;
+	char		*temp3;
 
-	idx = 0;
-	if (g->conf.map[idx])
-		idx++;
-	g->conf.map = (char **)malloc(sizeof(char *) * 1);
-	g->conf.map[idx] = ft_strdup(d);
-	return (1);
+	temp2 = ft_strjoin(d, "\n");
+	temp3 = ft_strjoin(temp, temp2);
+	free(temp2);
+	return (temp3);
 }
 
 int				get_color(t_game *g, char *d, int f)
@@ -96,8 +95,9 @@ int				get_resolution(t_game *g, char *d)
 	return (1);
 }
 
-int				put_config(t_game *g, char *d, int f)
+int				put_config(t_game *g, char *d, int f, char *temp)
 {
+
 	if (f == R)
 	{
 		if (!(get_resolution(g, d)))
@@ -115,7 +115,7 @@ int				put_config(t_game *g, char *d, int f)
 	}
 	else if (f == M)
 	{
-		if (!(get_map(g, d)))
+		if (!(get_map(g, d, temp)))
 			return (0);
 	}
 	return (1);
