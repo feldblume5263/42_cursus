@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 21:10:20 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/07 21:28:26 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/09 18:06:47 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int				is_map(char *d)
 	idx = 0;
 	while (d[idx])
 	{
-		if (!(ft_strchr(" 012NSWEA", d[idx])))
+		if (!(ft_strchr(" 012NSEW", d[idx])))
 			return (0);
 		idx++;
 	}
@@ -64,7 +64,7 @@ int				flag_blank(char *d)
 	return (1);
 }
 
-int				parse_data(t_game *gm, char *path)
+char			*parse_data(t_game *gm, char *path)
 {
 	int			fd;
 	char		*data_line;
@@ -82,17 +82,13 @@ int				parse_data(t_game *gm, char *path)
 			free(data_line);
 			continue;
 		}
-		flag = 0;
 		if ((flag = flag_data(data_line)) > 0)
 		{
-			if (flag == M)
-				gm->conf.rows++;
-			if (!(put_config(gm, data_line, flag, map)))
+			if (!(map = put_config(gm, data_line, flag, map)))
 				exit_with_error("file error!\n");
 		}
 		else
 			exit_with_error("file error!\n");
 	}
-	printf("%s\n", map);
-	return (1);
+	return (map);
 }

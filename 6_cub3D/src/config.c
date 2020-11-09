@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:30:56 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/07 21:34:50 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/09 22:57:07 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,28 @@ char			*store_map_file(t_game *g, char *d, char *temp)
 {
 	char		*temp2;
 	char		*temp3;
+	int			idx;
+	int			size;
 
-	temp2 = ft_strjoin(d, "\n");
-	temp3 = ft_strjoin(temp, temp2);
-	free(temp2);
+	size = (int)ft_strlen(d);
+	if (!(temp2 = ft_strjoin(d, "t")))
+		return (0);
+	if (!(temp3 = ft_strjoin(temp, temp2)))
+		return (0);
+	g->conf.rows++;
+	idx = -1;
+	while (d[++idx])
+	{
+		if (ft_strchr("NSWE", d[idx]))
+		{
+			if (g->conf.p_flag == 1)
+				exit_with_error("you have 2 player\n");
+			else
+				g->conf.p_flag = 1;
+			size--;
+		}
+	}
+	g->conf.colums = (int)ft_strlen(d) > g->conf.colums ? size : g->conf.colums;
 	return (temp3);
 }
 
@@ -95,7 +113,7 @@ int				get_resolution(t_game *g, char *d)
 	return (1);
 }
 
-int				put_config(t_game *g, char *d, int f, char *temp)
+char			*put_config(t_game *g, char *d, int f, char *temp)
 {
 
 	if (f == R)
@@ -115,8 +133,8 @@ int				put_config(t_game *g, char *d, int f, char *temp)
 	}
 	else if (f == M)
 	{
-		if (!(get_map(g, d, temp)))
+		if (!(temp = store_map_file(g, d, temp)))
 			return (0);
 	}
-	return (1);
+	return (temp);
 }

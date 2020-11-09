@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:57:24 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/07 21:13:45 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/09 16:33:08 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void			config_init(t_game *gm)
 {
+	gm->conf.p_x = 0;
+	gm->conf.p_y = 0;
+	gm->conf.p_flag = 0;
 	gm->conf.width = 0;
 	gm->conf.height = 0;
 	gm->conf.rows = 0;
@@ -51,33 +54,14 @@ void			rays_init(t_game *gm)
 void			player_init(t_game *gm)
 {
 	gm->p = (t_player *)malloc(sizeof(t_player));
-	gm->p->x = WINDOW_WIDTH / 2;
-	gm->p->y = WINDOW_HEIGHT / 2;
+	gm->p->x = gm->conf.p_x;
+	gm->p->y = gm->conf.p_y;
 	gm->p->radius = 6;
 	gm->p->turn_dir = 0;
 	gm->p->walk_dir = 0;
 	gm->p->rot_angle = M_PI / 2;
 	gm->p->mv_speed = 3.0;
 	gm->p->rot_speed = 3.0 * (M_PI / 180);
-}
-
-void			map_init(t_game *gm)
-{
-	int		walls[MAP_ROWS][MAP_COLS] = {
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-		{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-		{1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-		{1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-		{1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1},
-		{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
-	};
-	memcpy(gm->map, walls, sizeof(int) * MAP_ROWS * MAP_COLS); // TO DO
-	return ;
 }
 
 void			img_init(t_game *gm)

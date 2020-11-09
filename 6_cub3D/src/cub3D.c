@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 14:41:12 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/06 18:39:18 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/08 15:56:21 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,14 @@ int				main_loop(t_game *gm)
 int				main(int argc, char *argv[])
 {
 	t_game		gm;
+	char		*map;
 
 	if (check_input(argc, argv) < 0)
 		exit(0);
 	config_init(&gm);
-	parse_data(&gm, argv[1]);
-	map_init(&gm);
+	if (!(map = parse_data(&gm, argv[1])))
+		exit_with_error("file error!");
+	map_init(&gm, map);
 	window_init(&gm);
 	img_init(&gm);
 	load_texture(&gm);

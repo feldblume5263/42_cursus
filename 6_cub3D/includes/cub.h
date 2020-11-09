@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/07 21:23:48 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/08 19:23:35 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <unistd.h>
 # include "mlx.h"
 # include "gnl.h"
-# include "libft.h"
+# include "../libft/libft.h"
 
 # define USE_MATH_DEFINES
 # define TILE_SIZE				64
@@ -30,7 +30,7 @@
 
 # define WINDOW_WIDTH			MAP_COLS * TILE_SIZE
 # define WINDOW_HEIGHT			MAP_ROWS * TILE_SIZE
-# define TO_COORD(X, Y)			((int)floor(Y) * WINDOW_WIDTH + (int)floor(X)) // TODO
+# define TO_COORD(X, Y)			((int)floor(Y) * WINDOW_WIDTH + (int)floor(X)) // TO DO
 
 # define FOV					60 * (M_PI / 180)
 # define WALL_STRIP_WIDTH		1
@@ -108,6 +108,9 @@ typedef struct	s_ray
 
 typedef struct	s_config
 {
+	int			p_x;
+	int			p_y;
+	int			p_flag;
 	int			width;
 	int			height;
 	int			rows;
@@ -159,17 +162,17 @@ int				main_loop(t_game *gm);
 
 void			window_init(t_game *gm);
 void			img_init(t_game *gm);
-void			map_init(t_game *gm);
+void			map_init(t_game *gm, char *map);
 void			player_init(t_game *gm);
 void			rays_init(t_game *gm);
 void			ray_init(t_game *gm, int idx);
 void			config_init(t_game *gm);
 
-int				parse_data(t_game *gm, char *path);
+char			*parse_data(t_game *gm, char *path);
 int				flag_blank(char *d);
 int				flag_data(char *d);
 int				is_map(char *d);
-int				put_config(t_game *g, char *d, int f, char *temp);
+char			*put_config(t_game *g, char *d, int f, char *temp);
 
 void			draw_rectangles(t_game *gm);
 void			draw_rectangle(t_game *gm, int x, int y, int color);
