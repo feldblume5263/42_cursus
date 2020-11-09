@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:58:44 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/09 23:53:26 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/09 23:55:13 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int				to_coord(t_game *gm, double x, double y)
 {
-	return (((int)floor(y) * gm->conf.width + (int)floor(x)));
+	return ((int)floor(y) * gm->conf.width + (int)floor(x));
 }
 
 int				is_blank(char c)

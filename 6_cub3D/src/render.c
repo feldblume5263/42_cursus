@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 16:36:10 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/09 23:26:28 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/10 01:38:17 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void			render_wall(t_game *gm, int idx, int top, int bot)
 	}
 	while (landscape < bot)
 	{
+		if (((gm->conf.width * landscape) + idx) >= gm->conf.width * gm->conf.height)
+			break ;
 		tex_color = get_wall_color(gm, idx, landscape, get_wall_type(gm, idx));
 		gm->img.data[(gm->conf.width * landscape) + idx] = tex_color;
 		landscape++;
@@ -69,10 +71,11 @@ void			render_wall(t_game *gm, int idx, int top, int bot)
 	floor = bot;
 	while (floor < gm->conf.height)
 	{
+		if (((gm->conf.width * landscape) + idx) >= gm->conf.width * gm->conf.height)
+			break ;
 		gm->img.data[(gm->conf.width * floor) + idx] = 0x19E586;
 		floor++;
 	}
-
 }
 
 void			rendering(t_game *gm)

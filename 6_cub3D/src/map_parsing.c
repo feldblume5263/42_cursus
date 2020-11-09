@@ -37,6 +37,6 @@ void			map_init(t_game *gm, char *map_data)
 
 	temp = ft_split(map_data, 't');
 	map = make_map_file(gm, temp);
-	gm->conf.tile_size = 64;
+	gm->conf.tile_size = gm->conf.width / gm->conf.colums;
 	return ;
 }
