@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:34:43 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/05 20:23:12 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/09 23:25:49 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,14 @@ void			cast_rays(t_game *gm)
 	int			ray_idx;
 
 	ray_idx = 0;
-	input_ray_angle = gm->p->rot_angle - (FOV / 2.0);
-	while (ray_idx < RAYS)
+	input_ray_angle = gm->p->rot_angle - (gm->conf.fov / 2.0);
+	while (ray_idx < gm->conf.width)
 	{
 		ray_init(gm, ray_idx);
 		gm->r[ray_idx]->ray_angle = noramalize_angle(input_ray_angle);
 		cast_ray(gm, ray_idx);
 		//draw_ray(gm, input_ray_angle, ray_idx);
-		input_ray_angle += (FOV / RAYS);
+		input_ray_angle += (gm->conf.fov / (double)(gm->conf.width));
 		ray_idx++;
 	}
 }

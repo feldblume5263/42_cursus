@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:57:38 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/10/31 16:33:14 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/09 23:30:09 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void			draw_player(t_game *gm)
 		j = 0;
 		while (j < gm->p->radius)
 		{
-			gm->img.data[TO_COORD(gm->p->x * MINI + j, gm->p->y * MINI + i)] = 0xCC0000;
+			gm->img.data[to_coord(gm, gm->p->x * MINI + j, gm->p->y * MINI + i)] = 0xCC0000;
 			j++;
 		}
 		i++;

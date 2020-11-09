@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/08 19:23:35 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/09 23:31:11 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,8 @@
 # include "../libft/libft.h"
 
 # define USE_MATH_DEFINES
-# define TILE_SIZE				64
-# define MAP_ROWS				11
-# define MAP_COLS				15
 
-# define WINDOW_WIDTH			MAP_COLS * TILE_SIZE
-# define WINDOW_HEIGHT			MAP_ROWS * TILE_SIZE
-# define TO_COORD(X, Y)			((int)floor(Y) * WINDOW_WIDTH + (int)floor(X)) // TO DO
-
-# define FOV					60 * (M_PI / 180)
 # define WALL_STRIP_WIDTH		1
-# define RAYS					(WINDOW_WIDTH / WALL_STRIP_WIDTH) * 1.0
-
 # define MINI					0.2
 
 # define KEY_ESC				53
@@ -115,11 +105,11 @@ typedef struct	s_config
 	int			height;
 	int			rows;
 	int			colums;
-	double		tile_size;
+	int			tile_size;
 	t_tex		tex[TEXTURES];
 	int			floor_color;
 	int			ceiling_color;
-	char		**map;
+	int			**map;
 	double		fov;
 }				t_config;
 
@@ -151,7 +141,6 @@ typedef struct	s_game
 	void		*mlx;
 	void		*win;
 	t_img		img;
-	int			map[MAP_ROWS][MAP_COLS];
 	t_player	*p;
 	t_ray		**r;
 	t_config	conf;
@@ -206,6 +195,7 @@ int				is_blank(char c);
 int				inspect_wall(t_game *gm, double x, double y);
 double			noramalize_angle(double angle);
 double			get_distance(double x1, double y1, double x2, double y2);
+int				to_coord(t_game *gm, double x, double y);
 
 void			exit_with_error(char *message);
 

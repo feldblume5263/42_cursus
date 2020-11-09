@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:57:24 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/09 16:33:08 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/09 23:24:20 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void			ray_init(t_game *gm, int idx)
 
 void			rays_init(t_game *gm)
 {
-	gm->r = (t_ray **)malloc(sizeof(t_ray *) * RAYS);
+	gm->r = (t_ray **)malloc(sizeof(t_ray *) * gm->conf.width);
 }
 
 void			player_init(t_game *gm)
@@ -66,7 +66,7 @@ void			player_init(t_game *gm)
 
 void			img_init(t_game *gm)
 {
-	gm->img.img = mlx_new_image(gm->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+	gm->img.img = mlx_new_image(gm->mlx, gm->conf.width, gm->conf.height);
 	gm->img.data = (int *)mlx_get_data_addr(gm->img.img,
 		&gm->img.bpp, &gm->img.size_l, &gm->img.endian);
 }
@@ -75,5 +75,5 @@ void			img_init(t_game *gm)
 void			window_init(t_game *gm)
 {
 	gm->mlx = mlx_init();
-	gm->win = mlx_new_window(gm->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "mlx 42");
+	gm->win = mlx_new_window(gm->mlx, gm->conf.width, gm->conf.height, "mlx 42");
 }

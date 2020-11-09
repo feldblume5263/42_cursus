@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_detail.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:59:46 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/05 19:20:07 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/09 23:20:05 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int				intercept_verti(t_game *gm, int idx)
 	hit_flag = 0;
 	touch_x = gm->r[idx]->x_intercept;
 	touch_y = gm->r[idx]->y_intercept;
-	while (touch_x >= 0 && touch_x <= WINDOW_WIDTH
-		&& touch_y >= 0 && touch_y <= WINDOW_HEIGHT)
+	while (touch_x >= 0 && touch_x <= gm->conf.width
+		&& touch_y >= 0 && touch_y <= gm->conf.height)
 	{
 		if (inspect_wall(gm, touch_x - (gm->r[idx]->is_left ? 1 : 0), touch_y))
 		{
@@ -46,11 +46,11 @@ void			cast_verti(t_game *gm, int idx)
 	int			hit_flag;
 
 	hit_flag = 0;
-	gm->r[idx]->x_intercept = floor(gm->p->x / TILE_SIZE) * TILE_SIZE;
-	gm->r[idx]->x_intercept += gm->r[idx]->is_right ? TILE_SIZE : 0;
+	gm->r[idx]->x_intercept = floor(gm->p->x / gm->conf.tile_size) * gm->conf.tile_size;
+	gm->r[idx]->x_intercept += gm->r[idx]->is_right ? gm->conf.tile_size : 0;
 	gm->r[idx]->y_intercept = gm->p->y +
 		(gm->r[idx]->x_intercept - gm->p->x) * tan(gm->r[idx]->ray_angle);
-	gm->r[idx]->x_step = TILE_SIZE;
+	gm->r[idx]->x_step = gm->conf.tile_size;
 	gm->r[idx]->x_step *= gm->r[idx]->is_left ? -1 : 1;
 	gm->r[idx]->y_step = gm->r[idx]->x_step * tan(gm->r[idx]->ray_angle);
 	gm->r[idx]->y_step *= (gm->r[idx]->is_up
@@ -77,8 +77,8 @@ int				intercept_horiz(t_game *gm, int idx)
 	hit_flag = 0;
 	touch_x = gm->r[idx]->x_intercept;
 	touch_y = gm->r[idx]->y_intercept;
-	while (touch_x >= 0 && touch_x <= WINDOW_WIDTH
-		&& touch_y >= 0 && touch_y <= WINDOW_HEIGHT)
+	while (touch_x >= 0 && touch_x <= gm->conf.width
+		&& touch_y >= 0 && touch_y <= gm->conf.height)
 	{
 		if (inspect_wall(gm, touch_x, touch_y - (gm->r[idx]->is_up ? 1 : 0)))
 		{
@@ -101,11 +101,11 @@ void			cast_horiz(t_game *gm, int idx)
 	int			hit_flag;
 
 	hit_flag = 0;
-	gm->r[idx]->y_intercept = floor(gm->p->y / TILE_SIZE) * TILE_SIZE;
-	gm->r[idx]->y_intercept += gm->r[idx]->is_down ? TILE_SIZE : 0;
+	gm->r[idx]->y_intercept = floor(gm->p->y / gm->conf.tile_size) * gm->conf.tile_size;
+	gm->r[idx]->y_intercept += gm->r[idx]->is_down ? gm->conf.tile_size : 0;
 	gm->r[idx]->x_intercept = gm->p->x +
 		(gm->r[idx]->y_intercept - gm->p->y) / tan(gm->r[idx]->ray_angle);
-	gm->r[idx]->y_step = TILE_SIZE;
+	gm->r[idx]->y_step = gm->conf.tile_size;
 	gm->r[idx]->y_step *= gm->r[idx]->is_up ? -1 : 1;
 	gm->r[idx]->x_step = gm->r[idx]->y_step / tan(gm->r[idx]->ray_angle);
 	gm->r[idx]->x_step *= (gm->r[idx]->is_left

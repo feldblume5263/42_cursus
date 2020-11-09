@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:58:44 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/07 16:19:56 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/09 23:53:26 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+int				to_coord(t_game *gm, double x, double y)
+{
+	return (((int)floor(y) * gm->conf.width + (int)floor(x)));
+}
 
 int				is_blank(char c)
 {
@@ -45,9 +50,9 @@ int				inspect_wall(t_game *gm, double x, double y)
 	int			idx_x;
 	int			idx_y;
 
-	idx_x = floor(x / TILE_SIZE);
-	idx_y = floor(y / TILE_SIZE);
-	if (gm->map[idx_y][idx_x] > 0)
+	idx_x = floor(x / gm->conf.tile_size);
+	idx_y = floor(y / gm->conf.tile_size);
+	if (gm->conf.map[idx_y][idx_x] == 1)
 		return (1);
 	else
 		return (0);
