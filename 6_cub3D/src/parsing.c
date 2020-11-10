@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
+/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 21:10:20 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/09 18:06:47 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/10 20:37:34 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,7 @@ char			*parse_data(t_game *gm, char *path)
 		else
 			exit_with_error("file error!\n");
 	}
+	if (gm->conf.p_flag == 0)
+		exit_with_error("you have no player\n");
 	return (map);
 }

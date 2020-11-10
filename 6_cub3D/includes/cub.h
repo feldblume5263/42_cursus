@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/10 17:45:08 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/10 21:45:41 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <unistd.h>
 # include "mlx.h"
 # include "gnl.h"
-# include "../libft/libft.h"
+# include "libft.h"
 
 # define USE_MATH_DEFINES
 
@@ -70,8 +70,8 @@ typedef struct	s_tex
 {
 	char		*tex_path;
 	int			*texture;
-	double		width;
-	double		height;
+	int			width;
+	int			height;
 }				t_tex;
 
 typedef struct	s_ray

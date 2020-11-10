@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 16:36:10 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/10 17:35:16 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/10 21:57:15 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ int				get_wall_color(t_game *gm, int idx, int landscape, int type)
 		* project_height);
 	distance_top = landscape + ((int)wall_strip_height / 2) - (gm->conf.height / 2);
 	if (gm->r[idx]->verti_flag)
-		tex_x = (int)(gm->r[idx]->hit_y) % gm->conf.tile_size;
+		tex_x = ((int)gm->r[idx]->hit_y * gm->conf.tex[type].width
+			/ gm->conf.tile_size) % gm->conf.tex[type].width;
 	else
-		tex_x = (int)(gm->r[idx]->hit_x) % gm->conf.tile_size;
+		tex_x = ((int)gm->r[idx]->hit_x * gm->conf.tex[type].width
+			/ gm->conf.tile_size) % gm->conf.tex[type].width;
 	tex_y = (distance_top *
 		((double)gm->conf.tex[type].height / wall_strip_height));
 	return (gm->conf.tex[type].texture

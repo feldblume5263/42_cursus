@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:30:56 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/10 17:56:28 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/10 20:37:19 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ char			*store_map_file(t_game *g, char *d, char *temp)
 
 	size = (int)ft_strlen(d);
 	if (!(temp2 = ft_strjoin(d, "t")))
-		return (0);
+		exit_with_error("map malloc error!\n");
 	if (!(temp3 = ft_strjoin(temp, temp2)))
-		return (0);
+		exit_with_error("map malloc error!\n");
 	g->conf.rows++;
 	idx = -1;
 	while (d[++idx])
@@ -34,7 +34,6 @@ char			*store_map_file(t_game *g, char *d, char *temp)
 				exit_with_error("you have 2 player\n");
 			else
 				g->conf.p_flag = 1;
-			size--;
 		}
 	}
 	g->conf.colums = (int)ft_strlen(d) > g->conf.colums ? size : g->conf.colums;
@@ -83,19 +82,6 @@ int				get_path(t_game *g, char *d, int f)
 	else if (f == S)
 		g->conf.tex[TEX_SPRITE].tex_path = ft_strdup(d + idx);
 	return (1);
-}
-
-void			resize_resolution(t_game *g)
-{
-	int			temp;
-	double		ratio;
-
-	g->conf.tile_size = 64;
-	temp = g->conf.colums * 64;
-	ratio = (1.0 * temp) / (1.0 * g->conf.width);
-	g->conf.width = temp;
-	temp = g->conf.height * (int)ratio;
-	g->conf.height = temp;
 }
 
 int				get_resolution(t_game *g, char *d)
