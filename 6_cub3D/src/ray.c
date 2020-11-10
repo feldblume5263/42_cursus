@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
+/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:34:43 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/09 23:58:29 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/10 16:36:15 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ void			draw_ray(t_game *gm, double ray_angle, int idx)
 		mlx_pixel_put(
 			gm->mlx,
 			gm->win,
-			gm->p->x * MINI + (cos(ray_angle) * pix_idx * MINI),
-			gm->p->y * MINI + (sin(ray_angle) * pix_idx * MINI),
+			gm->conf.p_x * MINI + (cos(ray_angle) * pix_idx * MINI),
+			gm->conf.p_y * MINI + (sin(ray_angle) * pix_idx * MINI),
 			0xEAE200);
 		pix_idx++;
 	}

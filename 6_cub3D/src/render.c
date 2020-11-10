@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
+/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 16:36:10 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/10 01:38:17 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/10 17:35:16 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,11 @@ void			render_wall(t_game *gm, int idx, int top, int bot)
 	landscape = top;
 	while (ceil < top)
 	{
-		gm->img.data[(gm->conf.width * ceil) + idx] = 0x00B5F2;
+		gm->img.data[(gm->conf.width * ceil) + idx] = gm->conf.ceiling_color;
 		ceil++;
 	}
 	while (landscape < bot)
 	{
-		if (((gm->conf.width * landscape) + idx) >= gm->conf.width * gm->conf.height)
-			break ;
 		tex_color = get_wall_color(gm, idx, landscape, get_wall_type(gm, idx));
 		gm->img.data[(gm->conf.width * landscape) + idx] = tex_color;
 		landscape++;
@@ -71,9 +69,7 @@ void			render_wall(t_game *gm, int idx, int top, int bot)
 	floor = bot;
 	while (floor < gm->conf.height)
 	{
-		if (((gm->conf.width * landscape) + idx) >= gm->conf.width * gm->conf.height)
-			break ;
-		gm->img.data[(gm->conf.width * floor) + idx] = 0x19E586;
+		gm->img.data[(gm->conf.width * floor) + idx] = gm->conf.floor_color;
 		floor++;
 	}
 }
@@ -90,6 +86,8 @@ void			rendering(t_game *gm)
 	while (ray_idx < gm->conf.width)
 	{
 		project_height = (gm->conf.width / 2) / tan(gm->conf.fov / 2);
+		if (gm->r[ray_idx]->distance == 0)
+			gm->r[ray_idx]->distance = 0.0001;
 		wall_strip_height = floor((gm->conf.tile_size / gm->r[ray_idx]->distance)
 			* project_height);
 		wall_top = (gm->conf.height / 2) - (wall_strip_height / 2);

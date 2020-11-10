@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
+/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/09 23:31:11 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/10 17:45:08 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,8 +126,6 @@ typedef struct	s_img
 
 typedef struct	s_player
 {
-	double		x;
-	double		y;
 	double		radius;
 	double		turn_dir;
 	double		walk_dir;
@@ -156,6 +154,8 @@ void			player_init(t_game *gm);
 void			rays_init(t_game *gm);
 void			ray_init(t_game *gm, int idx);
 void			config_init(t_game *gm);
+
+void			resize_resolution(t_game *g);
 
 char			*parse_data(t_game *gm, char *path);
 int				flag_blank(char *d);

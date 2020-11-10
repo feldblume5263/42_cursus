@@ -21,7 +21,7 @@ int				**make_map_file(t_game *gm, char **temp)
 				gm->conf.p_y = gm->conf.tile_size * row;
 			}
 			else
-				gm->conf.map[row][col] = temp[row][col] == ' ' ? 7 : temp[row][col] - 48;
+				gm->conf.map[row][col] = temp[row][col] == ' ' ? 7 : temp[row][col] - '0';
 		}
 		col--;
 		while (++col < gm->conf.colums)
@@ -35,8 +35,11 @@ void			map_init(t_game *gm, char *map_data)
 	char		**temp;
 	int			**map;
 
+	gm->conf.tile_size = 64;
 	temp = ft_split(map_data, 't');
 	map = make_map_file(gm, temp);
-	gm->conf.tile_size = gm->conf.width / gm->conf.colums;
+	resize_resolution(gm);
+
+	//ft_free_2d(temp);
 	return ;
 }

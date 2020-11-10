@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
+/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:30:56 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/09 22:57:07 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/10 17:56:28 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,19 @@ int				get_path(t_game *g, char *d, int f)
 	else if (f == S)
 		g->conf.tex[TEX_SPRITE].tex_path = ft_strdup(d + idx);
 	return (1);
+}
+
+void			resize_resolution(t_game *g)
+{
+	int			temp;
+	double		ratio;
+
+	g->conf.tile_size = 64;
+	temp = g->conf.colums * 64;
+	ratio = (1.0 * temp) / (1.0 * g->conf.width);
+	g->conf.width = temp;
+	temp = g->conf.height * (int)ratio;
+	g->conf.height = temp;
 }
 
 int				get_resolution(t_game *g, char *d)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
+/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:58:44 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/09 23:55:13 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/10 16:49:14 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,11 @@ int				inspect_wall(t_game *gm, double x, double y)
 	int			idx_x;
 	int			idx_y;
 
+	if (x < 0 || x > gm->conf.width || y < 0 || y > gm->conf.height)
+		return (1);
 	idx_x = floor(x / gm->conf.tile_size);
 	idx_y = floor(y / gm->conf.tile_size);
-	if (gm->conf.map[idx_y][idx_x] == 1)
+	if (idx_x >= gm->conf.colums || idx_y >= gm->conf.rows)
 		return (1);
-	else
-		return (0);
+	return (gm->conf.map[idx_y][idx_x] == 1);
 }

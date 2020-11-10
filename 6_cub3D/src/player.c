@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
+/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:57:38 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/09 23:30:09 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/10 16:32:04 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void			update_player(t_game *gm)
 
 	move_step = (gm->p->walk_dir * gm->p->mv_speed);
 	gm->p->rot_angle += (gm->p->turn_dir * gm->p->rot_speed);
-	new_x = gm->p->x + cos(gm->p->rot_angle) * move_step;
-	new_y = gm->p->y + sin(gm->p->rot_angle) * move_step;
+	new_x = gm->conf.p_x + cos(gm->p->rot_angle) * move_step;
+	new_y = gm->conf.p_y + sin(gm->p->rot_angle) * move_step;
 	if (!(inspect_wall(gm, new_x, new_y))) // only set new position if it is not colliding with the map walls
 	{
-		gm->p->x = new_x;
-		gm->p->y = new_y;
+		gm->conf.p_x = new_x;
+		gm->conf.p_y = new_y;
 	}
 }
 
@@ -82,7 +82,7 @@ void			draw_player(t_game *gm)
 		j = 0;
 		while (j < gm->p->radius)
 		{
-			gm->img.data[to_coord(gm, gm->p->x * MINI + j, gm->p->y * MINI + i)] = 0xCC0000;
+			gm->img.data[to_coord(gm, gm->conf.p_x * MINI + j, gm->conf.p_y * MINI + i)] = 0xCC0000;
 			j++;
 		}
 		i++;

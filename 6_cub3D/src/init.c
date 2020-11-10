@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
+/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:57:24 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/09 23:24:20 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/10 16:33:14 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void			rays_init(t_game *gm)
 void			player_init(t_game *gm)
 {
 	gm->p = (t_player *)malloc(sizeof(t_player));
-	gm->p->x = gm->conf.p_x;
-	gm->p->y = gm->conf.p_y;
+	gm->conf.p_x = gm->conf.p_x;
+	gm->conf.p_y = gm->conf.p_y;
 	gm->p->radius = 6;
 	gm->p->turn_dir = 0;
 	gm->p->walk_dir = 0;
