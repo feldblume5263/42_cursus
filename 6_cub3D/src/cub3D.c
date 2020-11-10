@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 14:41:12 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/10 22:01:01 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/10 22:35:37 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ int				check_input(int argc, char *argv[])
 	return (1);
 }
 
-int				game_close(int key)
+int				close_game(void *game)
 {
-	if (key == KEY_ESC)
-		exit(0);
+	(void)game;
+
+	exit(0);
 	return (0);
 }
 
@@ -58,6 +59,7 @@ int				main(int argc, char *argv[])
 	load_texture(&gm);
 	player_init(&gm);
 	rays_init(&gm);
+	mlx_hook(gm.win, X_EVENT_KEY_EXIT, 0, &close_game, &gm);
 	mlx_loop_hook(gm.mlx, &main_loop, &gm);
 	mlx_loop(gm.mlx);
 }
