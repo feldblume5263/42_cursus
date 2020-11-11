@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:57:38 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/11 16:53:45 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/11 22:55:26 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ int				player_keypressed(int keycode, t_player *player)
 		player->walk_dir = -1;
 	else if (keycode == KEY_D)
 	{
-		player->walk_dir = 1;
+		player->walk_dir = -1;
 		player->go_right = 30 * M_PI * player->rot_speed;
 	}
 	else if (keycode == KEY_A)
 	{
-		player->walk_dir = -1;
+		player->walk_dir = 1;
 		player->go_right = 30 * M_PI * player->rot_speed;
 	}
 	else if (keycode == KEY_RIGHT)
