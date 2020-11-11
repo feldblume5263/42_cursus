@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:59:46 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/10 17:05:23 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/11 16:28:21 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void			cast_verti(t_game *gm, int idx)
 	int			hit_flag;
 
 	hit_flag = 0;
-	gm->r[idx]->x_intercept = floor(gm->conf.p_x / gm->conf.tile_size) * gm->conf.tile_size;
+	gm->r[idx]->x_intercept = floor(gm->conf.p_x /
+		gm->conf.tile_size) * gm->conf.tile_size;
 	gm->r[idx]->x_intercept += gm->r[idx]->is_right ? gm->conf.tile_size : 0;
 	gm->r[idx]->y_intercept = gm->conf.p_y +
 		(gm->r[idx]->x_intercept - gm->conf.p_x) * tan(gm->r[idx]->ray_angle);
@@ -101,7 +102,8 @@ void			cast_horiz(t_game *gm, int idx)
 	int			hit_flag;
 
 	hit_flag = 0;
-	gm->r[idx]->y_intercept = floor(gm->conf.p_y / gm->conf.tile_size) * gm->conf.tile_size;
+	gm->r[idx]->y_intercept = floor(gm->conf.p_y /
+		gm->conf.tile_size) * gm->conf.tile_size;
 	gm->r[idx]->y_intercept += gm->r[idx]->is_down ? gm->conf.tile_size : 0;
 	gm->r[idx]->x_intercept = gm->conf.p_x +
 		(gm->r[idx]->y_intercept - gm->conf.p_y) / tan(gm->r[idx]->ray_angle);
@@ -116,7 +118,8 @@ void			cast_horiz(t_game *gm, int idx)
 	if (hit_flag)
 	{
 		gm->r[idx]->distance =
-			get_distance(gm->conf.p_x, gm->conf.p_y, gm->r[idx]->h_x, gm->r[idx]->h_y);
+			get_distance(gm->conf.p_x, gm->conf.p_y,
+				gm->r[idx]->h_x, gm->r[idx]->h_y);
 		gm->r[idx]->horiz_flag = 1;
 	}
 	else

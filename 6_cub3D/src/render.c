@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 16:36:10 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/10 21:57:15 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/11 16:27:52 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int				get_wall_color(t_game *gm, int idx, int landscape, int type)
 	project_height = (gm->conf.width / 2.0) / tan(gm->conf.fov / 2.0);
 	wall_strip_height = floor((gm->conf.tile_size / gm->r[idx]->distance)
 		* project_height);
-	distance_top = landscape + ((int)wall_strip_height / 2) - (gm->conf.height / 2);
+	distance_top = landscape + ((int)wall_strip_height / 2) -
+		(gm->conf.height / 2);
 	if (gm->r[idx]->verti_flag)
 		tex_x = ((int)gm->r[idx]->hit_y * gm->conf.tex[type].width
 			/ gm->conf.tile_size) % gm->conf.tex[type].width;
@@ -90,7 +91,8 @@ void			rendering(t_game *gm)
 		project_height = (gm->conf.width / 2) / tan(gm->conf.fov / 2);
 		if (gm->r[ray_idx]->distance == 0)
 			gm->r[ray_idx]->distance = 0.0001;
-		wall_strip_height = floor((gm->conf.tile_size / gm->r[ray_idx]->distance)
+		wall_strip_height = floor((gm->conf.tile_size /
+			gm->r[ray_idx]->distance)
 			* project_height);
 		wall_top = (gm->conf.height / 2) - (wall_strip_height / 2);
 		wall_top = wall_top < 0 ? 0 : wall_top;

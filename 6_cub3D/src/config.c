@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:30:56 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/10 20:37:19 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/11 16:15:24 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int				get_resolution(t_game *g, char *d)
 
 	idx = 2;
 	if (!(d[idx] >= '0' && d[idx] <= '9'))
-			exit_with_error("resolution error!\n");
+		exit_with_error("resolution error!\n");
 	while (!(is_blank(d[idx])) && d[idx])
 	{
 		if (!(d[idx] >= '0' && d[idx] <= '9'))
@@ -114,7 +114,6 @@ int				get_resolution(t_game *g, char *d)
 
 char			*put_config(t_game *g, char *d, int f, char *temp)
 {
-
 	if (f == R)
 	{
 		if (!(get_resolution(g, d)))

@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 15:15:20 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/07 18:12:49 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/11 16:25:40 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@ int				*load_image(t_game *gm, char *path, t_img *tex, int idx)
 	int			y;
 	int			*ret;
 
-	tex->img = mlx_xpm_file_to_image(gm->mlx, path, &tex->img_width, &tex->img_height);
+	tex->img = mlx_xpm_file_to_image(gm->mlx,
+		path, &tex->img_width, &tex->img_height);
 	gm->conf.tex[idx].width = tex->img_width;
 	gm->conf.tex[idx].height = tex->img_height;
-	tex->data = (int *)mlx_get_data_addr
-		(tex->img, &tex->bpp, &tex->size_l, &tex->endian);
+	tex->data = (int *)mlx_get_data_addr(tex->img,
+		&tex->bpp, &tex->size_l, &tex->endian);
 	ret = (int *)malloc(sizeof(int) * (tex->img_width * tex->img_height));
 	y = 0;
 	while (y < tex->img_height)

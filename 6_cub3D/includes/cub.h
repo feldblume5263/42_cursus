@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/10 21:45:41 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/11 16:29:49 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,8 @@ typedef struct	s_player
 	double		rot_angle;
 	double		mv_speed;
 	double		rot_speed;
+	double		go_left;
+	double		go_right;
 }				t_player;
 
 typedef struct	s_game
@@ -146,7 +148,6 @@ typedef struct	s_game
 
 int				main(int argc, char *argv[]);
 int				main_loop(t_game *gm);
-
 void			window_init(t_game *gm);
 void			img_init(t_game *gm);
 void			map_init(t_game *gm, char *map);
@@ -154,50 +155,37 @@ void			player_init(t_game *gm);
 void			rays_init(t_game *gm);
 void			ray_init(t_game *gm, int idx);
 void			config_init(t_game *gm);
-
-void			resize_resolution(t_game *g);
-
+int				is_map(char *d);
 char			*parse_data(t_game *gm, char *path);
 int				flag_blank(char *d);
 int				flag_data(char *d);
 int				is_map(char *d);
 char			*put_config(t_game *g, char *d, int f, char *temp);
-
 void			draw_rectangles(t_game *gm);
 void			draw_rectangle(t_game *gm, int x, int y, int color);
-void			draw_lines(t_game *gm);
-void			draw_line(t_game *gm, double x1, double y1, double x2, double y2);
-
 void			draw_player(t_game *gm);
 int				player_keypressed(int keycode, t_player *player);
-int				player_keyReleased(int keycode, t_player *player);
+int				player_keyreleased(int keycode, t_player *player);
 void			draw_view(t_game *gm);
 void			update_player(t_game *gm);
-
 void			cast_rays(t_game *gm);
 void			draw_ray(t_game *gm, double ray_angle, int idx);
 void			cast_ray(t_game *gm, int idx);
-
 void			cast_horiz(t_game *gm, int idx);
 void			cast_verti(t_game *gm, int idx);
 int				intercept_horiz(t_game *gm, int idx);
 int				intercept_verti(t_game *gm, int idx);
-
 void			rendering(t_game *gm);
 void			render_wall(t_game *gm, int idx, int top, int bot);
 int				get_wall_type(t_game *gm, int idx);
 int				get_wall_color(t_game *gm, int idx, int landscape, int type);
-
 void			load_texture(t_game *game);
 int				*load_image(t_game *game, char *path, t_img *tex, int i);
-
 int				is_blank(char c);
 int				inspect_wall(t_game *gm, double x, double y);
 double			noramalize_angle(double angle);
 double			get_distance(double x1, double y1, double x2, double y2);
 int				to_coord(t_game *gm, double x, double y);
-
 void			exit_with_error(char *message);
-
 
 #endif

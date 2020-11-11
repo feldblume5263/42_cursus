@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:34:43 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/10 20:56:14 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/11 16:24:43 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void			cast_ray(t_game *gm, int idx)
 		gm->r[idx]->hit_x = gm->r[idx]->v_x;
 		gm->r[idx]->hit_y = gm->r[idx]->v_y;
 	}
-
 }
 
 void			draw_ray(t_game *gm, double ray_angle, int idx)
@@ -64,7 +63,6 @@ void			cast_rays(t_game *gm)
 		ray_init(gm, ray_idx);
 		gm->r[ray_idx]->ray_angle = noramalize_angle(input_ray_angle);
 		cast_ray(gm, ray_idx);
-		//draw_ray(gm, input_ray_angle, ray_idx);
 		input_ray_angle += (gm->conf.fov / (double)(gm->conf.width));
 		ray_idx++;
 	}

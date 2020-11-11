@@ -6,13 +6,13 @@
 #    By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/10 16:03:57 by junhpark          #+#    #+#              #
-#    Updated: 2020/11/10 20:11:38 by junhpark         ###   ########.fr        #
+#    Updated: 2020/11/11 16:30:07 by junhpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= cub3d
 
-SRC_NAME = cub3D.c \
+SRC_NAME = cub3d.c \
 			gnl.c \
 			gnl_util.c \
 			init.c \

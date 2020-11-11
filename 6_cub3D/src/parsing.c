@@ -6,25 +6,11 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 21:10:20 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/10 20:37:34 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/11 16:23:56 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
-
-int				is_map(char *d)
-{
-	int			idx;
-
-	idx = 0;
-	while (d[idx])
-	{
-		if (!(ft_strchr(" 012NSEW", d[idx])))
-			return (0);
-		idx++;
-	}
-	return (1);
-}
 
 int				flag_data(char *d)
 {
@@ -90,7 +76,5 @@ char			*parse_data(t_game *gm, char *path)
 		else
 			exit_with_error("file error!\n");
 	}
-	if (gm->conf.p_flag == 0)
-		exit_with_error("you have no player\n");
 	return (map);
 }
