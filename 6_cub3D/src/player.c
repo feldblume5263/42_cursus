@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:57:38 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/11 16:27:21 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/11 16:53:45 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ int				player_keypressed(int keycode, t_player *player)
 	else if (keycode == KEY_D)
 	{
 		player->walk_dir = 1;
-		player->go_right = 1.5;
+		player->go_right = 30 * M_PI * player->rot_speed;
 	}
 	else if (keycode == KEY_A)
 	{
-		player->walk_dir = 1;
-		player->go_right = -1.5;
+		player->walk_dir = -1;
+		player->go_right = 30 * M_PI * player->rot_speed;
 	}
 	else if (keycode == KEY_RIGHT)
 		player->turn_dir = 1;

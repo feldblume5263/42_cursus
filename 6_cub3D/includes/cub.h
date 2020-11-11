@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/11 16:29:49 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/11 16:54:16 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ typedef struct	s_ray
 
 typedef struct	s_config
 {
-	int			p_x;
-	int			p_y;
+	double		p_x;
+	double		p_y;
 	int			p_flag;
 	int			width;
 	int			height;
