@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 16:14:52 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/11 16:33:56 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/12 16:54:36 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,14 @@ void			map_init(t_game *gm, char *map_data)
 	char		**temp;
 	int			**map;
 
-	gm->conf.tile_size = gm->conf.width / gm->conf.colums;
 	temp = ft_split(map_data, 't');
+	resize_colums(gm);
+	gm->conf.tile_size = gm->conf.width / gm->conf.colums;
 	map = make_map_file(gm, temp);
+	check_up_left(map, gm->conf.rows, gm->conf.colums, 0);
+	check_up_left(map, gm->conf.colums, gm->conf.rows, 1);
+	check_down_right(map, gm->conf.rows, gm->conf.colums, 0);
+	check_down_right(map, gm->conf.colums, gm->conf.rows, 1);
+	check_blank(map, gm->conf.rows, gm->conf.colums);
 	return ;
 }

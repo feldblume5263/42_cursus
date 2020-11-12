@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/11 16:54:16 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/12 16:54:08 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,5 +187,9 @@ double			noramalize_angle(double angle);
 double			get_distance(double x1, double y1, double x2, double y2);
 int				to_coord(t_game *gm, double x, double y);
 void			exit_with_error(char *message);
+void			resize_colums(t_game *gm);
+void			check_up_left(int **map, int start, int end, int flag);
+void			check_down_right(int **map, int start, int end, int flag);
+void			check_blank(int **map, int rows, int cols);
 
 #endif

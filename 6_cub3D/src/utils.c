@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:58:44 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/11 16:26:12 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/12 14:38:48 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ int				inspect_wall(t_game *gm, double x, double y)
 	int			idx_x;
 	int			idx_y;
 
-	if (x < 0 || x > gm->conf.width || y < 0 || y > gm->conf.height)
-		return (1);
 	idx_x = floor(x / gm->conf.tile_size);
 	idx_y = floor(y / gm->conf.tile_size);
 	if (idx_x >= gm->conf.colums || idx_y >= gm->conf.rows)

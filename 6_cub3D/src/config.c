@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:30:56 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/11 16:15:24 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/12 17:08:32 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int				get_path(t_game *g, char *d, int f)
 	return (1);
 }
 
-int				get_resolution(t_game *g, char *d)
+void			get_resolution(t_game *g, char *d)
 {
 	int			idx;
 
@@ -109,16 +109,14 @@ int				get_resolution(t_game *g, char *d)
 	}
 	if (g->conf.width == 0 || g->conf.height == 0)
 		exit_with_error("resolution error!\n");
-	return (1);
+	g->conf.width = g->conf.width > 5120 ? 5120 : g->conf.width;
+	g->conf.height = g->conf.height > 2880 ? 2880 : g->conf.height;
 }
 
 char			*put_config(t_game *g, char *d, int f, char *temp)
 {
 	if (f == R)
-	{
-		if (!(get_resolution(g, d)))
-			return (0);
-	}
+		get_resolution(g, d);
 	else if (f == NO || f == SO || f == WE || f == EA || f == S)
 	{
 		if (!(get_path(g, d, f)))
