@@ -6,7 +6,7 @@
 #    By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/10 16:03:57 by junhpark          #+#    #+#              #
-#    Updated: 2020/11/11 16:30:07 by junhpark         ###   ########.fr        #
+#    Updated: 2020/11/12 21:18:15 by junhpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,10 @@ SRC_NAME = cub3d.c \
 			init.c \
 			parsing.c \
 			config.c \
+			get_color.c \
 			map_parsing.c \
 			map.c \
+			map_valid.c \
 			player.c \
 			ray.c \
 			ray_detail.c \

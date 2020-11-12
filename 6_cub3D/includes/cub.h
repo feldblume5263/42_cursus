@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/12 16:54:08 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/12 21:52:13 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,5 +191,10 @@ void			resize_colums(t_game *gm);
 void			check_up_left(int **map, int start, int end, int flag);
 void			check_down_right(int **map, int start, int end, int flag);
 void			check_blank(int **map, int rows, int cols);
+int				make_color(char **num);
+int				get_color_value(char *hexa);
+char			*make_hexa(int n, char *base);
+int				safer_free_pp(void **pp);
+int				safer_free_p(void *p);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:30:56 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/12 17:08:32 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/12 21:54:47 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ char			*store_map_file(t_game *g, char *d, char *temp)
 				g->conf.p_flag = 1;
 		}
 	}
+	safer_free_p(temp2);
 	g->conf.colums = (int)ft_strlen(d) > g->conf.colums ? size : g->conf.colums;
 	return (temp3);
 }
@@ -43,22 +44,18 @@ char			*store_map_file(t_game *g, char *d, char *temp)
 int				get_color(t_game *g, char *d, int f)
 {
 	int			idx;
-	int			ret;
+	char		**ret;
+	int			color;
 
 	idx = 1;
-	ret = 0;
 	while (is_blank(d[idx]))
 		idx++;
-	while (d[idx])
-	{
-		if (d[idx] >= '0' && d[idx] <= '9')
-			ret = 10 * ret + d[idx] - 48;
-		idx++;
-	}
+	ret = ft_split(d + idx, ',');
+	color = make_color(ret);
 	if (f == F)
-		g->conf.floor_color = ret;
+		g->conf.floor_color = color;
 	else if (f == C)
-		g->conf.ceiling_color = ret;
+		g->conf.ceiling_color = color;
 	else
 		return (0);
 	return (1);

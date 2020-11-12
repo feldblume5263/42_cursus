@@ -6,11 +6,31 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 14:44:18 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/11 16:19:21 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/12 21:52:21 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+int				safer_free_pp(void **pp)
+{
+	if (pp != NULL && *pp != NULL)
+	{
+		free(*pp);
+		*pp = NULL;
+	}
+	return (1);
+}
+
+int				safer_free_p(void *p)
+{
+	if (p != NULL)
+	{
+		free(p);
+		p = NULL;
+	}
+	return (1);
+}
 
 void			exit_with_error(char *message)
 {

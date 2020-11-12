@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 16:14:52 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/12 16:54:36 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/12 21:52:43 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void			map_init(t_game *gm, char *map_data)
 {
 	char		**temp;
 	int			**map;
+	int			row;
 
 	temp = ft_split(map_data, 't');
 	resize_colums(gm);
@@ -75,5 +76,11 @@ void			map_init(t_game *gm, char *map_data)
 	check_down_right(map, gm->conf.rows, gm->conf.colums, 0);
 	check_down_right(map, gm->conf.colums, gm->conf.rows, 1);
 	check_blank(map, gm->conf.rows, gm->conf.colums);
+	row = 0;
+	while (row < gm->conf.rows)
+	{
+		safer_free_p(temp[row]);
+		row++;
+	}
 	return ;
 }

@@ -1,12 +1,12 @@
-R 900 700
+R 700 700
 NO ./textures/NO.xpm
 SO ./textures/SO.xpm
 WE ./textures/WE.xpm
 EA ./textures/EA.xpm
 
 S ./textures/ITEM.xpm
-F 220,100,0
-C 225,30,0
+F 25,229,134
+C 0,181,242
 
 11111111111
 10000000001
