@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 21:14:35 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/13 19:11:55 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/13 19:50:44 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ int				make_color(char **num)
 		hexa_temp = hexa;
 		temp = ft_atoi(num[idx]);
 		free(num[idx]);
-		hexa = ft_strjoin(hexa, res = make_hexa(temp, "0123456789abcdef"));
+		res = make_hexa(temp, "0123456789abcdef");
+		hexa = ft_strjoin(hexa, res);
 		free(hexa_temp);
 		free(res);
 		idx++;

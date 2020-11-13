@@ -6,11 +6,19 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:34:43 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/13 19:30:55 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/13 19:53:10 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+double			noramalize_angle(double angle)
+{
+	angle = fmod(angle, (2 * M_PI));
+	if (angle < 0)
+		angle = (2 * M_PI) + angle;
+	return (angle);
+}
 
 void			cast_ray(t_game *gm, int idx)
 {

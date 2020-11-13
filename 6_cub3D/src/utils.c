@@ -6,11 +6,28 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:58:44 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/12 14:38:48 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/13 19:52:59 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+void			check_player_num(t_game *g, char *d)
+{
+	int			idx;
+
+	idx = -1;
+	while (d[++idx])
+	{
+		if (ft_strchr("NSWE", d[idx]))
+		{
+			if (g->conf.p_flag == 1)
+				exit_with_error("you have 2 player\n");
+			else
+				g->conf.p_flag = 1;
+		}
+	}
+}
 
 int				to_coord(t_game *gm, double x, double y)
 {
@@ -35,14 +52,6 @@ double			get_distance(double x1, double y1, double x2, double y2)
 	y = y2 - y1;
 	ret = sqrt((x * x) + (y * y));
 	return (ret);
-}
-
-double			noramalize_angle(double angle)
-{
-	angle = fmod(angle, (2 * M_PI));
-	if (angle < 0)
-		angle = (2 * M_PI) + angle;
-	return (angle);
 }
 
 int				inspect_wall(t_game *gm, double x, double y)

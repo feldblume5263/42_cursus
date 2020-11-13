@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 21:10:20 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/13 19:22:16 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/13 19:48:51 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,25 +52,23 @@ int				flag_blank(char *d)
 
 char			*parse_data(t_game *gm, char *path)
 {
-	int			fd;
+	int			parm[3];
 	char		*data_line;
-	int			temp;
-	int			flag;
 	char		*map;
 
 	map = ft_strdup("");
-	if ((fd = open(path, O_RDONLY)) < 0)
+	if ((parm[0] = open(path, O_RDONLY)) < 0)
 		exit_with_error("fail to open file\n");
-	while ((temp = get_next_line(fd, &data_line)) > 0)
+	while ((parm[1] = get_next_line(parm[0], &data_line)) > 0)
 	{
-		if (flag_blank(data_line) == 1 && flag != M)
+		if (flag_blank(data_line) == 1 && parm[2] != M)
 		{
 			free(data_line);
 			continue;
 		}
-		if ((flag = flag_data(data_line)) > 0)
+		if ((parm[2] = flag_data(data_line)) > 0)
 		{
-			if (!(map = put_config(gm, data_line, flag, map)))
+			if (!(map = put_config(gm, data_line, parm[2], map)))
 				exit_with_error("file error!\n");
 		}
 		else

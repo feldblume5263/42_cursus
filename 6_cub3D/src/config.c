@@ -6,28 +6,11 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:30:56 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/13 19:19:36 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/13 19:51:04 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
-
-void			check_player_num(t_game *g, char *d)
-{
-	int			idx;
-
-	idx = -1;
-	while (d[++idx])
-	{
-		if (ft_strchr("NSWE", d[idx]))
-		{
-			if (g->conf.p_flag == 1)
-				exit_with_error("you have 2 player\n");
-			else
-				g->conf.p_flag = 1;
-		}
-	}
-}
 
 char			*store_map_file(t_game *g, char *d, char *temp)
 {
