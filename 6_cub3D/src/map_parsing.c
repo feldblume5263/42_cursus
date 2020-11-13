@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 16:14:52 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/12 21:52:43 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/13 19:26:06 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,9 @@ void			map_init(t_game *gm, char *map_data)
 	row = 0;
 	while (row < gm->conf.rows)
 	{
-		safer_free_p(temp[row]);
+		free(temp[row]);
 		row++;
 	}
+	free(temp);
 	return ;
 }

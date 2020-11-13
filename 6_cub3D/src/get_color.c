@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 21:14:35 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/12 21:17:46 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/13 19:11:55 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int				get_color_value(char *hexa)
 	int			idx;
 
 	ret = 0;
-	idx = 0;
-	while (hexa[idx])
+	idx = -1;
+	while (hexa[++idx])
 	{
 		if (hexa[idx] >= '0' && hexa[idx] <= '9')
 			ret = ret * 16 + hexa[idx] - '0';
@@ -64,7 +64,6 @@ int				get_color_value(char *hexa)
 			ret = ret * 16 + 14;
 		else if (hexa[idx] == 'f')
 			ret = ret * 16 + 15;
-		idx++;
 	}
 	return (ret);
 }
@@ -74,14 +73,23 @@ int				make_color(char **num)
 	int			idx;
 	int			temp;
 	char		*hexa;
+	char		*res;
+	char		*hexa_temp;
 
+	hexa = ft_strdup("");
 	idx = 0;
-	hexa = strdup("");
 	while (idx < 3)
 	{
+		hexa_temp = hexa;
 		temp = ft_atoi(num[idx]);
-		hexa = ft_strjoin(hexa, make_hexa(temp, "0123456789abcdef"));
+		free(num[idx]);
+		hexa = ft_strjoin(hexa, res = make_hexa(temp, "0123456789abcdef"));
+		free(hexa_temp);
+		free(res);
 		idx++;
 	}
-	return (get_color_value(hexa));
+	free(num);
+	temp = get_color_value(hexa);
+	free(hexa);
+	return (temp);
 }

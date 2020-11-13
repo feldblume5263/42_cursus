@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 14:41:12 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/12 16:37:27 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/13 19:32:00 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ int				close_game(void *game)
 
 int				main_loop(t_game *gm)
 {
+	int			idx;
+
+	idx = 0;
 	draw_rectangles(gm);
 	draw_player(gm);
 	mlx_hook(gm->win, X_EVENT_KEY_PRESS, 0, &player_keypressed, gm->p);
@@ -39,6 +42,11 @@ int				main_loop(t_game *gm)
 	update_player(gm);
 	cast_rays(gm);
 	rendering(gm);
+	while (idx < gm->conf.width)
+	{
+		free(gm->r[idx]);
+		idx++;
+	}
 	return (0);
 }
 
