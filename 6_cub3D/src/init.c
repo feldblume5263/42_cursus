@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:57:24 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/11 16:14:36 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/13 20:56:48 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void			player_init(t_game *gm)
 	gm->p->radius = 6;
 	gm->p->turn_dir = 0;
 	gm->p->walk_dir = 0;
-	gm->p->rot_angle = M_PI / 2;
+	gm->p->rot_angle = M_PI / gm->conf.dir;
 	gm->p->mv_speed = 3.0;
 	gm->p->rot_speed = 3.0 * (M_PI / 180);
 	gm->p->go_left = 0;

@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 16:05:08 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/12 17:00:50 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/13 21:09:34 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,4 +107,26 @@ void			resize_colums(t_game *gm)
 		gm->conf.colums = (double)gm->conf.rows *
 			((double)gm->conf.width / (double)gm->conf.height);
 	}
+}
+
+void			is_cub(char *file_name)
+{
+	int			idx;
+
+	idx = 0;
+	while (file_name[idx])
+		idx++;
+	idx--;
+	if (file_name[idx] != 'b')
+		exit_with_error("file is not .cub format\n");
+	idx--;
+	if (file_name[idx] != 'u')
+		exit_with_error("file is not .cub format\n");
+	idx--;
+	if (file_name[idx] != 'c')
+		exit_with_error("file is not .cub format\n");
+	idx--;
+	if (file_name[idx] != '.')
+		exit_with_error("file is not .cub format\n");
+	idx--;
 }

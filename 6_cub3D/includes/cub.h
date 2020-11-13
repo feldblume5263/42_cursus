@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/13 19:51:35 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/13 21:45:20 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ typedef struct	s_config
 	int			ceiling_color;
 	int			**map;
 	double		fov;
+	double		dir;
 }				t_config;
 
 typedef struct	s_img
@@ -197,5 +198,7 @@ char			*make_hexa(int n, char *base);
 int				safer_free_pp(void **pp);
 int				safer_free_p(void *p);
 void			check_player_num(t_game *g, char *d);
+void			is_cub(char *file_name);
+void			screenshot(t_game *game);
 
 #endif

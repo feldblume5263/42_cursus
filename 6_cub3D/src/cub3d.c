@@ -6,7 +6,7 @@
 /*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 14:41:12 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/13 19:32:00 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/13 21:45:02 by junhpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int				check_input(int argc, char *argv[])
 {
-	if (!(argc == 2 || (argc == 3 && ft_strncmp(argv[2], "--save", 6))))
+	if (!(argc == 2 || (argc == 3 && !ft_strncmp(argv[2], "--save", 6))))
 	{
 		write(1, "wrong input!\n", 19);
 		return (-1);
@@ -57,6 +57,7 @@ int				main(int argc, char *argv[])
 
 	if (check_input(argc, argv) < 0)
 		exit(0);
+	is_cub(argv[1]);
 	config_init(&gm);
 	if (!(map = parse_data(&gm, argv[1])))
 		exit_with_error("file error!");
@@ -70,5 +71,7 @@ int				main(int argc, char *argv[])
 	rays_init(&gm);
 	mlx_hook(gm.win, X_EVENT_KEY_EXIT, 0, &close_game, &gm);
 	mlx_loop_hook(gm.mlx, &main_loop, &gm);
+	if (argc == 3 && !ft_strncmp(argv[2], "--save", 6))
+		screenshot(&gm);
 	mlx_loop(gm.mlx);
 }

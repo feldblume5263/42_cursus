@@ -6,7 +6,7 @@
 #    By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/10 16:03:57 by junhpark          #+#    #+#              #
-#    Updated: 2020/11/12 21:18:15 by junhpark         ###   ########.fr        #
+#    Updated: 2020/11/13 21:38:09 by junhpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,9 @@ SRC_NAME = cub3d.c \
 			render.c \
 			textures.c \
 			utils.c \
-			system.c
+			system.c \
+			screenshot.c
+
 SRC_PATH = ./src
 SRC = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
 
