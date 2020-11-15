@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 16:14:52 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/13 20:53:43 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/16 00:44:13 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ int				is_map(char *d)
 void			get_first_dir(t_game *g, char player)
 {
 	if (player == 'N')
-		g->conf.dir = 2;
+		g->p->rot_angle = (M_PI * 1.5);
 	else if (player == 'E')
-		g->conf.dir = 1;
+		g->p->rot_angle = 0;
 	else if (player == 'S')
-		g->conf.dir = 0.67;
+		g->p->rot_angle = (M_PI * 0.5);
 	else if (player == 'W')
-		g->conf.dir = 0.5;
+		g->p->rot_angle = (M_PI);
 }
 
 void			put_data_into_map(t_game *gm, char **temp, int col, int row)
@@ -44,6 +44,7 @@ void			put_data_into_map(t_game *gm, char **temp, int col, int row)
 	{
 		gm->conf.p_x = gm->conf.tile_size * col;
 		gm->conf.p_y = gm->conf.tile_size * row;
+		gm->conf.nsew = temp[row][col];
 		gm->conf.map[row][col] = 0;
 		get_first_dir(gm, temp[row][col]);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 16:36:10 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/11 16:27:52 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/16 00:50:28 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void			rendering(t_game *gm)
 		project_height = (gm->conf.width / 2) / tan(gm->conf.fov / 2);
 		if (gm->r[ray_idx]->distance == 0)
 			gm->r[ray_idx]->distance = 0.0001;
+		gm->sprite.buffer[ray_idx] = gm->r[ray_idx]->distance;
 		wall_strip_height = floor((gm->conf.tile_size /
 			gm->r[ray_idx]->distance)
 			* project_height);

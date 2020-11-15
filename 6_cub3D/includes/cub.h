@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/13 21:45:20 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/16 00:44:18 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,32 @@
 
 # define INT_MAX				2147483647
 
+typedef struct				s_sprite
+{
+	int						screen_x;
+	int						num_sprites;
+	int						bpp;
+	int						sl;
+	int						end;
+	int						width;
+	int						height;
+	double					angle;
+	void					*ptr;
+	int						*data;
+	double					*distance;
+	double					*x;
+	double					*y;
+	double					*buffer;
+	int						draw_start_x;
+	int						draw_start_y;
+	int						draw_end_x;
+	int						draw_end_y;
+	double					dir_x;
+	double					dir_y;
+	double					plane_x;
+	double					plane_y;
+}							t_sprite;
+
 typedef struct	s_tex
 {
 	char		*tex_path;
@@ -111,7 +137,7 @@ typedef struct	s_config
 	int			ceiling_color;
 	int			**map;
 	double		fov;
-	double		dir;
+	char		nsew;
 }				t_config;
 
 typedef struct	s_img
@@ -145,6 +171,7 @@ typedef struct	s_game
 	t_player	*p;
 	t_ray		**r;
 	t_config	conf;
+	t_sprite	sprite;
 }				t_game;
 
 int				main(int argc, char *argv[]);
@@ -184,7 +211,7 @@ void			load_texture(t_game *game);
 int				*load_image(t_game *game, char *path, t_img *tex, int i);
 int				is_blank(char c);
 int				inspect_wall(t_game *gm, double x, double y);
-double			noramalize_angle(double angle);
+double			normalize_angle(double angle);
 double			get_distance(double x1, double y1, double x2, double y2);
 int				to_coord(t_game *gm, double x, double y);
 void			exit_with_error(char *message);
@@ -200,5 +227,20 @@ int				safer_free_p(void *p);
 void			check_player_num(t_game *g, char *d);
 void			is_cub(char *file_name);
 void			screenshot(t_game *game);
+
+int		sprite_init(t_game *g, t_sprite *sprite);
+void	get_sprite_vector(t_sprite *sprite, const char direction);
+void	get_sprite_position(t_game *g, t_sprite *sprite);
+int		set_sprite_memory(t_game *g, t_sprite *sprite);
+int		count_sprite(t_game *g);
+void		render_sprite(t_game *g, t_sprite *sprite);
+int		is_sprite_visible(t_game *g, const int id, const double sprite_size);
+double	calculate_sprite_angle(t_game *g, const double x, const double y);
+void	sort_sprite_by_distance(t_sprite *sprite);
+void	get_sprite_distance(t_game *g, t_sprite *sprite);
+void		draw_sprite(t_game *g, t_sprite *sprite, const double transform_y, const double sprite_size);
+void		put_sprite_texture(t_game *g, int i, int j, const double sprite_size);
+void	get_sprite_draw_pos(t_game *g, const double sprite_size);
+double	get_transform_y(t_game *g, const int id);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.c                                            :+:      :+:    :+:   */
+/*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 14:41:12 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/13 21:45:02 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/16 00:53:08 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,11 @@ int				main_loop(t_game *gm)
 	draw_player(gm);
 	mlx_hook(gm->win, X_EVENT_KEY_PRESS, 0, &player_keypressed, gm->p);
 	mlx_hook(gm->win, X_EVENT_KEY_RELEASE, 0, &player_keyreleased, gm->p);
-	mlx_put_image_to_window(gm->mlx, gm->win, gm->img.img, 0, 0);
 	update_player(gm);
 	cast_rays(gm);
 	rendering(gm);
+	render_sprite(gm, &gm->sprite);
+	mlx_put_image_to_window(gm->mlx, gm->win, gm->img.img, 0, 0);
 	while (idx < gm->conf.width)
 	{
 		free(gm->r[idx]);
@@ -58,6 +59,7 @@ int				main(int argc, char *argv[])
 	if (check_input(argc, argv) < 0)
 		exit(0);
 	is_cub(argv[1]);
+	player_init(&gm);
 	config_init(&gm);
 	if (!(map = parse_data(&gm, argv[1])))
 		exit_with_error("file error!");
@@ -67,8 +69,8 @@ int				main(int argc, char *argv[])
 	window_init(&gm);
 	img_init(&gm);
 	load_texture(&gm);
-	player_init(&gm);
 	rays_init(&gm);
+	sprite_init(&gm, &gm.sprite);
 	mlx_hook(gm.win, X_EVENT_KEY_EXIT, 0, &close_game, &gm);
 	mlx_loop_hook(gm.mlx, &main_loop, &gm);
 	if (argc == 3 && !ft_strncmp(argv[2], "--save", 6))

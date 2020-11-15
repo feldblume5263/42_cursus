@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:34:43 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/13 20:54:43 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/15 03:51:12 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-double			noramalize_angle(double angle)
+double			normalize_angle(double angle)
 {
 	angle = fmod(angle, (2 * M_PI));
 	if (angle < 0)
@@ -69,7 +69,7 @@ void			cast_rays(t_game *gm)
 	while (ray_idx < gm->conf.width)
 	{
 		ray_init(gm, ray_idx);
-		gm->r[ray_idx]->ray_angle = noramalize_angle(input_ray_angle);
+		gm->r[ray_idx]->ray_angle = normalize_angle(input_ray_angle);
 		cast_ray(gm, ray_idx);
 		input_ray_angle += (gm->conf.fov / (double)(gm->conf.width));
 		ray_idx++;

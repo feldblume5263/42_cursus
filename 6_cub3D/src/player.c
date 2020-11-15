@@ -6,11 +6,32 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:57:38 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/11 22:55:26 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/16 00:51:45 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+void			update_vector_position(t_game *g)
+{
+	double			old_dir_x;
+	double			old_plane_x;
+	double			vector_angle;
+	t_sprite		*sprite;
+
+	sprite = &g->sprite;
+	old_dir_x = sprite->dir_x;
+	old_plane_x = sprite->plane_x;
+	vector_angle = g->p->turn_dir * g->p->rot_speed;
+	sprite->dir_x = sprite->dir_x * cos(vector_angle) - sprite->dir_y *\
+					sin(vector_angle);
+	sprite->dir_y = old_dir_x * sin(vector_angle) +\
+						sprite->dir_y * cos(vector_angle);
+	sprite->plane_x = sprite->plane_x * cos(vector_angle) -\
+						sprite->plane_y * sin(vector_angle);
+	sprite->plane_y = old_plane_x * sin(vector_angle) +\
+						sprite->plane_y * cos(vector_angle);
+}
 
 void			update_player(t_game *gm)
 {
@@ -24,6 +45,7 @@ void			update_player(t_game *gm)
 	new_y = gm->conf.p_y + sin(gm->p->rot_angle + gm->p->go_right) * move_step;
 	if (!(inspect_wall(gm, new_x, new_y)))
 	{
+		update_vector_position(gm);
 		gm->conf.p_x = new_x;
 		gm->conf.p_y = new_y;
 	}

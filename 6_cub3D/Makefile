@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+         #
+#    By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/10 16:03:57 by junhpark          #+#    #+#              #
-#    Updated: 2020/11/13 21:38:09 by junhpark         ###   ########.fr        #
+#    Updated: 2020/11/16 00:55:04 by Feldblume        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= cub3d
+NAME	= cub3D
 
 SRC_NAME = cub3d.c \
 			gnl.c \
@@ -29,7 +29,8 @@ SRC_NAME = cub3d.c \
 			textures.c \
 			utils.c \
 			system.c \
-			screenshot.c
+			screenshot.c \
+			sprite.c
 
 SRC_PATH = ./src
 SRC = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
