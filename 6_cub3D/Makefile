@@ -6,7 +6,7 @@
 #    By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/10 16:03:57 by junhpark          #+#    #+#              #
-#    Updated: 2020/11/16 00:55:04 by Feldblume        ###   ########.fr        #
+#    Updated: 2020/11/16 17:41:26 by Feldblume        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC_NAME = cub3d.c \
 			config.c \
 			get_color.c \
 			map_parsing.c \
+			parse_utils.c \
 			map.c \
 			map_valid.c \
 			player.c \

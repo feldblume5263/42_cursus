@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:30:56 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/13 19:51:04 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/16 17:40:12 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,19 @@ int				get_color(t_game *g, char *d, int f)
 	ret = ft_split(d + idx, ',');
 	color = make_color(ret);
 	if (f == F)
+	{
+		if (g->flag.color_f)
+			exit_with_error("floor color entered twice\n");
 		g->conf.floor_color = color;
+		g->flag.color_f = 1;
+	}
 	else if (f == C)
+	{
+		if (g->flag.color_c)
+			exit_with_error("ceil color entered twice\n");
 		g->conf.ceiling_color = color;
+		g->flag.color_c = 1;
+	}
 	else
 		return (0);
 	return (1);
@@ -73,6 +83,7 @@ int				get_path(t_game *g, char *d, int f)
 		g->conf.tex[TEX_EAST].tex_path = ft_strdup(d + idx);
 	else if (f == S)
 		g->conf.tex[TEX_SPRITE].tex_path = ft_strdup(d + idx);
+	get_path_flag(&(g->flag), f);
 	return (1);
 }
 
@@ -111,21 +122,24 @@ char			*put_config(t_game *g, char *d, int f, char *temp)
 
 	free_temp = temp;
 	if (f == R)
+	{
+		if (g->flag.r)
+			exit_with_error("resolution enterd twice\n");
 		get_resolution(g, d);
+		g->flag.r = 1;
+	}
 	else if (f == NO || f == SO || f == WE || f == EA || f == S)
-	{
-		if (!(get_path(g, d, f)))
-			return (0);
-	}
+		get_path(g, d, f);
 	else if (f == F || f == C)
+		get_color(g, d, f);
+	else if (f == M && g->flag.r && g->flag.color_c &&
+		g->flag.color_f && inspect_t(&(g->flag)))
 	{
-		if (!(get_color(g, d, f)))
-			return (0);
-	}
-	else if (f == M)
-	{
+		g->flag.map = 1;
 		if (!(temp = store_map_file(g, d, temp)))
-			return (0);
+			exit_with_error("map error\n");
 	}
+	if (!(g->flag.map))
+		exit_with_error("file content error\n");
 	return (temp);
 }

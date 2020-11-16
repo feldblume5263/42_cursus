@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/16 00:44:18 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/16 17:40:46 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,19 @@
 # define M						9
 
 # define INT_MAX				2147483647
+
+typedef struct				s_flag
+{
+	int						r;
+	int						path_n;
+	int						path_s;
+	int						path_e;
+	int						path_w;
+	int						color_f;
+	int						color_c;
+	int						map;
+}							t_flag;
+
 
 typedef struct				s_sprite
 {
@@ -172,6 +185,7 @@ typedef struct	s_game
 	t_ray		**r;
 	t_config	conf;
 	t_sprite	sprite;
+	t_flag		flag;
 }				t_game;
 
 int				main(int argc, char *argv[]);
@@ -227,6 +241,9 @@ int				safer_free_p(void *p);
 void			check_player_num(t_game *g, char *d);
 void			is_cub(char *file_name);
 void			screenshot(t_game *game);
+void			init_parsing_flag(t_game *gm);
+int				inspect_t(t_flag *flag);
+void			get_path_flag(t_flag *flag, int f);
 
 int		sprite_init(t_game *g, t_sprite *sprite);
 void	get_sprite_vector(t_sprite *sprite, const char direction);

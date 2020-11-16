@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:57:24 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/16 00:45:40 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/16 16:21:22 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void			config_init(t_game *gm)
 {
+	int			idx;
+
 	gm->conf.p_x = 0;
 	gm->conf.p_y = 0;
 	gm->conf.p_flag = 0;
@@ -25,6 +27,10 @@ void			config_init(t_game *gm)
 	gm->conf.floor_color = 0;
 	gm->conf.ceiling_color = 0;
 	gm->conf.fov = 60 * (M_PI / 180);
+	gm->conf.map = NULL;
+	idx = -1;
+	while (++idx < TEXTURES)
+		gm->conf.tex[0].tex_path = NULL;
 }
 
 void			ray_init(t_game *gm, int idx)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 21:10:20 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/13 19:48:51 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/16 17:04:24 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ char			*parse_data(t_game *gm, char *path)
 	char		*data_line;
 	char		*map;
 
+	init_parsing_flag(gm);
 	map = ft_strdup("");
 	if ((parm[0] = open(path, O_RDONLY)) < 0)
 		exit_with_error("fail to open file\n");
