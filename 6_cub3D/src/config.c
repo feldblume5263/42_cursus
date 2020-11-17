@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:30:56 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/17 20:50:43 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/18 04:39:36 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,21 @@ int				get_color_p(t_game *g, char *d, int f)
 
 int				get_path(t_game *g, char *d, int f)
 {
-	int			idx;
+	char		*temp;
 
-	idx = 2;
-	while (is_blank(d[idx]))
-		idx++;
+	temp = get_pure_path(d);
 	if (f == NO)
-		g->conf.tex[TEX_NORTH].tex_path = ft_strdup(d + idx);
+		g->conf.tex[TEX_SOUTH].tex_path = ft_strdup(temp);
 	else if (f == SO)
-		g->conf.tex[TEX_SOUTH].tex_path = ft_strdup(d + idx);
+		g->conf.tex[TEX_NORTH].tex_path = ft_strdup(temp);
 	else if (f == WE)
-		g->conf.tex[TEX_WEST].tex_path = ft_strdup(d + idx);
+		g->conf.tex[TEX_EAST].tex_path = ft_strdup(temp);
 	else if (f == EA)
-		g->conf.tex[TEX_EAST].tex_path = ft_strdup(d + idx);
+		g->conf.tex[TEX_WEST].tex_path = ft_strdup(temp);
 	else if (f == S)
-		g->conf.tex[TEX_SPRITE].tex_path = ft_strdup(d + idx);
+		g->conf.tex[TEX_SPRITE].tex_path = ft_strdup(temp);
 	get_path_flag(&(g->flag), f);
+	free(temp);
 	return (1);
 }
 

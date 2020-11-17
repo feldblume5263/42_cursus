@@ -6,11 +6,40 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 15:15:20 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/17 15:33:54 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/18 04:39:22 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+char			*get_pure_path(char *d)
+{
+	int			idx;
+	int			temp_idx;
+	int			count;
+	char		*temp;
+
+	idx = 2;
+	while (is_blank(d[idx]))
+		idx++;
+	temp_idx = idx;
+	count = 0;
+	while (d[temp_idx] && d[temp_idx] != ' ')
+	{
+		count++;
+		temp_idx++;
+	}
+	if (!(temp = (char *)malloc(sizeof(char) * (count + 1))))
+		exit_with_error("texture path malloc error\n");
+	temp_idx = -1;
+	while (d[idx] && d[idx] != ' ')
+	{
+		temp[++temp_idx] = d[idx];
+		idx++;
+	}
+	temp[++temp_idx] = '\0';
+	return (temp);
+}
 
 int				*load_image(t_game *gm, char *path, t_img *tex, int idx)
 {

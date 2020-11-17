@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/17 20:51:08 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/18 04:37:56 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,6 +236,7 @@ void			draw_rectangles(t_game *gm);
 void			check_player_num(t_game *g, char *d);
 void			get_path_flag_s(t_flag *flag, int f);
 void			get_path_flag(t_flag *flag, int f);
+char			*get_pure_path(char *d);
 int				inspect_t(t_flag *flag);
 void			init_parsing_flag(t_game *gm);
 int				flag_data(char *d, t_flag f);
