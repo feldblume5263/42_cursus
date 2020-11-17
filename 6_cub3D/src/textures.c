@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 15:15:20 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/18 07:50:06 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/18 07:51:34 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 char			*get_pure_path(char *d)
 {
 	int			idx;
-	int			temp_idx;
-	int			count;
 	char		*temp;
 
 	idx = 2;
