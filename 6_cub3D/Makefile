@@ -6,7 +6,7 @@
 #    By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/10 16:03:57 by junhpark          #+#    #+#              #
-#    Updated: 2020/11/16 17:41:26 by Feldblume        ###   ########.fr        #
+#    Updated: 2020/11/17 15:50:07 by Feldblume        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ $(LIBMLX):
 
 clean	:
 	$(MAKE) -C libft clean
-	$(MAKE) -C mlx clean
+	$(MAKE) -C ./mlx clean
 	rm -rf $(OBJ_PATH)
 
 fclean	: clean

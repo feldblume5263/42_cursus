@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 17:02:03 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/17 15:37:43 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 15:59:38 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void			get_path_flag(t_flag *flag, int f)
 	}
 	else if (f == S)
 	{
-		if (flag->path_s)
+		if (flag->path_i)
 			exit_with_error("texture sprite entered twice\n");
-		flag->path_s = 1;
+		flag->path_i = 1;
 	}
 }
 
@@ -63,6 +63,7 @@ void			init_parsing_flag(t_game *gm)
 	gm->flag.path_e = 0;
 	gm->flag.path_w = 0;
 	gm->flag.path_s = 0;
+	gm->flag.path_i = 0;
 	gm->flag.color_f = 0;
 	gm->flag.color_c = 0;
 	gm->flag.map = 0;

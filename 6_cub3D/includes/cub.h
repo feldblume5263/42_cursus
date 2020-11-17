@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/17 15:26:22 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 15:59:52 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct				s_flag
 	int						path_s;
 	int						path_e;
 	int						path_w;
+	int						path_i;
 	int						color_f;
 	int						color_c;
 	int						map;

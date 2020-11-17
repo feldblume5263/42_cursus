@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:30:56 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/16 18:41:31 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 16:00:38 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,8 @@ int				get_color(t_game *g, char *d, int f)
 	char		**ret;
 	int			color;
 
-	idx = 1;
-	while (is_blank(d[idx]))
-		idx++;
+	idx = 0;
+	while (is_blank(d[++idx]))
 	ret = ft_split(d + idx, ',');
 	color = make_color(ret);
 	if (f == F)
