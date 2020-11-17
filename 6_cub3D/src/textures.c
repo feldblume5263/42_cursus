@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 15:15:20 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/18 04:55:16 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/18 07:50:06 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,7 @@ char			*get_pure_path(char *d)
 	idx = 2;
 	while (is_blank(d[idx]))
 		idx++;
-	temp_idx = idx;
-	count = 0;
-	while (d[temp_idx] && d[temp_idx] != ' ')
-	{
-		count++;
-		temp_idx++;
-	}
-	if (!(temp = (char *)malloc(sizeof(char) * (count + 1))))
-		exit_with_error("texture path malloc error\n");
-	temp_idx = -1;
-	while (d[idx] && d[idx] != ' ')
-	{
-		temp[++temp_idx] = d[idx];
-		idx++;
-	}
-	temp[++temp_idx] = '\0';
+	temp = ft_strdup(d + idx);
 	return (temp);
 }
 
