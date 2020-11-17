@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 17:02:03 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/16 17:40:20 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 15:37:43 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,35 @@
 void			get_path_flag(t_flag *flag, int f)
 {
 	if (f == NO)
+	{
+		if (flag->path_n)
+			exit_with_error("texture North entered twice\n");
 		flag->path_n = 1;
+	}
 	else if (f == SO)
+	{
+		if (flag->path_s)
+			exit_with_error("texture South entered twice\n");
 		flag->path_s = 1;
+	}
 	else if (f == WE)
+	{
+		if (flag->path_w)
+			exit_with_error("texture West entered twice\n");
 		flag->path_w = 1;
+	}
 	else if (f == EA)
+	{
+		if (flag->path_e)
+			exit_with_error("texture East entered twice\n");
 		flag->path_e = 1;
+	}
 	else if (f == S)
+	{
+		if (flag->path_s)
+			exit_with_error("texture sprite entered twice\n");
 		flag->path_s = 1;
+	}
 }
 
 int				inspect_t(t_flag *flag)

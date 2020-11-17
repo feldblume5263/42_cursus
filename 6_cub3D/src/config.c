@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:30:56 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/16 17:40:12 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/16 18:41:31 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,5 @@ char			*put_config(t_game *g, char *d, int f, char *temp)
 		if (!(temp = store_map_file(g, d, temp)))
 			exit_with_error("map error\n");
 	}
-	if (!(g->flag.map))
-		exit_with_error("file content error\n");
 	return (temp);
 }

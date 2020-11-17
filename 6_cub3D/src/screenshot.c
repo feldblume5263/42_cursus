@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   screenshot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 21:34:05 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/13 21:52:59 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/17 01:59:54 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ static int			get_color(t_game *game, int x, int y)
 	int			color;
 	int			rgb;
 
-	color = game->img.data[game->conf.width * y + x];
+	color = 0;
+	if (game->conf.width * game->conf.height > game->conf.width * y + x)
+		color = game->img.data[game->conf.width * y + x];
 	rgb = (color & 0xFF0000) | (color & 0x00FF00) | (color & 0x0000FF);
 	return (rgb);
 }
@@ -83,6 +85,7 @@ void				screenshot(t_game *game)
 
 	cast_rays(game);
 	rendering(game);
+	render_sprite(game, &game->sprite);
 	mlx_put_image_to_window(game->mlx, game->win, game->img.img, 0, 0);
 	pixel_bytes_per_row = game->conf.width * 3;
 	pad = (4 - pixel_bytes_per_row % 4) % 4;

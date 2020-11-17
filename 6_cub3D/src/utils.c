@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:58:44 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/13 19:52:59 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/17 01:16:18 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,18 @@ double			get_distance(double x1, double y1, double x2, double y2)
 	y = y2 - y1;
 	ret = sqrt((x * x) + (y * y));
 	return (ret);
+}
+
+int				inspect_sprite(t_game *gm, double x, double y)
+{
+	int			idx_x;
+	int			idx_y;
+
+	idx_x = floor(x / gm->conf.tile_size);
+	idx_y = floor(y / gm->conf.tile_size);
+	if (idx_x >= gm->conf.colums || idx_y >= gm->conf.rows)
+		return (1);
+	return (gm->conf.map[idx_y][idx_x] == 2);
 }
 
 int				inspect_wall(t_game *gm, double x, double y)

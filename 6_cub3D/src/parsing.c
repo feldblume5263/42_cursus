@@ -6,13 +6,13 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 21:10:20 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/16 17:04:24 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 15:28:15 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-int				flag_data(char *d)
+int				flag_data(char *d, t_flag f)
 {
 	if (d[0] == 'R' && d[1] == ' ')
 		return (R);
@@ -30,7 +30,8 @@ int				flag_data(char *d)
 		return (F);
 	else if (d[0] == 'C' && d[1] == ' ')
 		return (C);
-	else if (is_map(d))
+	else if (is_map(d) && f.r && f.path_n && f.path_w &&
+		f.path_s && f.path_e && f.color_f && f.color_c)
 		return (M);
 	else
 		return (-1);
@@ -67,7 +68,7 @@ char			*parse_data(t_game *gm, char *path)
 			free(data_line);
 			continue;
 		}
-		if ((parm[2] = flag_data(data_line)) > 0)
+		if ((parm[2] = flag_data(data_line, gm->flag)) > 0)
 		{
 			if (!(map = put_config(gm, data_line, parm[2], map)))
 				exit_with_error("file error!\n");
@@ -77,5 +78,7 @@ char			*parse_data(t_game *gm, char *path)
 		free(data_line);
 	}
 	free(data_line);
+	if (!(gm->flag.map))
+		exit_with_error("file content error\n");
 	return (map);
 }

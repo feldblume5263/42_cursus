@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/16 17:40:46 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 15:26:22 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,7 +200,7 @@ void			config_init(t_game *gm);
 int				is_map(char *d);
 char			*parse_data(t_game *gm, char *path);
 int				flag_blank(char *d);
-int				flag_data(char *d);
+int				flag_data(char *d, t_flag f);
 int				is_map(char *d);
 char			*put_config(t_game *g, char *d, int f, char *temp);
 void			draw_rectangles(t_game *gm);
@@ -225,6 +225,7 @@ void			load_texture(t_game *game);
 int				*load_image(t_game *game, char *path, t_img *tex, int i);
 int				is_blank(char c);
 int				inspect_wall(t_game *gm, double x, double y);
+int				inspect_sprite(t_game *gm, double x, double y);
 double			normalize_angle(double angle);
 double			get_distance(double x1, double y1, double x2, double y2);
 int				to_coord(t_game *gm, double x, double y);
