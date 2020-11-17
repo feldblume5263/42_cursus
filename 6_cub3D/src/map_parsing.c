@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 16:14:52 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/16 00:44:13 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/18 01:20:02 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int				is_map(char *d)
 
 void			get_first_dir(t_game *g, char player)
 {
-	if (player == 'N')
+	if (player == 'S')
 		g->p->rot_angle = (M_PI * 1.5);
-	else if (player == 'E')
-		g->p->rot_angle = 0;
-	else if (player == 'S')
-		g->p->rot_angle = (M_PI * 0.5);
 	else if (player == 'W')
+		g->p->rot_angle = 0;
+	else if (player == 'N')
+		g->p->rot_angle = (M_PI * 0.5);
+	else if (player == 'E')
 		g->p->rot_angle = (M_PI);
 }
 

@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 14:41:12 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/17 20:42:19 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/18 02:27:18 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,19 @@ void			resize_resol(t_game *g)
 
 int				check_input(int argc, char *argv[])
 {
-	if (!(argc == 2 || (argc == 3 && !ft_strncmp(argv[2], "--save", 6))))
+	if (argc == 2)
+		return (1);
+	else if (argc == 3)
 	{
-		write(1, "wrong input!\n", 19);
-		return (-1);
+		if (!(ft_strncmp(argv[2], "--save", 6))
+			&& (int)ft_strlen(argv[2]) == 6)
+			return (1);
+		else
+			exit_with_error("wroing input\n");
 	}
-	return (1);
+	else
+		exit_with_error("wroing input\n");
+	return (0);
 }
 
 int				close_game(void *game)
@@ -64,8 +71,7 @@ int				main(int argc, char *argv[])
 	t_game		gm;
 	char		*map;
 
-	if (check_input(argc, argv) < 0)
-		exit(0);
+	check_input(argc, argv);
 	is_cub(argv[1]);
 	player_init(&gm);
 	config_init(&gm);
@@ -81,7 +87,7 @@ int				main(int argc, char *argv[])
 	sprite_init(&gm, &gm.sprite);
 	mlx_hook(gm.win, X_EVENT_KEY_EXIT, 0, &close_game, &gm);
 	mlx_loop_hook(gm.mlx, &main_loop, &gm);
-	if (argc == 3 && !ft_strncmp(argv[2], "--save", 6))
+	if (argc == 3)
 		screenshot(&gm);
 	mlx_loop(gm.mlx);
 }
