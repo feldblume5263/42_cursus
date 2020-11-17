@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:57:38 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/17 15:02:05 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 16:28:04 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void			update_player(t_game *gm)
 	new_x = gm->conf.p_x + cos(gm->p->rot_angle + gm->p->go_right) * move_step;
 	new_y = gm->conf.p_y + sin(gm->p->rot_angle + gm->p->go_right) * move_step;
 	update_vector_position(gm);
-	if (!(inspect_wall(gm, new_x, new_y) && !(inspect_sprite(gm, new_x, new_y))))
+	if (!(inspect_wall(gm, new_x, new_y) &&
+		!(inspect_sprite(gm, new_x, new_y))))
 	{
 		gm->conf.p_x = new_x;
 		gm->conf.p_y = new_y;

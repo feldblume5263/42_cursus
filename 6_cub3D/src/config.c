@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:30:56 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/17 16:00:38 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 17:16:53 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,28 +36,28 @@ char			*store_map_file(t_game *g, char *d, char *temp)
 	return (temp3);
 }
 
-int				get_color(t_game *g, char *d, int f)
+int				get_color_p(t_game *g, char *d, int f)
 {
-	int			idx;
+	int			idx[2];
 	char		**ret;
-	int			color;
 
-	idx = 0;
-	while (is_blank(d[++idx]))
-	ret = ft_split(d + idx, ',');
-	color = make_color(ret);
+	idx[0] = 1;
+	while (is_blank(d[idx[0]]))
+		idx[0]++;
+	ret = ft_split(d + idx[0], ',');
+	idx[1] = make_color(ret);
 	if (f == F)
 	{
 		if (g->flag.color_f)
 			exit_with_error("floor color entered twice\n");
-		g->conf.floor_color = color;
+		g->conf.floor_color = idx[1];
 		g->flag.color_f = 1;
 	}
 	else if (f == C)
 	{
 		if (g->flag.color_c)
 			exit_with_error("ceil color entered twice\n");
-		g->conf.ceiling_color = color;
+		g->conf.ceiling_color = idx[1];
 		g->flag.color_c = 1;
 	}
 	else
@@ -130,7 +130,7 @@ char			*put_config(t_game *g, char *d, int f, char *temp)
 	else if (f == NO || f == SO || f == WE || f == EA || f == S)
 		get_path(g, d, f);
 	else if (f == F || f == C)
-		get_color(g, d, f);
+		get_color_p(g, d, f);
 	else if (f == M && g->flag.r && g->flag.color_c &&
 		g->flag.color_f && inspect_t(&(g->flag)))
 	{

@@ -6,11 +6,38 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 17:02:03 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/17 15:59:38 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 16:08:43 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+void			check_player_num(t_game *g, char *d)
+{
+	int			idx;
+
+	idx = -1;
+	while (d[++idx])
+	{
+		if (ft_strchr("NSWE", d[idx]))
+		{
+			if (g->conf.p_flag == 1)
+				exit_with_error("you have 2 player\n");
+			else
+				g->conf.p_flag = 1;
+		}
+	}
+}
+
+void			get_path_flag_s(t_flag *flag, int f)
+{
+	if (f == S)
+	{
+		if (flag->path_i)
+			exit_with_error("texture sprite entered twice\n");
+		flag->path_i = 1;
+	}
+}
 
 void			get_path_flag(t_flag *flag, int f)
 {
@@ -38,12 +65,7 @@ void			get_path_flag(t_flag *flag, int f)
 			exit_with_error("texture East entered twice\n");
 		flag->path_e = 1;
 	}
-	else if (f == S)
-	{
-		if (flag->path_i)
-			exit_with_error("texture sprite entered twice\n");
-		flag->path_i = 1;
-	}
+	get_path_flag_s(flag, f);
 }
 
 int				inspect_t(t_flag *flag)
@@ -52,7 +74,7 @@ int				inspect_t(t_flag *flag)
 		flag->path_s && flag->path_e)
 		return (1);
 	else
-		return(0);
+		return (0);
 }
 
 void			init_parsing_flag(t_game *gm)

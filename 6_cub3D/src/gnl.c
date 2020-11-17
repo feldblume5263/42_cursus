@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 16:43:00 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/05 21:02:13 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/17 16:55:51 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-int			return_value(int readbyte, char **line, char **back_up, char **buf)
+int				return_value(int readbyte, char **line, char **back_up, char **buf)
 {
 	if (readbyte < 0)
 	{
@@ -30,7 +30,7 @@ int			return_value(int readbyte, char **line, char **back_up, char **buf)
 	return (ENDOFFILE);
 }
 
-int			make_string_except_nl(char **line, char **back_up)
+int				make_string_except_nl(char **line, char **back_up)
 {
 	char		*temp;
 	int			size_before_nl;
@@ -49,10 +49,10 @@ int			make_string_except_nl(char **line, char **back_up)
 	return (LINE);
 }
 
-int			copy_buf_to_back_up(char **back_up, char *buf, int readbyte)
+int				copy_buf_to_back_up(char **back_up, char *buf, int readbyte)
 {
-	char			*new;
-	int				str_length;
+	char		*new;
+	int			str_length;
 
 	str_length = get_length(*back_up) + readbyte;
 	if (!(new = malloc(sizeof(char) * (str_length + 1))))
@@ -66,7 +66,7 @@ int			copy_buf_to_back_up(char **back_up, char *buf, int readbyte)
 	return (str_length);
 }
 
-int			inspect_input_validation(int fd, char **line, char **buf)
+int				inspect_input_validation(int fd, char **line, char **buf)
 {
 	if (fd < 0 || line == 0 || BUFFER_SIZE <= 0 ||\
 		!(*buf = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
@@ -74,11 +74,11 @@ int			inspect_input_validation(int fd, char **line, char **buf)
 	return (set_memory_null(*buf, BUFFER_SIZE + 1));
 }
 
-int			get_next_line(int fd, char **line)
+int				get_next_line(int fd, char **line)
 {
-	static char		*back_up[OPEN_MAX] = { 0, };
-	char			*buf;
-	int				readbyte;
+	static char	*back_up[OPEN_MAX] = { 0, };
+	char		*buf;
+	int			readbyte;
 
 	if (inspect_input_validation(fd, line, &buf) == ERROR)
 		return (ERROR);

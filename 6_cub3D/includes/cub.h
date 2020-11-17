@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/17 15:59:52 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 17:24:10 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,45 +66,44 @@
 
 # define INT_MAX				2147483647
 
-typedef struct				s_flag
+typedef struct	s_flag
 {
-	int						r;
-	int						path_n;
-	int						path_s;
-	int						path_e;
-	int						path_w;
-	int						path_i;
-	int						color_f;
-	int						color_c;
-	int						map;
-}							t_flag;
+	int			r;
+	int			path_n;
+	int			path_s;
+	int			path_e;
+	int			path_w;
+	int			path_i;
+	int			color_f;
+	int			color_c;
+	int			map;
+}				t_flag;
 
-
-typedef struct				s_sprite
+typedef struct	s_sprite
 {
-	int						screen_x;
-	int						num_sprites;
-	int						bpp;
-	int						sl;
-	int						end;
-	int						width;
-	int						height;
-	double					angle;
-	void					*ptr;
-	int						*data;
-	double					*distance;
-	double					*x;
-	double					*y;
-	double					*buffer;
-	int						draw_start_x;
-	int						draw_start_y;
-	int						draw_end_x;
-	int						draw_end_y;
-	double					dir_x;
-	double					dir_y;
-	double					plane_x;
-	double					plane_y;
-}							t_sprite;
+	int			screen_x;
+	int			num_sprites;
+	int			bpp;
+	int			sl;
+	int			end;
+	int			width;
+	int			height;
+	double		angle;
+	void		*ptr;
+	int			*data;
+	double		*distance;
+	double		*x;
+	double		*y;
+	double		*buffer;
+	int			draw_start_x;
+	int			draw_start_y;
+	int			draw_end_x;
+	int			draw_end_y;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+}				t_sprite;
 
 typedef struct	s_tex
 {
@@ -189,77 +188,106 @@ typedef struct	s_game
 	t_flag		flag;
 }				t_game;
 
-int				main(int argc, char *argv[]);
+int				check_input(int argc, char *argv[]);
+int				close_game(void *game);
 int				main_loop(t_game *gm);
-void			window_init(t_game *gm);
-void			img_init(t_game *gm);
-void			map_init(t_game *gm, char *map);
-void			player_init(t_game *gm);
-void			rays_init(t_game *gm);
-void			ray_init(t_game *gm, int idx);
-void			config_init(t_game *gm);
-int				is_map(char *d);
-char			*parse_data(t_game *gm, char *path);
-int				flag_blank(char *d);
-int				flag_data(char *d, t_flag f);
-int				is_map(char *d);
+int				main(int argc, char *argv[]);
+char			*store_map_file(t_game *g, char *d, char *temp);
+int				get_color_p(t_game *g, char *d, int f);
+int				get_path(t_game *g, char *d, int f);
+void			get_resolution(t_game *g, char *d);
 char			*put_config(t_game *g, char *d, int f, char *temp);
-void			draw_rectangles(t_game *gm);
+char			*make_hexa(int n, char *base);
+int				get_color_value(char *hexa);
+int				make_color(char **num);
+int				return_value(int readbyte,
+				char **line, char **back_up, char **buf);
+int				make_string_except_nl(char **line, char **back_up);
+int				copy_buf_to_back_up(char **back_up, char *buf, int readbyte);
+int				inspect_input_validation(int fd, char **line, char **buf);
+int				get_next_line(int fd, char **line);
+char			*string_dup_until_nl(char *s, size_t size);
+size_t			count_newline(char const *str);
+int				back_up_data(char **new, char **back_up,
+				char *buf, int str_length);
+size_t			get_length(char const *str);
+int				set_memory_null(void *str, size_t size);
+void			config_init(t_game *gm);
+void			ray_init(t_game *gm, int idx);
+void			rays_init(t_game *gm);
+void			player_init(t_game *gm);
+int				is_map(char *d);
+void			get_first_dir(t_game *g, char player);
+void			put_data_into_map(t_game *gm, char **temp, int col, int row);
+int				**make_map_file(t_game *gm, char **temp);
+void			map_init(t_game *gm, char *map_data);
+void			check_blank(int **map, int rows, int cols);
+void			check_down_right(int **map, int start, int end, int flag);
+void			check_up_left(int **map, int start, int end, int flag);
+void			resize_colums(t_game *gm);
+void			is_cub(char *file_name);
 void			draw_rectangle(t_game *gm, int x, int y, int color);
-void			draw_player(t_game *gm);
-int				player_keypressed(int keycode, t_player *player);
-int				player_keyreleased(int keycode, t_player *player);
-void			draw_view(t_game *gm);
+void			draw_rectangles(t_game *gm);
+void			check_player_num(t_game *g, char *d);
+void			get_path_flag_s(t_flag *flag, int f);
+void			get_path_flag(t_flag *flag, int f);
+int				inspect_t(t_flag *flag);
+void			init_parsing_flag(t_game *gm);
+int				flag_data(char *d, t_flag f);
+int				flag_blank(char *d);
+int				read_file(t_game *gm, char *path, char **map);
+char			*parse_data(t_game *gm, char *path);
+void			update_vector_position(t_game *g);
 void			update_player(t_game *gm);
-void			cast_rays(t_game *gm);
-void			draw_ray(t_game *gm, double ray_angle, int idx);
-void			cast_ray(t_game *gm, int idx);
-void			cast_horiz(t_game *gm, int idx);
+int				player_keyreleased(int keycode, t_player *player);
+int				player_keypressed(int keycode, t_player *player);
+void			draw_player(t_game *gm);
+int				intercept_verti(t_game *gm, int idx);
 void			cast_verti(t_game *gm, int idx);
 int				intercept_horiz(t_game *gm, int idx);
-int				intercept_verti(t_game *gm, int idx);
-void			rendering(t_game *gm);
-void			render_wall(t_game *gm, int idx, int top, int bot);
-int				get_wall_type(t_game *gm, int idx);
-int				get_wall_color(t_game *gm, int idx, int landscape, int type);
-void			load_texture(t_game *game);
-int				*load_image(t_game *game, char *path, t_img *tex, int i);
-int				is_blank(char c);
-int				inspect_wall(t_game *gm, double x, double y);
-int				inspect_sprite(t_game *gm, double x, double y);
+void			cast_horiz(t_game *gm, int idx);
 double			normalize_angle(double angle);
-double			get_distance(double x1, double y1, double x2, double y2);
-int				to_coord(t_game *gm, double x, double y);
-void			exit_with_error(char *message);
-void			resize_colums(t_game *gm);
-void			check_up_left(int **map, int start, int end, int flag);
-void			check_down_right(int **map, int start, int end, int flag);
-void			check_blank(int **map, int rows, int cols);
-int				make_color(char **num);
-int				get_color_value(char *hexa);
-char			*make_hexa(int n, char *base);
+void			cast_ray(t_game *gm, int idx);
+void			draw_ray(t_game *gm, double ray_angle, int idx);
+void			cast_rays(t_game *gm);
+int				get_wall_color(t_game *gm, int idx, int landscape, int type);
+int				get_wall_type(t_game *gm, int idx);
+void			render_wall(t_game *gm, int idx, int top, int bot);
+void			rendering(t_game *gm);
+void			int_to_char(int n, unsigned char *src);
+int				write_bmp_header(int fd, int file_size, t_game *game);
+int				get_color(t_game *game, int x, int y);
+int				write_bmp_data(int fd, int pad, t_game *game);
+void			screenshot(t_game *game);
+int				count_sprite(t_game *g);
+int				set_sprite_memory(t_game *g, t_sprite *sprite);
+void			get_sprite_position(t_game *g, t_sprite *sprite);
+void			get_sprite_vector(t_sprite *sprite, const char direction);
+int				sprite_init(t_game *g, t_sprite *sprite);
+double			get_transform_y(t_game *g, const int id);
+void			get_sprite_draw_pos(t_game *g, const double sprite_size);
+void			put_sprite_texture(t_game *g, int i, int j,
+				const double sprite_size);
+void			draw_sprite(t_game *g, t_sprite *sprite,
+				const double transform_y, const double sprite_size);
+void			get_sprite_distance(t_game *g, t_sprite *sprite);
+void			sort_sprite_by_distance(t_sprite *sprite);
+double			calculate_sprite_angle(t_game *g, const double x,
+				const double y);
+int				is_sprite_visible(t_game *g, const int id,
+				const double sprite_size);
+void			render_sprite(t_game *g, t_sprite *sp);
 int				safer_free_pp(void **pp);
 int				safer_free_p(void *p);
-void			check_player_num(t_game *g, char *d);
-void			is_cub(char *file_name);
-void			screenshot(t_game *game);
-void			init_parsing_flag(t_game *gm);
-int				inspect_t(t_flag *flag);
-void			get_path_flag(t_flag *flag, int f);
-
-int		sprite_init(t_game *g, t_sprite *sprite);
-void	get_sprite_vector(t_sprite *sprite, const char direction);
-void	get_sprite_position(t_game *g, t_sprite *sprite);
-int		set_sprite_memory(t_game *g, t_sprite *sprite);
-int		count_sprite(t_game *g);
-void		render_sprite(t_game *g, t_sprite *sprite);
-int		is_sprite_visible(t_game *g, const int id, const double sprite_size);
-double	calculate_sprite_angle(t_game *g, const double x, const double y);
-void	sort_sprite_by_distance(t_sprite *sprite);
-void	get_sprite_distance(t_game *g, t_sprite *sprite);
-void		draw_sprite(t_game *g, t_sprite *sprite, const double transform_y, const double sprite_size);
-void		put_sprite_texture(t_game *g, int i, int j, const double sprite_size);
-void	get_sprite_draw_pos(t_game *g, const double sprite_size);
-double	get_transform_y(t_game *g, const int id);
+void			exit_with_error(char *message);
+void			img_init(t_game *gm);
+void			window_init(t_game *gm);
+int				*load_image(t_game *gm, char *path, t_img *tex, int idx);
+void			load_texture(t_game *gm);
+int				to_coord(t_game *gm, double x, double y);
+int				is_blank(char c);
+double			get_distance(double x1, double y1, double x2, double y2);
+int				inspect_sprite(t_game *gm, double x, double y);
+int				inspect_wall(t_game *gm, double x, double y);
 
 #endif

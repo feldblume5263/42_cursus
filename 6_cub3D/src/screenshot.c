@@ -6,13 +6,13 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 21:34:05 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/17 01:59:54 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 17:22:51 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-static void			int_to_char(int n, unsigned char *src)
+void				int_to_char(int n, unsigned char *src)
 {
 	src[0] = (unsigned char)n;
 	src[1] = (unsigned char)(n >> 8);
@@ -20,7 +20,7 @@ static void			int_to_char(int n, unsigned char *src)
 	src[3] = (unsigned char)(n >> 24);
 }
 
-static int			write_bmp_header(int fd, int file_size, t_game *game)
+int					write_bmp_header(int fd, int file_size, t_game *game)
 {
 	int				ret;
 	unsigned char	bmp_header[54];
@@ -38,7 +38,7 @@ static int			write_bmp_header(int fd, int file_size, t_game *game)
 	return (ret);
 }
 
-static int			get_color(t_game *game, int x, int y)
+int				get_color(t_game *game, int x, int y)
 {
 	int			color;
 	int			rgb;
@@ -50,7 +50,7 @@ static int			get_color(t_game *game, int x, int y)
 	return (rgb);
 }
 
-static int			write_bmp_data(int fd, int pad, t_game *game)
+int					write_bmp_data(int fd, int pad, t_game *game)
 {
 	int				i;
 	int				j;

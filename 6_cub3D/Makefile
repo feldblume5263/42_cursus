@@ -6,7 +6,7 @@
 #    By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/10 16:03:57 by junhpark          #+#    #+#              #
-#    Updated: 2020/11/17 15:50:07 by Feldblume        ###   ########.fr        #
+#    Updated: 2020/11/17 16:32:10 by Feldblume        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,9 @@ SRC_NAME = cub3d.c \
 			utils.c \
 			system.c \
 			screenshot.c \
-			sprite.c
+			sprite_init.c \
+			sprite.c \
+			sprite_utils.c
 
 SRC_PATH = ./src
 SRC = $(addprefix $(SRC_PATH)/, $(SRC_NAME))

@@ -6,28 +6,11 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:58:44 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/17 01:16:18 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 16:09:50 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
-
-void			check_player_num(t_game *g, char *d)
-{
-	int			idx;
-
-	idx = -1;
-	while (d[++idx])
-	{
-		if (ft_strchr("NSWE", d[idx]))
-		{
-			if (g->conf.p_flag == 1)
-				exit_with_error("you have 2 player\n");
-			else
-				g->conf.p_flag = 1;
-		}
-	}
-}
 
 int				to_coord(t_game *gm, double x, double y)
 {

@@ -6,13 +6,13 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 14:24:21 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/06 15:40:17 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 16:55:14 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-char		*string_dup_until_nl(char *s, size_t size)
+char			*string_dup_until_nl(char *s, size_t size)
 {
 	char		*str;
 	size_t		idx;
@@ -29,9 +29,9 @@ char		*string_dup_until_nl(char *s, size_t size)
 	return (str);
 }
 
-size_t		count_newline(char const *str)
+size_t			count_newline(char const *str)
 {
-	size_t			index;
+	size_t		index;
 
 	if (str == (char const *)'\0')
 		return (ERROR);
@@ -45,7 +45,7 @@ size_t		count_newline(char const *str)
 	return (ERROR);
 }
 
-int			back_up_data(char **new, char **back_up, char *buf, int str_length)
+int				back_up_data(char **new, char **back_up, char *buf, int str_length)
 {
 	int			back_upidx;
 	int			bufidx;
@@ -66,9 +66,9 @@ int			back_up_data(char **new, char **back_up, char *buf, int str_length)
 	return (back_upidx + bufidx);
 }
 
-size_t		get_length(char const *str)
+size_t			get_length(char const *str)
 {
-	size_t			count;
+	size_t		count;
 
 	if (str == (char const *)'\0')
 		return ((size_t)'\0');
@@ -78,9 +78,9 @@ size_t		get_length(char const *str)
 	return (count);
 }
 
-int			set_memory_null(void *str, size_t size)
+int				set_memory_null(void *str, size_t size)
 {
-	size_t			count;
+	size_t		count;
 
 	if (str == NULL)
 	{

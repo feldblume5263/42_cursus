@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 21:10:20 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/17 15:28:15 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 16:26:44 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,24 @@ int				flag_blank(char *d)
 	return (1);
 }
 
+int				read_file(t_game *gm, char *path, char **map)
+{
+	int			fd;
+
+	*map = ft_strdup("");
+	init_parsing_flag(gm);
+	if ((fd = open(path, O_RDONLY)) < 0)
+		exit_with_error("fail to open file\n");
+	return (fd);
+}
+
 char			*parse_data(t_game *gm, char *path)
 {
 	int			parm[3];
 	char		*data_line;
 	char		*map;
 
-	init_parsing_flag(gm);
-	map = ft_strdup("");
-	if ((parm[0] = open(path, O_RDONLY)) < 0)
-		exit_with_error("fail to open file\n");
+	parm[0] = read_file(gm, path, &map);
 	while ((parm[1] = get_next_line(parm[0], &data_line)) > 0)
 	{
 		if (flag_blank(data_line) == 1 && parm[2] != M)
