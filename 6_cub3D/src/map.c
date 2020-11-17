@@ -6,11 +6,27 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:59:02 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/17 18:28:11 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 20:50:57 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+void			resol_valid(char *d)
+{
+	int			idx;
+	int			count;
+
+	idx = -1;
+	count = 0;
+	while (d[++idx])
+	{
+		if (d[idx + 1] <= '9' && d[idx + 1] >= '0' && d[idx] == ' ')
+			count++;
+	}
+	if (count > 2)
+		exit_with_error("resolution error\n");
+}
 
 char			*get_blank_map(char *d)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 21:14:35 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/13 19:50:44 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/17 20:18:07 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,41 @@ int				get_color_value(char *hexa)
 	return (ret);
 }
 
-int				make_color(char **num)
+int				count_com(char *d)
+{
+	int			i[3];
+
+	i[0] = -1;
+	i[1] = 0;
+	i[2] = 0;
+	while (d[++i[0]])
+	{
+		if (!((d[i[0]] >= '0' && d[i[0]] <= '9') || d[i[0]] == ' ' || d[i[0]] == ','))
+			return (0);
+		if (!(find_wrong_num(d)))
+			return (0);
+		if (d[i[0]] >= '0' && d[i[0]] <= '9')
+			i[2]++;
+		if (d[i[0]] == ',')
+		{
+			if (i[2] == 0)
+				return (0);
+			i[1]++;
+			i[2] = 0;
+		}
+	}
+	if (i[2] == 0 || i[1] != 2)
+		return (0);
+	return (1);
+}
+
+void			number_valid(int num)
+{
+	if (num < 0 || num > 255)
+		exit_with_error("color error\n");
+}
+
+int				make_color(char **num, int valid)
 {
 	int			idx;
 	int			temp;
@@ -76,18 +110,20 @@ int				make_color(char **num)
 	char		*res;
 	char		*hexa_temp;
 
+	if (!(valid))
+		exit_with_error("color error\n");
 	hexa = ft_strdup("");
-	idx = 0;
-	while (idx < 3)
+	idx = -1;
+	while (++idx < 3)
 	{
 		hexa_temp = hexa;
 		temp = ft_atoi(num[idx]);
+		number_valid(temp);
 		free(num[idx]);
 		res = make_hexa(temp, "0123456789abcdef");
 		hexa = ft_strjoin(hexa, res);
 		free(hexa_temp);
 		free(res);
-		idx++;
 	}
 	free(num);
 	temp = get_color_value(hexa);

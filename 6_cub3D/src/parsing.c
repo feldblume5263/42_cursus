@@ -6,11 +6,33 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 21:10:20 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/17 16:26:44 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 20:22:20 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+int				find_wrong_num(char *d)
+{
+	int			idx;
+	int			temp;
+
+	idx = -1;
+	while (d[++idx])
+	{
+		temp = 0;
+		if (idx >= 2 && d[idx] == ' ' && d[idx - 1]
+			>= '0' && d[idx - 1] <= '9')
+		{
+			temp = idx;
+			while (d[temp] && d[temp] == ' ')
+				temp++;
+			if (d[temp] >= '0' && d[temp] <= '9')
+				return (0);
+		}
+	}
+	return (1);
+}
 
 int				flag_data(char *d, t_flag f)
 {

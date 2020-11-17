@@ -6,11 +6,19 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/14 14:41:12 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/17 15:01:30 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 20:42:19 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+void			resize_resol(t_game *g)
+{
+	g->conf.width = g->conf.width > 1920 ? 1920 : g->conf.width;
+	g->conf.height = g->conf.height > 1080 ? 1080 : g->conf.height;
+	g->conf.width = g->conf.width < 400 ? 400 : g->conf.width;
+	g->conf.height = g->conf.height < 400 ? 400 : g->conf.height;
+}
 
 int				check_input(int argc, char *argv[])
 {

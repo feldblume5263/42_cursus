@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:30:56 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/17 18:27:19 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 20:50:43 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int				get_color_p(t_game *g, char *d, int f)
 	while (is_blank(d[idx[0]]))
 		idx[0]++;
 	ret = ft_split(d + idx[0], ',');
-	idx[1] = make_color(ret);
+	idx[1] = make_color(ret, count_com(d + idx[0]));
 	if (f == F)
 	{
 		if (g->flag.color_f)
@@ -92,6 +92,8 @@ void			get_resolution(t_game *g, char *d)
 	int			idx;
 
 	idx = 2;
+	while (is_blank(d[idx]) && d[idx])
+		idx++;
 	if (!(d[idx] >= '0' && d[idx] <= '9'))
 		exit_with_error("resolution error!\n");
 	while (!(is_blank(d[idx])) && d[idx])
@@ -112,8 +114,6 @@ void			get_resolution(t_game *g, char *d)
 	}
 	if (g->conf.width == 0 || g->conf.height == 0)
 		exit_with_error("resolution error!\n");
-	g->conf.width = g->conf.width > 5120 ? 5120 : g->conf.width;
-	g->conf.height = g->conf.height > 2880 ? 2880 : g->conf.height;
 }
 
 char			*put_config(t_game *g, char *d, int f, char *temp)
@@ -125,7 +125,9 @@ char			*put_config(t_game *g, char *d, int f, char *temp)
 	{
 		if (g->flag.r)
 			exit_with_error("resolution enterd twice\n");
+		resol_valid(d);
 		get_resolution(g, d);
+		resize_resol(g);
 		g->flag.r = 1;
 	}
 	else if (f == NO || f == SO || f == WE || f == EA || f == S)

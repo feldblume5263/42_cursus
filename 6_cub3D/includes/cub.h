@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/17 18:29:36 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 20:51:08 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,7 +199,10 @@ void			get_resolution(t_game *g, char *d);
 char			*put_config(t_game *g, char *d, int f, char *temp);
 char			*make_hexa(int n, char *base);
 int				get_color_value(char *hexa);
-int				make_color(char **num);
+int				make_color(char **num, int valid);
+int				count_com(char *d);
+int				find_wrong_num(char *d);
+void			resol_valid(char *d);
 int				return_value(int readbyte,
 				char **line, char **back_up, char **buf);
 int				make_string_except_nl(char **line, char **back_up);
@@ -225,6 +228,7 @@ void			map_init(t_game *gm, char *map_data);
 void			check_blank(int **map, int rows, int cols);
 void			check_down_right(int **map, int start, int end, int flag);
 void			check_up_left(int **map, int start, int end, int flag);
+void			resize_resol(t_game *g);
 void			resize_colums(t_game *gm);
 void			is_cub(char *file_name);
 void			draw_rectangle(t_game *gm, int x, int y, int color);
