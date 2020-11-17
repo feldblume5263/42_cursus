@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/11 22:56:13 by junhpark          #+#    #+#             */
-/*   Updated: 2020/04/12 15:41:49 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/17 18:04:37 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char		**split_and_put_str(char const *s, char c, char **str)
 		if (count_start(s, c, idx) == 1)
 		{
 			chunk_len = inspect_chunk_len(s, c, idx);
-			if (!(str[chunk] = (char *)malloc(sizeof(char) * (chunk_len + 1))))
+			if (!(str[chunk] = (char *)malloc(sizeof(char) * (chunk_len + 2))))
 				return (0);
 			word = 0;
 			while (word < chunk_len)

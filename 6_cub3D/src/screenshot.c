@@ -6,13 +6,13 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 21:34:05 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/17 17:22:51 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 18:33:01 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-void				int_to_char(int n, unsigned char *src)
+void			int_to_char(int n, unsigned char *src)
 {
 	src[0] = (unsigned char)n;
 	src[1] = (unsigned char)(n >> 8);
@@ -20,7 +20,7 @@ void				int_to_char(int n, unsigned char *src)
 	src[3] = (unsigned char)(n >> 24);
 }
 
-int					write_bmp_header(int fd, int file_size, t_game *game)
+int				write_bmp_header(int fd, int file_size, t_game *game)
 {
 	int				ret;
 	unsigned char	bmp_header[54];
@@ -40,8 +40,8 @@ int					write_bmp_header(int fd, int file_size, t_game *game)
 
 int				get_color(t_game *game, int x, int y)
 {
-	int			color;
-	int			rgb;
+	int				color;
+	int				rgb;
 
 	color = 0;
 	if (game->conf.width * game->conf.height > game->conf.width * y + x)
@@ -50,7 +50,7 @@ int				get_color(t_game *game, int x, int y)
 	return (rgb);
 }
 
-int					write_bmp_data(int fd, int pad, t_game *game)
+int				write_bmp_data(int fd, int pad, t_game *game)
 {
 	int				i;
 	int				j;
@@ -76,7 +76,7 @@ int					write_bmp_data(int fd, int pad, t_game *game)
 	return (1);
 }
 
-void				screenshot(t_game *game)
+void			screenshot(t_game *game)
 {
 	int				fd;
 	int				file_size;

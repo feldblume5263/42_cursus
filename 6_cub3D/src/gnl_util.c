@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/27 14:24:21 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/17 16:55:14 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 18:33:50 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ size_t			count_newline(char const *str)
 	return (ERROR);
 }
 
-int				back_up_data(char **new, char **back_up, char *buf, int str_length)
+int				back_up_data(char **new,
+	char **back_up, char *buf, int str_length)
 {
 	int			back_upidx;
 	int			bufidx;

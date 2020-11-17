@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 15:30:56 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/17 17:16:53 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 18:27:19 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char			*store_map_file(t_game *g, char *d, char *temp)
 	char		*temp3;
 	int			size;
 
+	d = get_blank_map(d);
 	size = (int)ft_strlen(d);
 	if (!(temp2 = ft_strjoin(d, "t")))
 		exit_with_error("map malloc error!\n");

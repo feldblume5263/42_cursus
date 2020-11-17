@@ -6,7 +6,7 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 14:24:11 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/17 17:24:10 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 18:29:36 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,7 @@ int				is_map(char *d);
 void			get_first_dir(t_game *g, char player);
 void			put_data_into_map(t_game *gm, char **temp, int col, int row);
 int				**make_map_file(t_game *gm, char **temp);
+char			*get_blank_map(char *d);
 void			map_init(t_game *gm, char *map_data);
 void			check_blank(int **map, int rows, int cols);
 void			check_down_right(int **map, int start, int end, int flag);

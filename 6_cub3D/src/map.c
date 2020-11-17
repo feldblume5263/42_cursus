@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junhpark <junhpark@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 13:59:02 by Feldblume         #+#    #+#             */
-/*   Updated: 2020/11/11 16:18:45 by junhpark         ###   ########.fr       */
+/*   Updated: 2020/11/17 18:28:11 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+char			*get_blank_map(char *d)
+{
+	if (ft_strlen(d) == 0)
+	{
+		free(d);
+		d = (char *)malloc(sizeof(char) * 2);
+		d[0] = ' ';
+		d[1] = '\0';
+	}
+	return (d);
+}
 
 void			draw_rectangle(t_game *gm, int x, int y, int color)
 {

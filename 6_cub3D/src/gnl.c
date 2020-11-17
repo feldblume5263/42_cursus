@@ -6,13 +6,14 @@
 /*   By: Feldblume <Feldblume@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 16:43:00 by junhpark          #+#    #+#             */
-/*   Updated: 2020/11/17 16:55:51 by Feldblume        ###   ########.fr       */
+/*   Updated: 2020/11/17 18:30:57 by Feldblume        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-int				return_value(int readbyte, char **line, char **back_up, char **buf)
+int				return_value(int readbyte,
+	char **line, char **back_up, char **buf)
 {
 	if (readbyte < 0)
 	{
