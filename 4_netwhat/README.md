@@ -1,6 +1,6 @@
-# Netwhat
+# 네트워크에 대해서
 ##
-### References(My Blog)
+### 네트워크 기본  정리 자료
 #### 1. [IP 주소란?](https://hasensprung.tistory.com/1?category=886282)
 #### 2. [IP 주소의 구조는?](https://hasensprung.tistory.com/2?category=886282)
 #### 3. [서브넷 마스크와 서브넷팅 계산](https://hasensprung.tistory.com/10?category=886282)
@@ -11,22 +11,22 @@
 #### 8. [DNS와 DHCP 프로토콜 (Application Layer)](https://hasensprung.tistory.com/15?category=886282)
 #### 9. [라우터(Router)와 라우팅(Routing)](https://hasensprung.tistory.com/16?category=886282)
 ##
-### What is Network?
+### 네트워크 이해를 위한 질문
 ##
-####  -What is an IP address :heavy_check_mark:
-####  -What is a Netmask :heavy_check_mark:
-####  -What is the subnet of an IP with Netmask :heavy_check_mark:
-####  -What is the broadcast address of a subnet :heavy_check_mark:
-####  -What are the different ways to represent an ip address with the Netmask :heavy_check_mark:
-####  -What are the differences between public and private IPs :heavy_check_mark:
-####  -What is a class of IP addresses :heavy_check_mark:
-####  -What is TCP :heavy_check_mark:
-####  -What is UDP :heavy_check_mark:
-####  -What are the network layers :heavy_check_mark:
-####  -What is the OSI model :heavy_check_mark:
-####  -What is a DHCP server and the DHCP protocol :heavy_check_mark:
-####  -What is a DNS server and the DNS protocol :heavy_check_mark:
-####  -What are the rules to make 2 devices communicate using IP addresses :heavy_check_mark:
-####  -How does routing work with IP :heavy_check_mark:
-####  -What is a default gateway for routing :heavy_check_mark:
-####  -What is a port from an IP point of view and what is it used for when connecting to another device :heavy_check_mark:
+####  - What is an IP address   
+####  - What is a Netmask   
+####  - What is the subnet of an IP with Netmask   
+####  - What is the broadcast address of a subnet   
+####  - What are the different ways to represent an ip address with the Netmask   
+####  - What are the differences between public and private IPs   
+####  - What is a class of IP addresses   
+####  - What is TCP   
+####  - What is UDP   
+####  - What are the network layers   
+####  - What is the OSI model   
+####  - What is a DHCP server and the DHCP protocol   
+####  - What is a DNS server and the DNS protocol   
+####  - What are the rules to make 2 devices communicate using IP addresses   
+####  - How does routing work with IP   
+####  - What is a default gateway for routing   
+####  - What is a port from an IP point of view and what is it used for when connecting to another device   
