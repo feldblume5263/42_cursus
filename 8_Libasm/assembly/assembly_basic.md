@@ -59,30 +59,38 @@ CPU에 따라 기계어가 다르기 때문에 어셈블리어 또한 각각 다
 
   cpu에서 사용하는 변수로 생각하면 쉽다.
 
-  - #### EAX (Extended Accumulator Register)
+  - #### RAX (Accumulator Register)
+
     가장 많이 사용하는 레지스터, 더하기 빼기 같은 연산에 주로 사용된다.
     C에서 값을 return해줄 때, 그 return 해주는 값이 EAX에 저장된다.
 
-  - #### EBX (Extended Base Register)
+  - #### RBX (Base Register)
+
     EAX와 마찬가지로 연산에 주로 사용되지만, return 값이 저장되지 않는다는 차이점이 있다.
 
-  - #### ECX (Extended Counter Register)
+  - #### RCX (Counter Register)
+
     카운트하는 레지스터, 예를 들어 C에서 for문을 사용할 때 하나씩 늘리는 인덱스의 역할을 수행.
     다만 차이점은, 우리는 하나씩 늘리는 대신 ECX는 갯수를 정해놓고 하나씩 하락시킨다.
 
-  - #### EDX (Extended Data Register)
+  - #### RDX (Data Register)
+
     레지스터가 부족할 때 임시로 사용하는 레지스터
 
-  - #### ESI (Extended Source Index)
+  - #### RSI (Source Index)
+
     데이터를 복사할 때, 소스데이터 즉 복사할 데이터의 주소가 저장된다.
 
-  - #### EDI (Extended Destination Index)
+  - #### RDI (Destination Index)
+
     데이터를 복사할 때, 목적 주소가 저장된다.
 
-  - #### ESP (Extended Stack Pointer)
+  - #### RSP (Stack Pointer)
+
     스택 프레임의 끝 주소 저장
 
-  - #### EBP (Extended Base Pointer)
+  - #### RBP (Base Pointer)
+
     스택 프레임의 시작 주소 저장
 
   AX, BX, CX, DX는 모두 16비트 크기를 가지는 레지스터이다. 이후 32비트 크기를 가지는 아키텍쳐는 앞에 E를 붙히는 모양새가 된다. 또 64비트 아키텍쳐로 넘어오면서 앞에 R이 붙게 된다.

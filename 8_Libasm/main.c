@@ -1,11 +1,15 @@
 #include <stdio.h>
 
 int		ft_strlen(char const *str);
+char	*ft_strcpy(char *dest, char const *src);
 
 int		main(void)
 {
-	char	str[] = "abcd";
+	char	len[] = "abcd";
+	char	cpy_src[10] = "good";
+	char	cpy_des[10];
 
-	printf("%d\n", ft_strlen(str));
+	printf("ft_strlen(\"abcd\") = %d\n", ft_strlen(len));
+	printf("ft_strcpy(des, \"good\") = %s\n", ft_strcpy(cpy_des, cpy_src));
 	return (0);
 }

@@ -1,12 +1,12 @@
 section	.text
 			global	_ft_strlen
 _ft_strlen:
-			xor		rax, rax
+			mov		rax, 0
 			jmp		compare
-increment:
+increase:
 			inc		rax
 compare:
-			cmp		BYTE [rdi + rax], 0
-			jne		increment
+			cmp		BYTE[rdi + rax], 0
+			jne		increase
 done:
 			ret
