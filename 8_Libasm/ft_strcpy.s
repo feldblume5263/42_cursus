@@ -3,7 +3,6 @@ section .text
 
 _ft_strcpy:
 			mov		rcx, 0
-			mov		rdx, 0
 			cmp		rsi, 0
 			jz		return
 			jnz		putchar
