@@ -4,7 +4,9 @@ section .text
 _ft_strcpy:
 			mov		rcx, 0
 			mov		rdx, 0
-			jmp		compare
+			cmp		rsi, 0
+			jz		return
+			jnz		putchar
 
 encrease:
 			add		rcx, 1
@@ -15,10 +17,6 @@ putchar:
 			cmp		dl, 0
 			jnz		encrease
 
-compare:
-			cmp		rsi, 0
-			jz		return
-			jne		putchar
 return:
 			mov		rax, rdi
 			ret
