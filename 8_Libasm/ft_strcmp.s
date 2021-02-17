@@ -22,9 +22,16 @@ compare:
 subnum:
 			mov		dl, BYTE[rdi + rcx]
 			sub		dl, BYTE[rsi + rcx]
-			mov		rax, 1
+			jl		lowcase
+			jnz		upcase
 			ret
 
+lowcase:
+			mov		rax, -1
+			ret
+upcase:
+			mov		rax, 1
+			ret
 return:
 			mov		rax, rdi
 			ret
