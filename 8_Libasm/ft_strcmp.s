@@ -8,10 +8,17 @@ _ft_strcmp:
 			jz		return
 			cmp		rsi, 0
 			jz		return
-			jmp		compare
+			jmp		check_final
 
 encrease:
 			add		rcx, 1
+
+check_final:
+			cmp		BYTE[rdi + rcx], 0
+			je		final
+			cmp		BYTE[rsi + rcx], 0
+			je		final
+			jmp		compare
 
 compare:
 			mov		dl, BYTE[rdi + rcx]
@@ -29,6 +36,15 @@ subnum:
 lowcase:
 			mov		rax, -1
 			ret
+same:
+			mov		rax, 0
+			ret
+final:
+			mov		dl, BYTE[rdi + rcx]
+			sub		dl, BYTE[rsi + rcx]
+			cmp		dl, 0
+			jz		same
+			jl		lowcase
 upcase:
 			mov		rax, 1
 			ret
