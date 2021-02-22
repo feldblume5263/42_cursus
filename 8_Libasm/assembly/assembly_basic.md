@@ -339,3 +339,8 @@ mov		al, [L6] ; L6에 위치한 더블워드의 하위 비트를 AL에 대입한
 
 ![스크린샷 2021-02-08 오후 4.44.48](/Users/Feldblume/Library/Application Support/typora-user-images/스크린샷 2021-02-08 오후 4.44.48.png)
 
+
+
+
+
+함수 호출규약
