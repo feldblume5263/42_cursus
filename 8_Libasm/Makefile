@@ -6,7 +6,7 @@
 #    By: junhpark <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/24 01:13:04 by junhpark          #+#    #+#              #
-#    Updated: 2021/02/24 01:21:28 by junhpark         ###   ########.fr        #
+#    Updated: 2021/02/24 01:22:27 by junhpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ NA			=	nasm
 NA_FLAGS	=	-f macho64
 FLAGS 		=	-Wall -Werror -Wextra
 NAME		=	libasm.a
-TEST		=	test
 
 %.o:			%.s
 				$(NA) $(NA_FLAGS) $<
@@ -41,4 +40,4 @@ fclean:			clean
 
 re:				fclean $(NAME)
 
-PHONY:			clean fclean re test bonus
+PHONY:			clean fclean re bonus
