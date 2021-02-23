@@ -286,15 +286,15 @@ void		test_ft_strlen(void)
 
 	str = "this is string length test.";
 	printf("=======================FT=======================\n");
-	printf("RET: %zd S: %s$\n", ft_strlen(str), str);
+	printf("RET: %d S: %s$\n", ft_strlen(str), str);
 	printf("=======================STD=======================\n");
-	printf("RET: %zd S: %s$\n", strlen(str), str);
+	printf("RET: %lu S: %s$\n", strlen(str), str);
 	printf("\n");
 	str = "";
 	printf("=======================FT=======================\n");
-	printf("RET: %zd S: %s$\n", ft_strlen(str), str);
+	printf("RET: %d S: %s$\n", ft_strlen(str), str);
 	printf("=======================STD=======================\n");
-	printf("RET: %zd S: %s$\n", strlen(str), str);
+	printf("RET: %lu S: %s$\n", strlen(str), str);
 	printf("\n");
 	/* SEGFAULT
 	str = (char *)0;
