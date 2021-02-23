@@ -6,11 +6,17 @@
 #    By: junhpark <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/24 01:13:04 by junhpark          #+#    #+#              #
-#    Updated: 2021/02/24 01:17:27 by junhpark         ###   ########.fr        #
+#    Updated: 2021/02/24 01:21:28 by junhpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=	ft_strlen.s ft_strcmp.s ft_strcpy.s ft_write.s ft_read.s ft_strdup.s
+SRCS		=	ft_strlen.s \
+				ft_strcmp.s \
+				ft_strcpy.s \
+				ft_write.s \
+				ft_read.s \
+				ft_strdup.s
+
 OBJS		=	$(SRCS:.s=.o)
 
 NA			=	nasm
@@ -34,9 +40,5 @@ fclean:			clean
 				rm -rf $(NAME) $(TEST) $(TEST_BONUS)
 
 re:				fclean $(NAME)
-
-test:			$(NAME)
-				gcc $(FLAGS) -L. -lasm -o $(TEST) main.c
-				./$(TEST) < Makefile
 
 PHONY:			clean fclean re test bonus
