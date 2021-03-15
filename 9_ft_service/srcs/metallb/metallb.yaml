@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: metallb-system
+  name: config
+data:
+  config: |
+    address-pools:
+    - name: default
+      protocol: layer2
+      addresses:
+        - 192.168.99.100-192.168.99.100
+        # ADDRESSES
+        # - 192.168.99.105-192.168.99.106 이런 형식
+        # 192.168.49.2 -> 에러 나올 수 있음 많이 불안함

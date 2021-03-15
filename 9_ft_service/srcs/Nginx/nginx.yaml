@@ -44,7 +44,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: ft_nginx
+        image: junhpark
         imagePullPolicy: Never
         ports:
           - containerPort: 80
