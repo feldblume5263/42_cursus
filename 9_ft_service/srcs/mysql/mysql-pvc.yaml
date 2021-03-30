@@ -1,0 +1,37 @@
+# volume 생성pv와 pvc 두단계로 한다. 바로 요청만 해서 볼륨을 가져올 수 있게 하기 위함.
+# pv - 볼륨 자체를 뜻함, 클러스터 안에서 자원으로 다룬다. 파드와는 별개로 관리되며 별도 생명주기
+# pvc - 우리가 pv에 하는 요청, 용량과 읽기 쓰기 등을 요청한다.
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv
+  labels:
+    pv: mysql
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 500Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data/mysql"
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc
+  labels:
+    pvc: mysql
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
+  selector:
+    matchLabels:
+      pv: mysql # binding할 pv를 생성된 pv중에서 label로 선택함
